@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Navidad a la Malagueña · Preventa de dulces tradicionales</title>
+  <meta name="description" content="Borrachuelos, pestiños, buñuelos y torta de almendra hechos a mano en Málaga, en colaboración con comercios locales. Apúntate a la lista de espera de la preventa navideña." />
+  <meta name="theme-color" content="#F3EEE4" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,800;1,9..144,300;1,9..144,400;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            fondo: '#F3EEE4',
+            papel: '#FAF7F1',
+            linea: '#DED5C4',
+            cafe: { DEFAULT: '#2C1E16', soft: '#5B4A3E' },
+            teja: { DEFAULT: '#B04A3A', dark: '#953C2F' },
+            pascuero: '#2F4A3C',
+            miel: '#B48A4A',
+            arena: '#D9C59E',
+          },
+          fontFamily: {
+            serif: ['Fraunces', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
+            mano: ['Caveat', 'cursive'],
+          },
+          letterSpacing: { label: '.22em' },
+          boxShadow: { suave: '0 18px 40px -24px rgba(44,30,22,.35)' },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { -webkit-font-smoothing: antialiased; background: #F3EEE4; overflow-x: hidden; }
+    .grano::before {
+      content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: .35;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .17 0 0 0 0 .12 0 0 0 0 .09 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    .cenefa {
+      height: 18px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='18'%3E%3Crect width='36' height='18' fill='%23F3EEE4'/%3E%3Cpath d='M0 9 L9 0 L18 9 L9 18Z M18 9 L27 0 L36 9 L27 18Z' fill='none' stroke='%232F4A3C' stroke-width='1.1'/%3E%3Ccircle cx='9' cy='9' r='2.2' fill='%23B04A3A'/%3E%3Ccircle cx='27' cy='9' r='2.2' fill='%23B48A4A'/%3E%3C/svg%3E");
+      background-repeat: repeat-x;
+    }
+    .input-linea {
+      width: 100%; background: transparent; border: 0; border-bottom: 1px solid #CFC4B0;
+      padding: .7rem 0; font-size: 1rem; color: #2C1E16; border-radius: 0; transition: border-color .2s;
+    }
+    .input-linea::placeholder { color: rgba(44,30,22,.35); }
+    .input-linea:focus { outline: none; border-color: #2C1E16; }
+    .input-linea[aria-invalid="true"] { border-color: #B04A3A; }
+
+    /* ---------- 3D: arco con inclinación ---------- */
+    .tilt-wrap { perspective: 1100px; }
+    .tilt { transform-style: preserve-3d; transition: transform .25s ease-out; will-change: transform; }
+    .z-40px { transform: translateZ(40px); }
+    .z-70px { transform: translateZ(70px); }
+
+    /* ---------- 3D: sello / moneda que gira ---------- */
+    .coin { width: 112px; height: 112px; position: relative; transform-style: preserve-3d; animation: coinSpin 9s linear infinite; }
+    .coin-face {
+      position: absolute; inset: 0; border-radius: 9999px; backface-visibility: hidden;
+      display: grid; place-items: center; text-align: center;
+      box-shadow: inset 0 0 0 3px rgba(255,255,255,.25), inset 0 0 0 7px rgba(44,30,22,.18), 0 18px 30px -12px rgba(44,30,22,.5);
+    }
+    .coin-back { transform: rotateY(180deg); }
+    .coin-edge { position: absolute; inset: 0; border-radius: 9999px; background: #7E2F24; transform: translateZ(-3px); }
+    .coin-edge.e2 { transform: translateZ(-1.5px); background: #953C2F; }
+    @keyframes coinSpin { from { transform: rotateY(0) rotateX(8deg); } to { transform: rotateY(360deg) rotateX(8deg); } }
+
+    /* ---------- 3D: cartas de dulces que se voltean ---------- */
+    .flip { perspective: 1000px; }
+    .flip-inner { position: relative; height: 100%; transform-style: preserve-3d; transition: transform .8s cubic-bezier(.2,.8,.2,1); }
+    .flip:hover .flip-inner, .flip.is-flipped .flip-inner { transform: rotateY(180deg); }
+    .flip-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+    .flip-back { transform: rotateY(180deg); }
+
+    /* ---------- 3D: cestita malagueña por capas ---------- */
+    .cesta-scene { width: min(360px, 86vw); aspect-ratio: 1; perspective: 900px; }
+    .cesta { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; animation: sway 7s ease-in-out infinite; transition: transform .3s ease-out; }
+    .cesta.siguiendo { animation: none; }
+    .capa { position: absolute; inset: 0; }
+    .capa svg { width: 100%; height: 100%; overflow: visible; }
+    .capa-0 { transform: translateZ(-45px); }
+    .capa-1 { transform: translateZ(0); }
+    .capa-2 { transform: translateZ(35px); }
+    .capa-3 { transform: translateZ(70px); }
+    .cesta-sombra { width: 62%; height: 26px; margin: -6px auto 0; border-radius: 50%; background: radial-gradient(rgba(44,30,22,.38), transparent 70%); animation: sombra 7s ease-in-out infinite; }
+    @keyframes sway { 0%,100% { transform: rotateX(10deg) rotateY(-16deg); } 50% { transform: rotateX(4deg) rotateY(16deg); } }
+    @keyframes sombra { 0%,100% { transform: translateX(-8px) scaleX(.95); } 50% { transform: translateX(8px) scaleX(1.03); } }
+
+    /* ---------- Polaroids del álbum ---------- */
+    .polaroid { background: #fff; padding: 12px 12px 48px; box-shadow: 0 22px 40px -20px rgba(44,30,22,.45), 0 2px 6px rgba(44,30,22,.08); transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+    .polaroid:hover { transform: rotate(0) scale(1.04); z-index: 5; }
+    .polaroid figcaption { position: absolute; left: 0; right: 0; bottom: 10px; text-align: center; font-family: Caveat, cursive; font-size: 1.45rem; color: #5B4A3E; }
+    .cinta { position: absolute; width: 84px; height: 24px; background: rgba(217,197,158,.75); box-shadow: 0 1px 2px rgba(44,30,22,.1); }
+
+    /* ---------- Fotos con tono cálido y nostálgico ---------- */
+    .foto { filter: saturate(.9) sepia(.14) contrast(1.06) brightness(1.03); }
+    .zoom img { transition: transform 1.2s cubic-bezier(.2,.7,.2,1); }
+    .zoom:hover img { transform: scale(1.07); }
+
+    /* ---------- Cinta de frases malagueñas ---------- */
+    .marquee { display: flex; width: max-content; animation: marquee 38s linear infinite; }
+    .marquee:hover { animation-play-state: paused; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    .texto-contorno { -webkit-text-stroke: 1px rgba(44,30,22,.14); color: transparent; }
+
+    .fade-up { animation: fadeUp .9s cubic-bezier(.2,.7,.2,1) both; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+    .toast-enter { animation: toastIn .4s cubic-bezier(.2,.9,.3,1.1) both; }
+    @keyframes toastIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+    .shake { animation: shake .4s; }
+    @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
+
+    @media (prefers-reduced-motion: reduce) {
+      .fade-up, .toast-enter, .shake, .coin, .cesta, .cesta-sombra, .marquee { animation: none; }
+      .zoom img { transition: none; }
+      .tilt, .flip-inner { transition: none; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+
+<body class="grano font-sans text-cafe min-h-screen">
+
+  <!-- Definiciones SVG compartidas -->
+  <svg width="0" height="0" class="absolute" aria-hidden="true">
+    <defs>
+      <g id="i-pestino" fill="none" stroke="#2C1E16" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M-40 6 C-36 -20 -8 -24 0 -8 C8 -24 36 -20 40 6 C30 24 8 22 0 10 C-8 22 -30 24 -40 6Z" fill="#E4C48E"/>
+        <path d="M0 -8 C-3 -1 -3 4 0 10"/>
+        <path d="M-27 -7 C-20 -13 -12 -13 -7 -7" stroke="#FAF7F1" stroke-width="2.4" opacity=".9"/>
+        <path d="M-18 20 q1 7 -1 10" stroke="#B48A4A" stroke-width="2"/>
+        <path d="M20 19 q1 5 0 8" stroke="#B48A4A" stroke-width="2"/>
+        <g fill="#2C1E16" stroke="none"><circle cx="-16" cy="6" r="1.2"/><circle cx="14" cy="4" r="1.2"/><circle cx="22" cy="9" r="1"/><circle cx="-24" cy="10" r="1"/></g>
+      </g>
+      <g id="i-borrachuelo" fill="none" stroke="#2C1E16" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M-42 12 A42 36 0 0 1 42 12 Q0 26 -42 12Z" fill="#EAD3A8"/>
+        <path d="M-38 7 A38 32 0 0 1 38 7" stroke-dasharray="1.5 6" stroke-width="2.6"/>
+        <g fill="#FAF7F1" stroke="#2C1E16" stroke-width=".8"><circle cx="-14" cy="-8" r="1.8"/><circle cx="-2" cy="-15" r="1.6"/><circle cx="10" cy="-9" r="1.9"/><circle cx="22" cy="-2" r="1.5"/><circle cx="-24" cy="1" r="1.4"/><circle cx="2" cy="-1" r="1.6"/></g>
+      </g>
+      <g id="i-bunuelo" fill="none" stroke="#2C1E16" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M-40 18 h80" stroke="#CFC4B0"/>
+        <path d="M-34 14 c-8 -2 -10 -18 0 -22 c4 -10 18 -10 22 -2 c8 -2 12 10 6 16 c0 8 -18 12 -28 8Z" fill="#DDB27A"/>
+        <path d="M2 14 c-6 -4 -6 -20 6 -22 c6 -10 22 -6 22 4 c8 4 6 18 -4 20 c-6 4 -18 4 -24 -2Z" fill="#E4C48E"/>
+        <path d="M-12 -14 c-4 -10 8 -18 16 -12 c10 -4 16 8 10 14 c-2 8 -16 10 -22 4 c-6 0 -8 -4 -4 -6Z" fill="#EAD3A8"/>
+        <path d="M-24 -4 c3 -3 6 -3 8 0 M14 -2 c3 -3 7 -2 8 1 M-2 -18 c2 -2 5 -2 6 0" stroke="#FAF7F1" stroke-width="2"/>
+        <g fill="#FAF7F1" stroke="#2C1E16" stroke-width=".7"><circle cx="-6" cy="-24" r="1.4"/><circle cx="6" cy="-20" r="1.3"/><circle cx="-26" cy="-8" r="1.3"/><circle cx="20" cy="-8" r="1.4"/></g>
+      </g>
+      <g id="i-torta" fill="none" stroke="#2C1E16" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <ellipse cx="0" cy="8" rx="44" ry="14" fill="#C99A5B"/>
+        <path d="M-44 8 v-8 M44 8 v-8"/>
+        <ellipse cx="0" cy="0" rx="44" ry="14" fill="#E4C48E"/>
+        <path d="M0 0 L44 0 A44 14 0 0 1 22 12 Z" fill="#F3EEE4"/>
+        <path d="M44 0 v8 M22 12 v8"/>
+        <g fill="#FAF7F1" stroke="#2C1E16" stroke-width="1">
+          <ellipse cx="-24" cy="-2" rx="5" ry="2.4" transform="rotate(-20 -24 -2)"/>
+          <ellipse cx="-10" cy="-7" rx="5" ry="2.4" transform="rotate(15 -10 -7)"/>
+          <ellipse cx="6" cy="-8" rx="5" ry="2.4" transform="rotate(-10 6 -8)"/>
+          <ellipse cx="-14" cy="5" rx="5" ry="2.4" transform="rotate(25 -14 5)"/>
+          <ellipse cx="22" cy="-6" rx="5" ry="2.4" transform="rotate(30 22 -6)"/>
+          <ellipse cx="-32" cy="5" rx="4" ry="2" transform="rotate(-5 -32 5)"/>
+        </g>
+      </g>
+      <g id="i-anis" fill="#E4C48E" stroke="#2C1E16" stroke-width="1.2">
+        <ellipse rx="3.6" ry="10" cy="-9"/><ellipse rx="3.6" ry="10" cy="-9" transform="rotate(45)"/>
+        <ellipse rx="3.6" ry="10" cy="-9" transform="rotate(90)"/><ellipse rx="3.6" ry="10" cy="-9" transform="rotate(135)"/>
+        <ellipse rx="3.6" ry="10" cy="-9" transform="rotate(180)"/><ellipse rx="3.6" ry="10" cy="-9" transform="rotate(225)"/>
+        <ellipse rx="3.6" ry="10" cy="-9" transform="rotate(270)"/><ellipse rx="3.6" ry="10" cy="-9" transform="rotate(315)"/>
+        <circle r="3" fill="#2C1E16"/>
+      </g>
+      <g id="i-canela" fill="none" stroke="#2C1E16" stroke-width="1.4" stroke-linecap="round">
+        <rect x="-50" y="-6" width="100" height="12" rx="6" fill="#B07A4C"/>
+        <path d="M-50 -1 h100" stroke="#8A5A34" stroke-width="1"/>
+        <ellipse cx="50" cy="0" rx="4" ry="6" fill="#8A5A34"/>
+      </g>
+      <g id="i-olivo" fill="none" stroke="#2F4A3C" stroke-width="1.3" stroke-linecap="round">
+        <path d="M0 0 C20 -6 40 -6 62 -2"/>
+        <g fill="#C9D1BE"><ellipse cx="12" cy="-10" rx="8" ry="3" transform="rotate(-30 12 -10)"/><ellipse cx="18" cy="4" rx="8" ry="3" transform="rotate(25 18 4)"/><ellipse cx="34" cy="-12" rx="8" ry="3" transform="rotate(-25 34 -12)"/><ellipse cx="40" cy="2" rx="8" ry="3" transform="rotate(20 40 2)"/><ellipse cx="56" cy="-9" rx="7" ry="2.6" transform="rotate(-15 56 -9)"/></g>
+      </g>
+      <!-- Biznaga (flor de Málaga) -->
+      <g id="i-biznaga" stroke="#2C1E16" stroke-width="1">
+        <circle r="16" fill="#E9E1D1"/>
+        <g fill="#FAF7F1">
+          <circle cx="0" cy="-12" r="3.4"/><circle cx="8.5" cy="-8.5" r="3.4"/><circle cx="12" cy="0" r="3.4"/><circle cx="8.5" cy="8.5" r="3.4"/>
+          <circle cx="0" cy="12" r="3.4"/><circle cx="-8.5" cy="8.5" r="3.4"/><circle cx="-12" cy="0" r="3.4"/><circle cx="-8.5" cy="-8.5" r="3.4"/>
+          <circle cx="0" cy="-5" r="3"/><circle cx="5" cy="2" r="3"/><circle cx="-5" cy="2" r="3"/>
+        </g>
+        <path d="M0 16 V40" stroke="#2F4A3C" stroke-width="1.6"/>
+      </g>
+    </defs>
+  </svg>
+
+  <!-- Aviso superior con cuenta atrás -->
+  <div class="relative z-10 bg-cafe text-fondo text-center text-[11px] sm:text-xs tracking-label uppercase py-2.5 px-4">
+    Faltan <span id="diasNochebuena" class="text-arena font-semibold">—</span> días pa' Nochebuena &nbsp;·&nbsp; Hornadas limitadas
+  </div>
+
+  <!-- ============ HEADER ============ -->
+  <header class="relative z-10 border-b border-linea">
+    <nav class="max-w-6xl mx-auto px-4 sm:px-6 h-20 grid grid-cols-[1fr_auto_1fr] items-center">
+      <ul class="hidden md:flex items-center gap-8 text-[13px] tracking-wide text-cafe-soft">
+        <li><a href="#dulces" class="hover:text-cafe transition-colors">Nuestros Dulces</a></li>
+        <li><a href="#tradicion" class="hover:text-cafe transition-colors">La Tradición</a></li>
+        <li><a href="#contacto" class="hover:text-cafe transition-colors">Contacto</a></li>
+      </ul>
+      <button id="menuBtn" class="md:hidden justify-self-start w-10 h-10 grid place-items-center" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M4 8h16M4 16h16"/></svg>
+      </button>
+      <a href="#" class="text-center leading-none" aria-label="Navidad a la Malagueña, inicio">
+        <span class="block font-serif text-[22px] sm:text-[26px] font-medium tracking-tight">Navidad</span>
+        <span class="block font-serif italic font-light text-[13px] sm:text-sm text-teja mt-0.5">a la Malagueña</span>
+      </a>
+      <div class="justify-self-end">
+        <a href="#apuntate" class="inline-flex items-center rounded-full border border-cafe px-4 sm:px-5 py-2 text-[13px] font-semibold hover:bg-cafe hover:text-fondo transition">¡Apúntate!</a>
+      </div>
+    </nav>
+    <div id="mobileMenu" class="md:hidden hidden border-t border-linea">
+      <ul class="px-4 py-3 text-center font-serif text-lg">
+        <li><a href="#dulces" class="block py-2">Nuestros Dulces</a></li>
+        <li><a href="#tradicion" class="block py-2">La Tradición</a></li>
+        <li><a href="#contacto" class="block py-2">Contacto</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="relative z-10">
+
+    <!-- ============ HERO ============ -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 pt-12 sm:pt-16 pb-20 grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+      <div class="lg:col-span-7 fade-up">
+        <p class="text-[11px] tracking-label uppercase text-teja font-semibold">Quillo, que vuelve la Navidad de verdad</p>
+
+        <h1 class="mt-5 font-serif font-light text-[2.5rem] sm:text-5xl xl:text-[3.6rem] leading-[1.08] tracking-tight">
+          ¡Vuelve a saborear la Navidad de siempre, <em class="font-normal text-teja">la de nuestra tierra!</em>
+        </h1>
+
+        <p class="mt-6 text-lg text-cafe-soft max-w-lg leading-relaxed">
+          Los pestiños, borrachuelos y dulces de Málaga que te devuelven a los mejores recuerdos de la infancia. Directos del obrador a tu mesa.
+        </p>
+
+        <p class="mt-4 inline-flex items-center gap-2.5 text-sm text-cafe">
+          <svg viewBox="-18 -18 36 60" class="h-7 shrink-0" aria-hidden="true"><use href="#i-biznaga"/></svg>
+          <span>En colaboración con <strong class="font-semibold">comercios locales malagueños</strong>, para traeros el sabor auténtico.</span>
+        </p>
+
+        <p class="mt-8 font-mano text-[1.65rem] sm:text-[1.9rem] text-pascuero leading-[1.2] -rotate-1 max-w-md">
+          Pa' los que echan de menos la cocina de la abuela, pa' los que vuelven a casa por Navidad… y pa' los que nunca se fueron.
+        </p>
+
+        <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
+          <a href="#carta" class="inline-flex items-center gap-2 rounded-full bg-cafe text-papel px-7 py-3.5 text-[13px] font-semibold tracking-wide hover:bg-teja transition">
+            Llévame a casa <span aria-hidden="true">↓</span>
+          </a>
+          <a href="#apuntate" class="text-[13px] font-semibold underline underline-offset-4 decoration-miel decoration-2 hover:text-teja">Reservar mi cestita</a>
+        </div>
+      </div>
+
+      <!-- Foto en arco andaluz con inclinación 3D + sello giratorio -->
+      <div class="lg:col-span-5 fade-up" style="animation-delay:.15s">
+        <figure class="tilt-wrap relative mx-auto max-w-sm lg:max-w-none">
+          <div id="tilt" class="tilt relative">
+            <div class="relative aspect-[4/5.2]">
+              <!-- Doble filete del arco -->
+              <div class="absolute -inset-3 rounded-t-full border border-cafe/30" aria-hidden="true"></div>
+              <div class="relative h-full rounded-t-full overflow-hidden border border-cafe/60 shadow-[0_40px_60px_-30px_rgba(44,30,22,.55)] zoom">
+                <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/Pesti%C3%B1os-Madrid.jpg/1280px-Pesti%C3%B1os-Madrid.jpg"
+                     alt="Bandeja de pestiños dorados y recién fritos sobre blonda de papel"
+                     class="foto w-full h-full object-cover" style="object-position:50% 55%" loading="eager" />
+                <div class="absolute inset-0 bg-gradient-to-t from-cafe/45 via-transparent to-transparent" aria-hidden="true"></div>
+                <div class="cenefa absolute bottom-0 inset-x-0" aria-hidden="true"></div>
+                <p class="absolute bottom-8 inset-x-0 text-center font-serif italic text-papel text-lg drop-shadow">Pestiños recién fritos</p>
+              </div>
+              <svg viewBox="-12 -12 24 24" class="absolute left-1/2 -translate-x-1/2 -top-8 w-6 h-6" aria-hidden="true"><path d="M0 -10 l3 7 l7 3 l-7 3 l-3 7 l-3 -7 l-7 -3 l7 -3z" fill="#B48A4A"/></svg>
+            </div>
+
+            <!-- Sello 3D que gira (flota por delante del arco) -->
+            <div class="z-70px absolute -left-4 sm:-left-8 top-[18%]">
+              <div class="coin">
+                <div class="coin-edge"></div><div class="coin-edge e2"></div>
+                <div class="coin-face bg-teja text-papel">
+                  <div>
+                    <p class="text-[9px] tracking-label uppercase opacity-80">Hecho en</p>
+                    <p class="font-serif italic text-2xl leading-none mt-0.5">Málaga</p>
+                    <p class="text-[9px] tracking-label uppercase opacity-80 mt-1">a mano</p>
+                  </div>
+                </div>
+                <div class="coin-face coin-back bg-pascuero text-papel">
+                  <div>
+                    <p class="font-serif text-3xl leading-none">2026</p>
+                    <p class="text-[9px] tracking-label uppercase opacity-80 mt-1">Ed. limitada</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Etiqueta flotante -->
+            <div class="z-40px absolute -right-2 sm:-right-6 bottom-[16%] rotate-3 bg-papel border border-cafe/20 rounded-xl px-4 py-2.5 shadow-suave">
+              <p class="text-[10px] tracking-label uppercase text-cafe-soft">Bañados en</p>
+              <p class="font-serif italic text-lg leading-tight">una pechá de miel</p>
+            </div>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ CARTA DESDE EL OBRADOR ============ -->
+    <section id="carta" class="scroll-mt-10 relative bg-papel border-y border-linea overflow-hidden">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-20 sm:py-28 grid lg:grid-cols-12 gap-16 lg:gap-12 items-center">
+
+        <!-- Fotos tipo álbum familiar -->
+        <div class="lg:col-span-5 relative h-[420px] sm:h-[480px] max-w-md w-full mx-auto" aria-hidden="true">
+          <figure class="polaroid absolute left-0 top-6 w-[62%] -rotate-6">
+            <span class="cinta -top-3 left-1/2 -translate-x-1/2 -rotate-3"></span>
+            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/2021_Bu%C3%B1uelos_de_viento.jpg/1280px-2021_Bu%C3%B1uelos_de_viento.jpg" alt="" class="foto aspect-square w-full object-cover" loading="lazy" />
+            <figcaption>La bandeja de la abuela</figcaption>
+          </figure>
+          <figure class="polaroid absolute right-0 top-0 w-[54%] rotate-[5deg]">
+            <span class="cinta -top-3 left-1/2 -translate-x-1/2 rotate-2"></span>
+            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/53/Borrachuelos.jpg/1280px-Borrachuelos.jpg" alt="" class="foto aspect-square w-full object-cover" loading="lazy" />
+            <figcaption>Nochebuena en casa</figcaption>
+          </figure>
+          <figure class="polaroid absolute left-[18%] bottom-0 w-[60%] rotate-[2deg]">
+            <span class="cinta -top-3 left-1/2 -translate-x-1/2 -rotate-6"></span>
+            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/Pesti%C3%B1os-Madrid.jpg/1280px-Pesti%C3%B1os-Madrid.jpg" alt="" class="foto aspect-square w-full object-cover" loading="lazy" />
+            <figcaption>Los primeros, pa' probar</figcaption>
+          </figure>
+        </div>
+
+        <!-- La carta -->
+        <div class="lg:col-span-7">
+          <p class="text-[11px] tracking-label uppercase text-teja font-semibold">Una carta desde el obrador</p>
+          <div class="mt-5 relative bg-fondo/70 border border-linea rounded-2xl p-7 sm:p-10 shadow-suave">
+            <svg viewBox="-12 -12 24 24" class="absolute -top-3 -right-3 w-8 h-8 rotate-12" aria-hidden="true"><path d="M0 -10 l3 7 l7 3 l-7 3 l-3 7 l-3 -7 l-7 -3 l7 -3z" fill="#B48A4A"/></svg>
+            <p class="font-mano text-3xl sm:text-[2.1rem] text-teja leading-none">Querido malagueño, querida malagueña:</p>
+            <div class="mt-6 space-y-4 font-serif font-light text-lg sm:text-xl leading-relaxed text-cafe">
+              <p>¿Te acuerdas? El olor a matalahúva recorriendo el pasillo. La bandeja tapada con un paño de cuadros para que nadie metiera mano… y todos metíamos mano.</p>
+              <p>Los dedos pegajosos de miel, el azúcar en el jersey, el paseo por calle Larios a ver las luces y las castañas calentándote las manos en su cucurucho de papel.</p>
+              <p>Y luego, de vuelta en casa, esa sobremesa que no se acababa nunca.</p>
+              <p class="font-normal"><em>No vendemos dulces. Te devolvemos un ratito de casa.</em></p>
+            </div>
+            <div class="mt-8 flex items-end justify-between gap-4">
+              <p class="font-mano text-2xl sm:text-[1.7rem] text-cafe-soft leading-tight">Con todo el cariño,<br/>desde nuestro obrador en Málaga</p>
+              <svg viewBox="-18 -18 36 60" class="h-14 shrink-0 -rotate-12" aria-hidden="true"><use href="#i-biznaga"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CINTA DE FRASES ============ -->
+    <div class="bg-teja text-papel overflow-hidden border-y border-cafe/20" aria-hidden="true">
+      <div class="marquee py-4 font-serif italic text-xl sm:text-2xl whitespace-nowrap">
+        <div class="flex items-center gap-10 pr-10">
+          <span>Aliquindoi, que se acaban</span><span class="not-italic text-arena">✦</span>
+          <span>Más malagueño que la biznaga</span><span class="not-italic text-arena">✦</span>
+          <span>Una pechá de miel</span><span class="not-italic text-arena">✦</span>
+          <span>Esto es un bastinazo</span><span class="not-italic text-arena">✦</span>
+          <span>Ni pa ti ni pa mí: una caja pa cada uno</span><span class="not-italic text-arena">✦</span>
+          <span>¡Chiquillo, qué rico!</span><span class="not-italic text-arena">✦</span>
+        </div>
+        <div class="flex items-center gap-10 pr-10">
+          <span>Aliquindoi, que se acaban</span><span class="not-italic text-arena">✦</span>
+          <span>Más malagueño que la biznaga</span><span class="not-italic text-arena">✦</span>
+          <span>Una pechá de miel</span><span class="not-italic text-arena">✦</span>
+          <span>Esto es un bastinazo</span><span class="not-italic text-arena">✦</span>
+          <span>Ni pa ti ni pa mí: una caja pa cada uno</span><span class="not-italic text-arena">✦</span>
+          <span>¡Chiquillo, qué rico!</span><span class="not-italic text-arena">✦</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ MOSAICO DE FOTOS ============ -->
+    <section aria-label="Galería de dulces" class="relative bg-cafe">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-px">
+        <figure class="zoom relative h-64 sm:h-80 lg:h-[26rem] overflow-hidden">
+          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/53/Borrachuelos.jpg/1280px-Borrachuelos.jpg" alt="Borrachuelos rebozados en azúcar" class="foto w-full h-full object-cover" loading="lazy" />
+          <figcaption class="absolute inset-x-0 bottom-0 p-5 sm:p-6 bg-gradient-to-t from-cafe/80 to-transparent text-papel">
+            <p class="text-[10px] tracking-label uppercase text-arena">Nº 01</p>
+            <p class="font-serif italic text-xl sm:text-2xl">Borrachuelos</p>
+          </figcaption>
+        </figure>
+        <figure class="zoom relative h-64 sm:h-80 lg:h-[26rem] overflow-hidden">
+          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/Pesti%C3%B1os-Madrid.jpg/1280px-Pesti%C3%B1os-Madrid.jpg" alt="Pestiños dorados con miel" class="foto w-full h-full object-cover" loading="lazy" />
+          <figcaption class="absolute inset-x-0 bottom-0 p-5 sm:p-6 bg-gradient-to-t from-cafe/80 to-transparent text-papel">
+            <p class="text-[10px] tracking-label uppercase text-arena">Nº 02</p>
+            <p class="font-serif italic text-xl sm:text-2xl">Pestiños</p>
+          </figcaption>
+        </figure>
+        <figure class="zoom relative h-64 sm:h-80 lg:h-[26rem] overflow-hidden">
+          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/2021_Bu%C3%B1uelos_de_viento.jpg/1280px-2021_Bu%C3%B1uelos_de_viento.jpg" alt="Buñuelos con azúcar" class="foto w-full h-full object-cover" loading="lazy" />
+          <figcaption class="absolute inset-x-0 bottom-0 p-5 sm:p-6 bg-gradient-to-t from-cafe/80 to-transparent text-papel">
+            <p class="text-[10px] tracking-label uppercase text-arena">Nº 03</p>
+            <p class="font-serif italic text-xl sm:text-2xl">Buñuelos</p>
+          </figcaption>
+        </figure>
+        <figure class="zoom relative h-64 sm:h-80 lg:h-[26rem] overflow-hidden">
+          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/Torta_de_almendras.jpg/1280px-Torta_de_almendras.jpg" alt="Torta de almendra con azúcar glas" class="foto w-full h-full object-cover" loading="lazy" />
+          <figcaption class="absolute inset-x-0 bottom-0 p-5 sm:p-6 bg-gradient-to-t from-cafe/80 to-transparent text-papel">
+            <p class="text-[10px] tracking-label uppercase text-arena">Nº 04</p>
+            <p class="font-serif italic text-xl sm:text-2xl">Torta de almendra</p>
+          </figcaption>
+        </figure>
+      </div>
+      <!-- Sello central -->
+      <div class="pointer-events-none absolute inset-0 grid place-items-center">
+        <div class="rounded-full bg-papel/95 text-cafe w-40 h-40 sm:w-48 sm:h-48 grid place-items-center text-center shadow-suave border border-cafe/20 rotate-[-6deg]">
+          <div>
+            <p class="text-[10px] tracking-label uppercase text-teja font-semibold">Ojito</p>
+            <p class="font-serif italic text-2xl sm:text-3xl leading-none mt-1">que se te<br/>hace la boca<br/>agua</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ VALORES ============ -->
+    <section aria-label="Nuestros valores" class="border-b border-linea">
+      <ul class="max-w-6xl mx-auto px-4 sm:px-6 grid sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-linea text-center">
+        <li class="py-9 sm:py-11 px-6">
+          <p class="text-[11px] tracking-label uppercase text-teja font-semibold">I</p>
+          <p class="mt-2 font-serif text-xl">100% Hecho a mano en Málaga</p>
+          <p class="mt-1 text-sm text-cafe-soft">Ni una máquina. Manos, sartén y paciencia.</p>
+        </li>
+        <li class="py-9 sm:py-11 px-6">
+          <p class="text-[11px] tracking-label uppercase text-teja font-semibold">II</p>
+          <p class="mt-2 font-serif text-xl">La receta tradicional de la abuela</p>
+          <p class="mt-1 text-sm text-cafe-soft">Sacada de la libreta, sin tocarle una coma.</p>
+        </li>
+        <li class="py-9 sm:py-11 px-6">
+          <p class="text-[11px] tracking-label uppercase text-teja font-semibold">III</p>
+          <p class="mt-2 font-serif text-xl">Edición Limitada Navideña</p>
+          <p class="mt-1 text-sm text-cafe-soft">Cuando se acaba la hornada, se acabó.</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ============ NUESTROS DULCES (cartas 3D) ============ -->
+    <section id="dulces" class="scroll-mt-10 relative max-w-6xl mx-auto px-4 sm:px-6 py-20 sm:py-24">
+      <div class="text-center max-w-xl mx-auto">
+        <p class="text-[11px] tracking-label uppercase text-teja font-semibold">Nuestros Dulces</p>
+        <h2 class="mt-3 font-serif font-light text-4xl sm:text-[2.75rem] leading-tight">Cuatro recetas, <em class="font-normal">toda una infancia</em></h2>
+        <p class="mt-4 text-cafe-soft">Pasa el ratón (o toca) cada carta y te contamos su secreto.</p>
+      </div>
+
+      <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- 01 -->
+        <article class="flip h-[360px] cursor-pointer" tabindex="0" aria-label="Borrachuelos">
+          <div class="flip-inner">
+            <div class="flip-face rounded-2xl bg-papel border border-linea p-6 flex flex-col items-center text-center">
+              <div class="w-full h-44 rounded-t-full overflow-hidden border border-linea zoom">
+                <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/53/Borrachuelos.jpg/1280px-Borrachuelos.jpg" alt="Plato de borrachuelos cubiertos de azúcar" class="foto w-full h-full object-cover" loading="lazy" />
+              </div>
+              <p class="mt-5 text-[11px] tracking-label text-miel font-semibold">Nº 01</p>
+              <h3 class="mt-1 font-serif text-2xl">Borrachuelos</h3>
+              <p class="mt-auto text-[11px] tracking-label uppercase text-cafe-soft">Gíralo ↻</p>
+            </div>
+            <div class="flip-face flip-back rounded-2xl bg-teja text-papel p-7 flex flex-col">
+              <p class="text-[11px] tracking-label uppercase text-arena">Nº 01 · Borrachuelos</p>
+              <p class="mt-4 font-serif text-[1.35rem] leading-snug">Empanadillas al vino moscatel, rellenas de cabello de ángel y pasadas por azúcar.</p>
+              <p class="mt-auto font-serif italic text-arena">«Se llaman así por algo, chiquillo.»</p>
+            </div>
+          </div>
+        </article>
+        <!-- 02 -->
+        <article class="flip h-[360px] cursor-pointer" tabindex="0" aria-label="Pestiños">
+          <div class="flip-inner">
+            <div class="flip-face rounded-2xl bg-papel border border-linea p-6 flex flex-col items-center text-center">
+              <div class="w-full h-44 rounded-t-full overflow-hidden border border-linea zoom">
+                <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/Pesti%C3%B1os-Madrid.jpg/1280px-Pesti%C3%B1os-Madrid.jpg" alt="Bandeja de pestiños dorados" class="foto w-full h-full object-cover" loading="lazy" />
+              </div>
+              <p class="mt-5 text-[11px] tracking-label text-miel font-semibold">Nº 02</p>
+              <h3 class="mt-1 font-serif text-2xl">Pestiños</h3>
+              <p class="mt-auto text-[11px] tracking-label uppercase text-cafe-soft">Gíralo ↻</p>
+            </div>
+            <div class="flip-face flip-back rounded-2xl bg-pascuero text-papel p-7 flex flex-col">
+              <p class="text-[11px] tracking-label uppercase text-arena">Nº 02 · Pestiños</p>
+              <p class="mt-4 font-serif text-[1.35rem] leading-snug">Masa con ajonjolí y matalahúva, doblada a mano y bañada en miel templada.</p>
+              <p class="mt-auto font-serif italic text-arena">«Uno nunca es uno. Avisado quedas.»</p>
+            </div>
+          </div>
+        </article>
+        <!-- 03 -->
+        <article class="flip h-[360px] cursor-pointer" tabindex="0" aria-label="Buñuelos">
+          <div class="flip-inner">
+            <div class="flip-face rounded-2xl bg-papel border border-linea p-6 flex flex-col items-center text-center">
+              <div class="w-full h-44 rounded-t-full overflow-hidden border border-linea zoom">
+                <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/2021_Bu%C3%B1uelos_de_viento.jpg/1280px-2021_Bu%C3%B1uelos_de_viento.jpg" alt="Bandeja de buñuelos espolvoreados con azúcar" class="foto w-full h-full object-cover" loading="lazy" />
+              </div>
+              <p class="mt-5 text-[11px] tracking-label text-miel font-semibold">Nº 03</p>
+              <h3 class="mt-1 font-serif text-2xl">Buñuelos</h3>
+              <p class="mt-auto text-[11px] tracking-label uppercase text-cafe-soft">Gíralo ↻</p>
+            </div>
+            <div class="flip-face flip-back rounded-2xl bg-miel text-cafe p-7 flex flex-col">
+              <p class="text-[11px] tracking-label uppercase text-cafe/70">Nº 03 · Buñuelos</p>
+              <p class="mt-4 font-serif text-[1.35rem] leading-snug">Esponjosos, recién fritos y espolvoreados con azúcar y un toque de canela.</p>
+              <p class="mt-auto font-serif italic text-cafe/80">«Ligeros como una nube. Peligrosos como ella.»</p>
+            </div>
+          </div>
+        </article>
+        <!-- 04 -->
+        <article class="flip h-[360px] cursor-pointer" tabindex="0" aria-label="Torta de almendra">
+          <div class="flip-inner">
+            <div class="flip-face rounded-2xl bg-papel border border-linea p-6 flex flex-col items-center text-center">
+              <div class="w-full h-44 rounded-t-full overflow-hidden border border-linea zoom">
+                <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/Torta_de_almendras.jpg/1280px-Torta_de_almendras.jpg" alt="Torta de almendra cortada en porciones con azúcar glas" class="foto w-full h-full object-cover" loading="lazy" />
+              </div>
+              <p class="mt-5 text-[11px] tracking-label text-miel font-semibold">Nº 04</p>
+              <h3 class="mt-1 font-serif text-2xl">Torta de almendra</h3>
+              <p class="mt-auto text-[11px] tracking-label uppercase text-cafe-soft">Gíralo ↻</p>
+            </div>
+            <div class="flip-face flip-back rounded-2xl bg-cafe text-papel p-7 flex flex-col">
+              <p class="text-[11px] tracking-label uppercase text-arena">Nº 04 · Torta de almendra</p>
+              <p class="mt-4 font-serif text-[1.35rem] leading-snug">Almendra marcona, aceite de oliva y canela. Para partir en la sobremesa.</p>
+              <p class="mt-auto font-serif italic text-arena">«La que se acaba antes que el turrón.»</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ COLABORACIÓN CON COMERCIOS LOCALES ============ -->
+    <section class="relative overflow-hidden border-y border-linea bg-papel">
+      <p class="texto-contorno pointer-events-none select-none absolute -bottom-6 left-1/2 -translate-x-1/2 font-serif font-extrabold text-[22vw] leading-none whitespace-nowrap" aria-hidden="true">MÁLAGA</p>
+      <div class="relative max-w-6xl mx-auto px-4 sm:px-6 py-20 sm:py-24 grid md:grid-cols-2 gap-14 items-center">
+        <div class="order-2 md:order-1 flex flex-col items-center">
+          <!-- Cestita malagueña 3D: cuatro capas a distinta profundidad -->
+          <div id="cestaScene" class="cesta-scene" role="img" aria-label="Cestita de mimbre con paño de cuadros, llena de torta de almendra, buñuelos, pestiños y borrachuelos, con lazo rojo y etiqueta de Navidad a la Malagueña">
+            <div id="cesta" class="cesta">
+
+              <!-- Capa 0: asa e interior -->
+              <div class="capa capa-0">
+                <svg viewBox="0 0 360 360" aria-hidden="true">
+                  <defs>
+                    <pattern id="mimbre" width="24" height="14" patternUnits="userSpaceOnUse">
+                      <rect width="24" height="14" fill="#A87436"/>
+                      <rect x="-12" y="1" width="22" height="5" rx="2.5" fill="#D6A867" stroke="#8B5E2E" stroke-width=".6"/>
+                      <rect x="12" y="1" width="22" height="5" rx="2.5" fill="#D6A867" stroke="#8B5E2E" stroke-width=".6"/>
+                      <rect x="0" y="8" width="22" height="5" rx="2.5" fill="#C99555" stroke="#8B5E2E" stroke-width=".6"/>
+                      <path d="M11 0 V14" stroke="#7A5228" stroke-width="1.2" opacity=".5"/>
+                    </pattern>
+                    <pattern id="cuadros" width="16" height="16" patternUnits="userSpaceOnUse">
+                      <rect width="16" height="16" fill="#FAF7F1"/>
+                      <rect width="8" height="16" fill="#B04A3A" opacity=".5"/>
+                      <rect width="16" height="8" fill="#B04A3A" opacity=".5"/>
+                    </pattern>
+                    <linearGradient id="volumen" x1="0" x2="1">
+                      <stop offset="0" stop-color="#2C1E16" stop-opacity=".45"/>
+                      <stop offset=".28" stop-color="#2C1E16" stop-opacity="0"/>
+                      <stop offset=".62" stop-color="#FFF6E0" stop-opacity=".12"/>
+                      <stop offset="1" stop-color="#2C1E16" stop-opacity=".5"/>
+                    </linearGradient>
+                    <linearGradient id="volumenV" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0" stop-color="#2C1E16" stop-opacity="0"/>
+                      <stop offset="1" stop-color="#2C1E16" stop-opacity=".35"/>
+                    </linearGradient>
+                  </defs>
+                  <!-- Asa trenzada -->
+                  <path d="M62 192 C56 40 304 40 298 192" fill="none" stroke="#7A5228" stroke-width="18" stroke-linecap="round"/>
+                  <path d="M62 192 C56 40 304 40 298 192" fill="none" stroke="#C99555" stroke-width="12" stroke-linecap="round"/>
+                  <path d="M62 192 C56 40 304 40 298 192" fill="none" stroke="#7A5228" stroke-width="12" stroke-dasharray="3 8" opacity=".75"/>
+                  <!-- Interior -->
+                  <ellipse cx="180" cy="192" rx="128" ry="36" fill="#6B4423"/>
+                  <ellipse cx="180" cy="196" rx="116" ry="28" fill="#4E3018"/>
+                  <!-- Paño de cuadros (parte trasera) -->
+                  <path d="M66 194 C70 150 110 150 124 172 C146 132 214 132 236 168 C254 144 296 152 294 194 Z" fill="url(#cuadros)" stroke="#953C2F" stroke-width=".8"/>
+                </svg>
+              </div>
+
+              <!-- Capa 1: los dulces -->
+              <div class="capa capa-1">
+                <svg viewBox="0 0 360 360" aria-hidden="true">
+                  <use href="#i-canela" transform="translate(246 150) rotate(-58) scale(.62)"/>
+                  <use href="#i-canela" transform="translate(262 156) rotate(-48) scale(.55)"/>
+                  <use href="#i-torta" transform="translate(148 176) rotate(-10) scale(1.25)"/>
+                  <use href="#i-bunuelo" transform="translate(238 180) scale(1.05)"/>
+                  <use href="#i-pestino" transform="translate(96 192) rotate(-18) scale(.9)"/>
+                  <use href="#i-borrachuelo" transform="translate(190 200) rotate(4) scale(.95)"/>
+                  <use href="#i-pestino" transform="translate(272 198) rotate(22) scale(.8)"/>
+                  <use href="#i-anis" transform="translate(120 166) scale(.7)"/>
+                </svg>
+              </div>
+
+              <!-- Capa 2: cuerpo de mimbre y borde trenzado -->
+              <div class="capa capa-2">
+                <svg viewBox="0 0 360 360" aria-hidden="true">
+                  <path d="M52 192 C56 262 82 316 104 326 A76 16 0 0 0 256 326 C278 316 304 262 308 192 A128 36 0 0 1 52 192 Z" fill="url(#mimbre)" stroke="#6B4423" stroke-width="1.5"/>
+                  <path d="M52 192 C56 262 82 316 104 326 A76 16 0 0 0 256 326 C278 316 304 262 308 192 A128 36 0 0 1 52 192 Z" fill="url(#volumen)"/>
+                  <path d="M52 192 C56 262 82 316 104 326 A76 16 0 0 0 256 326 C278 316 304 262 308 192 A128 36 0 0 1 52 192 Z" fill="url(#volumenV)"/>
+                  <!-- Borde trenzado -->
+                  <path d="M52 192 A128 36 0 0 0 308 192" fill="none" stroke="#7A5228" stroke-width="15" stroke-linecap="round"/>
+                  <path d="M52 192 A128 36 0 0 0 308 192" fill="none" stroke="#D6A867" stroke-width="9" stroke-dasharray="7 5" stroke-linecap="round"/>
+                  <!-- Pico del paño colgando por delante -->
+                  <path d="M76 202 C104 222 138 228 166 230 L146 272 C124 262 98 248 82 244 Z" fill="url(#cuadros)" stroke="#953C2F" stroke-width=".8"/>
+                  <path d="M146 272 l-6 6 M134 266 l-5 6 M122 260 l-5 6 M110 254 l-5 6" stroke="#953C2F" stroke-width="1.4" stroke-linecap="round"/>
+                </svg>
+              </div>
+
+              <!-- Capa 3: lazo, etiqueta y biznaga -->
+              <div class="capa capa-3">
+                <svg viewBox="0 0 360 360" aria-hidden="true">
+                  <!-- Lazo -->
+                  <g transform="translate(226 228)">
+                    <path d="M0 0 C-26 -26 -44 -4 -30 8 C-20 15 -8 6 0 0Z" fill="#B04A3A" stroke="#7E2F24" stroke-width="1.2"/>
+                    <path d="M0 0 C26 -26 44 -4 30 8 C20 15 8 6 0 0Z" fill="#B04A3A" stroke="#7E2F24" stroke-width="1.2"/>
+                    <path d="M-2 2 C-8 16 -12 26 -18 34 M2 2 C8 14 14 24 22 30" stroke="#B04A3A" stroke-width="6" stroke-linecap="round" fill="none"/>
+                    <circle r="6" fill="#953C2F"/>
+                  </g>
+                  <!-- Etiqueta colgante -->
+                  <path d="M226 232 C232 250 246 258 250 268" stroke="#2C1E16" stroke-width="1" fill="none"/>
+                  <g transform="translate(252 290) rotate(-8)">
+                    <path d="M-38 -22 H30 L40 0 L30 22 H-38 Z" fill="#FAF7F1" stroke="#2C1E16" stroke-width="1.2"/>
+                    <circle cx="30" cy="0" r="3" fill="none" stroke="#2C1E16" stroke-width="1"/>
+                    <text x="-4" y="-3" text-anchor="middle" font-family="Fraunces, serif" font-size="13" fill="#2C1E16">Navidad</text>
+                    <text x="-4" y="12" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="9.5" fill="#B04A3A">a la Malagueña</text>
+                  </g>
+                  <!-- Biznaga y olivo -->
+                  <use href="#i-olivo" transform="translate(40 214) rotate(-28) scale(.9)"/>
+                  <use href="#i-biznaga" transform="translate(70 196) rotate(-18) scale(.9)"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="cesta-sombra"></div>
+          <p class="mt-5 text-[11px] tracking-label uppercase text-cafe-soft">Tu cestita, de mano en mano</p>
+        </div>
+
+        <div class="order-1 md:order-2">
+          <p class="text-[11px] tracking-label uppercase text-teja font-semibold">De aquí, pa' los de aquí</p>
+          <h2 class="mt-3 font-serif font-light text-4xl sm:text-[2.75rem] leading-tight">
+            En colaboración con <em class="font-normal text-teja">comercios locales malagueños</em>
+          </h2>
+          <p class="mt-5 text-lg text-cafe-soft leading-relaxed">
+            Para traeros el sabor auténtico, trabajamos codo con codo con los comercios de toda la vida: la miel, la almendra y el aceite salen de nuestra tierra.
+          </p>
+          <ul class="mt-8 grid grid-cols-2 gap-3">
+            <li class="rounded-2xl border border-dashed border-cafe/25 py-5 px-4 text-center">
+              <svg viewBox="-18 -18 36 60" class="h-8 mx-auto opacity-60" aria-hidden="true"><use href="#i-biznaga"/></svg>
+              <p class="mt-2 text-[11px] tracking-label uppercase text-cafe-soft">Comercio local · Próximamente</p>
+            </li>
+            <li class="rounded-2xl border border-dashed border-cafe/25 py-5 px-4 text-center">
+              <svg viewBox="-18 -18 36 60" class="h-8 mx-auto opacity-60" aria-hidden="true"><use href="#i-biznaga"/></svg>
+              <p class="mt-2 text-[11px] tracking-label uppercase text-cafe-soft">Comercio local · Próximamente</p>
+            </li>
+            <li class="rounded-2xl border border-dashed border-cafe/25 py-5 px-4 text-center">
+              <svg viewBox="-18 -18 36 60" class="h-8 mx-auto opacity-60" aria-hidden="true"><use href="#i-biznaga"/></svg>
+              <p class="mt-2 text-[11px] tracking-label uppercase text-cafe-soft">Comercio local · Próximamente</p>
+            </li>
+            <li class="rounded-2xl border border-dashed border-cafe/25 py-5 px-4 text-center">
+              <svg viewBox="-18 -18 36 60" class="h-8 mx-auto opacity-60" aria-hidden="true"><use href="#i-biznaga"/></svg>
+              <p class="mt-2 text-[11px] tracking-label uppercase text-cafe-soft">Comercio local · Próximamente</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ LISTA DE ESPERA ============ -->
+    <section id="reserva" class="relative">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-20 sm:py-28 grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div class="lg:col-span-5">
+          <p class="text-[11px] tracking-label uppercase text-teja font-semibold">Lista de espera</p>
+          <h2 class="mt-3 font-serif font-light text-4xl sm:text-[2.75rem] leading-tight">Guárdate tu cestita <em class="font-normal text-teja">antes que nadie</em></h2>
+          <p class="mt-5 text-lg text-cafe-soft leading-relaxed">Hacemos pocas hornadas y a mano, así que no llega pa' todo el mundo. Apúntate y te avisamos los primeros.</p>
+          <ul class="mt-8 space-y-4">
+            <li class="flex gap-4"><span class="font-serif italic text-teja text-xl w-6 shrink-0">i.</span><span>Te escribimos por WhatsApp en cuanto encendamos el horno.</span></li>
+            <li class="flex gap-4"><span class="font-serif italic text-teja text-xl w-6 shrink-0">ii.</span><span>Reservas antes de que abramos al público.</span></li>
+            <li class="flex gap-4"><span class="font-serif italic text-teja text-xl w-6 shrink-0">iii.</span><span>Precio especial de preventa para la lista de espera.</span></li>
+          </ul>
+          <p class="mt-8 font-mano text-2xl text-pascuero -rotate-2">Aliquindoi, que vuelan…</p>
+        </div>
+        <div class="lg:col-span-7">
+            <div id="apuntate" class="scroll-mt-24 bg-papel border border-linea rounded-2xl shadow-suave p-6 sm:p-9 max-w-xl lg:ml-auto">
+              <div id="formWrap">
+                <div class="flex items-baseline justify-between gap-4">
+                  <h2 class="font-serif text-2xl font-normal">Apúntate aquí</h2>
+                  <span class="text-[11px] tracking-label uppercase text-miel font-semibold">Plazas limitadas</span>
+                </div>
+                <p class="mt-1.5 text-sm text-cafe-soft">Déjanos tus datos y serás de los primeros en reservar tu cestita.</p>
+    
+                <form id="leadForm" class="mt-6 space-y-5" novalidate>
+                  <div>
+                    <label for="nombre" class="block text-[11px] tracking-label uppercase font-semibold text-cafe-soft">Nombre completo</label>
+                    <input id="nombre" name="nombre" type="text" autocomplete="name" required placeholder="Carmen Ruiz Gálvez" class="input-linea" />
+                    <p class="field-error hidden mt-1.5 text-xs text-teja" data-for="nombre">Dinos cómo te llamas.</p>
+                  </div>
+                  <div class="grid sm:grid-cols-2 gap-5">
+                    <div>
+                      <label for="telefono" class="block text-[11px] tracking-label uppercase font-semibold text-cafe-soft">Teléfono WhatsApp</label>
+                      <input id="telefono" name="telefono" type="tel" inputmode="tel" autocomplete="tel" required placeholder="+34 600 000 000" class="input-linea" />
+                      <p class="field-error hidden mt-1.5 text-xs text-teja" data-for="telefono">Introduce un móvil válido.</p>
+                    </div>
+                    <div>
+                      <label for="email" class="block text-[11px] tracking-label uppercase font-semibold text-cafe-soft">Correo electrónico</label>
+                      <input id="email" name="email" type="email" autocomplete="email" required placeholder="tu@correo.com" class="input-linea" />
+                      <p class="field-error hidden mt-1.5 text-xs text-teja" data-for="email">Ese correo no parece válido.</p>
+                    </div>
+                  </div>
+                  <div class="pt-1">
+                    <label class="flex items-start gap-3 cursor-pointer select-none">
+                      <input id="rgpd" name="rgpd" type="checkbox" required class="mt-0.5 w-4 h-4 shrink-0 accent-[#2F4A3C] cursor-pointer" />
+                      <span class="text-[13px] text-cafe-soft leading-snug">
+                        Acepto la <a href="#privacidad" class="underline underline-offset-2 decoration-linea hover:text-teja">política de privacidad</a> y recibir novedades por WhatsApp/Email sobre el lanzamiento.
+                      </span>
+                    </label>
+                    <p class="field-error hidden mt-1.5 text-xs text-teja" data-for="rgpd">Necesitamos tu consentimiento para poder avisarte.</p>
+                  </div>
+                  <button id="submitBtn" type="submit"
+                    class="w-full inline-flex items-center justify-center gap-2 rounded-2xl bg-teja hover:bg-teja-dark text-papel px-6 py-4 text-[13px] sm:text-sm font-bold tracking-[.06em] shadow-[0_6px_0_#7E2F24] hover:shadow-[0_4px_0_#7E2F24] hover:translate-y-[2px] active:translate-y-[6px] active:shadow-none transition focus:outline-none focus:ring-4 focus:ring-teja/25 disabled:opacity-70 disabled:cursor-wait">
+                    <svg id="spinner" class="hidden w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-opacity=".3" stroke-width="3"/><path d="M22 12a10 10 0 00-10-10" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+                    <span id="btnText">¡AVÍSAME CUANDO ENCENDAMOS EL HORNO! 🚀</span>
+                  </button>
+                  <p class="text-center text-xs text-cafe-soft/80">Sin spam. Solo te escribiremos cuando haya dulces recién hechos.</p>
+                </form>
+              </div>
+    
+              <div id="successCard" class="hidden text-center py-6" aria-live="polite">
+                <svg viewBox="-50 -30 100 60" class="h-16 mx-auto" aria-hidden="true"><use href="#i-pestino"/></svg>
+                <h2 class="mt-4 font-serif text-2xl font-normal">Ya estás dentro, <em id="successName" class="text-teja"></em>.</h2>
+                <p class="mt-2 text-cafe-soft">Te escribiremos por WhatsApp en cuanto encendamos el horno. Esto va a ser un bastinazo.</p>
+                <button id="resetBtn" type="button" class="mt-5 text-[11px] tracking-label uppercase font-semibold underline underline-offset-4 decoration-linea hover:text-teja">Apuntar a otra persona</button>
+              </div>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ LA TRADICIÓN ============ -->
+    <section id="tradicion" class="scroll-mt-10 relative overflow-hidden bg-pascuero text-fondo">
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/2021_Bu%C3%B1uelos_de_viento.jpg/1280px-2021_Bu%C3%B1uelos_de_viento.jpg" alt="" aria-hidden="true" class="foto absolute inset-0 w-full h-full object-cover" loading="lazy" />
+      <div class="absolute inset-0 bg-pascuero/85" aria-hidden="true"></div>
+      <div class="relative max-w-3xl mx-auto px-4 sm:px-6 py-24 sm:py-32 text-center">
+        <p class="text-[11px] tracking-label uppercase text-arena font-semibold">La Tradición</p>
+        <p class="mt-6 font-serif font-light text-2xl sm:text-[2.1rem] leading-snug">
+          Harina en la encimera, la sartén chisporroteando y la abuela: <em>«¡no los toquéis, que queman!»</em>
+        </p>
+        <svg viewBox="-4 -20 70 26" class="h-6 mx-auto mt-8 opacity-80" aria-hidden="true"><use href="#i-olivo"/></svg>
+        <a href="#apuntate" class="mt-8 inline-flex items-center gap-2 rounded-full border border-fondo/60 px-6 py-3 text-[13px] font-semibold hover:bg-fondo hover:text-pascuero transition">
+          Quiero mi caja navideña <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer id="contacto" class="relative z-10 scroll-mt-10">
+    <div class="cenefa" aria-hidden="true"></div>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-14 grid gap-10 md:grid-cols-3 text-sm">
+      <div>
+        <p class="font-serif text-2xl leading-none">Navidad</p>
+        <p class="font-serif italic font-light text-teja mt-1">a la Malagueña</p>
+        <p class="mt-4 text-cafe-soft leading-relaxed">Dulces tradicionales de Málaga, hechos a mano con comercios locales.</p>
+      </div>
+      <div>
+        <p class="text-[11px] tracking-label uppercase font-semibold text-teja">Contacto</p>
+        <ul class="mt-4 space-y-2 text-cafe-soft">
+          <li>Obrador en Málaga, España</li>
+          <li><a href="https://wa.me/34600000000" class="hover:text-cafe underline-offset-4 hover:underline">WhatsApp · +34 600 000 000</a></li>
+          <li><a href="mailto:hola@navidadalamalaguena.es" class="hover:text-cafe underline-offset-4 hover:underline">hola@navidadalamalaguena.es</a></li>
+        </ul>
+      </div>
+      <div id="privacidad" class="scroll-mt-10">
+        <p class="text-[11px] tracking-label uppercase font-semibold text-teja">Privacidad</p>
+        <p class="mt-4 text-xs text-cafe-soft leading-relaxed">
+          Responsable: Navidad a la Malagueña. Finalidad: informarte del lanzamiento y la preventa navideña por WhatsApp y email. Legitimación: tu consentimiento. Puedes ejercer tus derechos de acceso, rectificación y supresión escribiéndonos al email indicado.
+        </p>
+      </div>
+    </div>
+    <div class="border-t border-linea py-5 text-center text-xs text-cafe-soft">
+      © <span id="year"></span> Navidad a la Malagueña · Hecho a mano en Málaga, con arte
+    </div>
+    <p class="pb-6 px-4 text-center text-[10px] text-cafe-soft/70 leading-relaxed">
+      Fotos provisionales vía Wikimedia Commons: <a class="underline" href="https://commons.wikimedia.org/wiki/File:Pesti%C3%B1os-Madrid.jpg">Pestiños</a> (Tamorlan, CC BY 3.0) ·
+      <a class="underline" href="https://commons.wikimedia.org/wiki/File:Borrachuelos.jpg">Borrachuelos</a> (Toniher, CC BY-SA 3.0) ·
+      <a class="underline" href="https://commons.wikimedia.org/wiki/File:2021_Bu%C3%B1uelos_de_viento.jpg">Buñuelos</a> (MiguelAlanCS, CC BY-SA 4.0) ·
+      <a class="underline" href="https://commons.wikimedia.org/wiki/File:Torta_de_almendras.jpg">Torta de almendra</a> (Juan Emilio Prades Bel, CC BY-SA 4.0)
+    </p>
+  </footer>
+
+  <!-- ============ TOAST ============ -->
+  <div id="toast" class="hidden fixed z-50 bottom-4 inset-x-4 sm:inset-x-auto sm:right-6 sm:bottom-6 sm:max-w-sm" role="status" aria-live="polite">
+    <div class="toast-enter flex items-start gap-4 rounded-2xl bg-cafe text-fondo shadow-suave p-5 pr-3">
+      <div class="flex-1">
+        <p class="text-[11px] tracking-label uppercase text-arena font-semibold">Confirmado</p>
+        <p class="mt-1 font-serif text-xl leading-tight">¡Oído en cocina!</p>
+        <p class="text-sm text-fondo/80 mt-1">Te avisaremos por WhatsApp muy pronto.</p>
+      </div>
+      <button id="toastClose" type="button" class="grid place-items-center w-8 h-8 rounded-full hover:bg-fondo/10" aria-label="Cerrar aviso">
+        <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      // Pega aquí la URL de tu backend / Formspree / Google Apps Script / webhook.
+      // Si se deja vacía, el envío se simula.
+      const LEAD_ENDPOINT = '';
+
+      const $ = (sel) => document.querySelector(sel);
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      $('#year').textContent = new Date().getFullYear();
+
+      // Cuenta atrás a Nochebuena
+      (function () {
+        const hoy = new Date();
+        let objetivo = new Date(hoy.getFullYear(), 11, 24);
+        if (hoy > objetivo) objetivo = new Date(hoy.getFullYear() + 1, 11, 24);
+        const dias = Math.ceil((objetivo - hoy) / 86400000);
+        $('#diasNochebuena').textContent = dias;
+      })();
+
+      // Menú móvil
+      const menuBtn = $('#menuBtn');
+      const mobileMenu = $('#mobileMenu');
+      menuBtn.addEventListener('click', () => {
+        const open = mobileMenu.classList.toggle('hidden') === false;
+        menuBtn.setAttribute('aria-expanded', String(open));
+      });
+      mobileMenu.querySelectorAll('a').forEach((a) =>
+        a.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          menuBtn.setAttribute('aria-expanded', 'false');
+        })
+      );
+
+      // 3D: inclinación del arco siguiendo el ratón
+      const tilt = $('#tilt');
+      if (tilt && !reduceMotion && window.matchMedia('(hover: hover)').matches) {
+        const area = tilt.parentElement;
+        area.addEventListener('mousemove', (e) => {
+          const r = area.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width - 0.5;
+          const y = (e.clientY - r.top) / r.height - 0.5;
+          tilt.style.transform = `rotateY(${x * 14}deg) rotateX(${-y * 12}deg)`;
+        });
+        area.addEventListener('mouseleave', () => { tilt.style.transform = ''; });
+      }
+
+      // 3D: la cestita sigue al ratón (y se balancea sola cuando no)
+      const cestaScene = $("#cestaScene");
+      const cesta = $("#cesta");
+      if (cesta && !reduceMotion && window.matchMedia("(hover: hover)").matches) {
+        cestaScene.addEventListener("mousemove", (e) => {
+          const r = cestaScene.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width - 0.5;
+          const y = (e.clientY - r.top) / r.height - 0.5;
+          cesta.classList.add("siguiendo");
+          cesta.style.transform = `rotateX(${8 - y * 18}deg) rotateY(${x * 36}deg)`;
+        });
+        cestaScene.addEventListener("mouseleave", () => {
+          cesta.classList.remove("siguiendo");
+          cesta.style.transform = "";
+        });
+      }
+
+      // 3D: cartas que se voltean al tocar o con teclado
+      document.querySelectorAll('.flip').forEach((card) => {
+        const toggle = () => card.classList.toggle('is-flipped');
+        card.addEventListener('click', () => { if (!window.matchMedia('(hover: hover)').matches) toggle(); });
+        card.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+      });
+
+      // Formulario
+      const form = $('#leadForm');
+      const btn = $('#submitBtn');
+      const spinner = $('#spinner');
+      const btnText = $('#btnText');
+      const formWrap = $('#formWrap');
+      const successCard = $('#successCard');
+      const originalBtnText = btnText.textContent;
+
+      const clean = (v) => v.replace(/[\s\-().]/g, '');
+      const validators = {
+        nombre: (v) => v.trim().length >= 3,
+        telefono: (v) => /^[6789]\d{8}$/.test(clean(v).replace(/^(\+34|0034)/, '')) || /^\+\d{9,15}$/.test(clean(v)),
+        email: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()),
+        rgpd: (_, el) => el.checked,
+      };
+
+      function validateField(name) {
+        const el = form.elements[name];
+        const ok = validators[name](el.value, el);
+        form.querySelector(`.field-error[data-for="${name}"]`).classList.toggle('hidden', ok);
+        el.setAttribute('aria-invalid', ok ? 'false' : 'true');
+        return ok;
+      }
+
+      Object.keys(validators).forEach((name) => {
+        const el = form.elements[name];
+        el.addEventListener(el.type === 'checkbox' ? 'change' : 'blur', () => validateField(name));
+        el.addEventListener('input', () => {
+          if (el.getAttribute('aria-invalid') === 'true') validateField(name);
+        });
+      });
+
+      function setLoading(loading) {
+        btn.disabled = loading;
+        spinner.classList.toggle('hidden', !loading);
+        btnText.textContent = loading ? 'Precalentando el horno…' : originalBtnText;
+      }
+
+      async function sendLead(data) {
+        if (!LEAD_ENDPOINT) {
+          await new Promise((r) => setTimeout(r, 900));
+          return;
+        }
+        const res = await fetch(LEAD_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(data),
+        });
+        if (!res.ok) throw new Error('Error al enviar');
+      }
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const results = Object.keys(validators).map(validateField);
+        if (results.includes(false)) {
+          const card = $('#apuntate');
+          card.classList.remove('shake'); void card.offsetWidth; card.classList.add('shake');
+          form.querySelector('[aria-invalid="true"]')?.focus();
+          return;
+        }
+        const data = {
+          nombre: form.nombre.value.trim(),
+          telefono: form.telefono.value.trim(),
+          email: form.email.value.trim(),
+          consentimiento: true,
+          origen: 'landing-preventa-navidad',
+          fecha: new Date().toISOString(),
+        };
+        setLoading(true);
+        try {
+          await sendLead(data);
+          $('#successName').textContent = data.nombre.split(' ')[0];
+          formWrap.classList.add('hidden');
+          successCard.classList.remove('hidden');
+          showToast();
+          form.reset();
+        } catch (err) {
+          alert('Vaya, algo se ha quemado en el horno. Inténtalo de nuevo en unos segundos.');
+        } finally {
+          setLoading(false);
+        }
+      });
+
+      $('#resetBtn').addEventListener('click', () => {
+        successCard.classList.add('hidden');
+        formWrap.classList.remove('hidden');
+        form.nombre.focus();
+      });
+
+      // Toast
+      const toast = $('#toast');
+      let toastTimer;
+      function showToast() {
+        clearTimeout(toastTimer);
+        toast.classList.remove('hidden');
+        const inner = toast.firstElementChild;
+        inner.classList.remove('toast-enter'); void inner.offsetWidth; inner.classList.add('toast-enter');
+        toastTimer = setTimeout(() => toast.classList.add('hidden'), 6000);
+      }
+      $('#toastClose').addEventListener('click', () => toast.classList.add('hidden'));
+    })();
+  </script>
+</body>
+</html>
