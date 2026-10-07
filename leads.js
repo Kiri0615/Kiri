@@ -125,35 +125,62 @@
       }).catch(function () {
         // Plan B: que el lead llegue igualmente por WhatsApp
         guardar('localStorage', 'nm_apuntado', '1');
+        guardar('sessionStorage', 'nm_enviado', JSON.stringify({ nombre: data.nombre.split(' ')[0], via: 'whatsapp' }));
         leadPorWhatsApp(data);
-      }).then(function () {
-        if (btn) btn.disabled = false;
-        if (btnText) btnText.textContent = textoOriginal;
-      });
+        recargar();
+      }); // el botón se queda en «Precalentando el horno…» hasta que la página se refresca
     });
   }
 
+  // Tras enviar: se refresca la página (vuelve arriba, formularios limpios) y sale el mensaje de confirmación
   function exito(form, data) {
-    var nombre = data.nombre.split(' ')[0];
-    var wrapId = form.getAttribute('data-wrap');
-    var okId = form.getAttribute('data-success');
-    if (wrapId && okId && document.getElementById(okId)) {
-      document.getElementById(wrapId).classList.add('hidden');
-      var ok = document.getElementById(okId);
-      var n = ok.querySelector('[data-nombre]'); if (n) n.textContent = nombre;
-      ok.classList.remove('hidden');
-    } else {
-      var div = document.createElement('div');
-      div.className = 'text-center py-6';
-      div.setAttribute('aria-live', 'polite');
-      div.innerHTML = '<p class="font-serif text-2xl">Ya estás dentro, <em class="text-teja"></em>.</p>' +
-        '<p class="mt-2 text-cafe-soft">Te escribiremos por WhatsApp en cuanto encendamos el horno.</p>';
-      div.querySelector('em').textContent = nombre;
-      form.replaceWith(div);
-    }
-    form.reset();
-    mostrarToast();
-    cerrarPopup();
+    guardar('sessionStorage', 'nm_enviado', JSON.stringify({ nombre: data.nombre.split(' ')[0], via: 'web' }));
+    recargar();
+  }
+  function recargar() {
+    setTimeout(function () {
+      try { history.scrollRestoration = 'manual'; } catch (e) {}
+      window.scrollTo(0, 0);
+      location.replace(location.pathname);
+    }, 600);
+  }
+
+  function mostrarEnviado() {
+    var raw = leer('sessionStorage', 'nm_enviado');
+    if (!raw) return false;
+    try { window.sessionStorage.removeItem('nm_enviado'); } catch (e) {}
+    var info = {}; try { info = JSON.parse(raw) || {}; } catch (e) {}
+    try { history.scrollRestoration = 'manual'; } catch (e) {}
+    window.scrollTo(0, 0);
+
+    var texto = info.via === 'whatsapp'
+      ? 'Te hemos abierto WhatsApp con tus datos: dale a <strong>enviar</strong> y listo. En cuanto salga la primera hornada te contactamos, que no se nos escapa ni uno.'
+      : 'Tu información de contacto ya se ha enviado. Aliquindoi, que en cuanto tengamos los dulces recién hechos te contactamos por WhatsApp los primeros.';
+
+    var m = document.createElement('div');
+    m.className = 'fixed inset-0 z-[65] grid place-items-center p-4';
+    m.innerHTML =
+      '<div class="absolute inset-0 bg-cafe/60" data-cerrar></div>' +
+      '<div role="dialog" aria-modal="true" aria-labelledby="enviadoTitulo" class="popup-in relative w-full max-w-md bg-papel rounded-2xl shadow-suave border border-linea p-7 sm:p-9 text-center">' +
+      '<button type="button" data-cerrar class="absolute top-3 right-3 grid place-items-center w-10 h-10 rounded-full text-cafe hover:bg-fondo focus:outline-none focus:ring-2 focus:ring-teja/40" aria-label="Cerrar">' +
+      '<svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg></button>' +
+      '<svg viewBox="-50 -30 100 60" class="h-16 mx-auto" aria-hidden="true"><use href="#i-pestino"/></svg>' +
+      '<p class="mt-3 text-[11px] tracking-label uppercase text-teja font-semibold">¡Chiquillo, qué arte!</p>' +
+      '<h2 id="enviadoTitulo" class="mt-2 font-serif text-3xl font-light leading-tight">¡Oído en cocina<span data-n></span>!</h2>' +
+      '<p class="mt-3 text-cafe-soft leading-relaxed">' + texto + '</p>' +
+      '<p class="mt-4 font-mano text-2xl text-pascuero -rotate-1">Ve haciendo hueco en la mesa, que esto va a ser un bastinazo.</p>' +
+      '<button type="button" data-cerrar class="mt-6 inline-flex items-center rounded-full bg-cafe text-papel px-7 py-3.5 text-[13px] font-semibold tracking-wide hover:bg-teja transition">¡Vale, quillo!</button>' +
+      '</div>';
+    if (info.nombre) m.querySelector('[data-n]').textContent = ', ' + info.nombre;
+    if (!document.getElementById('i-pestino')) { var ic = m.querySelector('svg.h-16'); if (ic) ic.remove(); }
+    document.body.appendChild(m);
+    document.documentElement.style.overflow = 'hidden';
+    function cerrar() { m.remove(); document.documentElement.style.overflow = ''; document.removeEventListener('keydown', esc); }
+    function esc(e) { if (e.key === 'Escape') cerrar(); }
+    $$('[data-cerrar]', m).forEach(function (b) { b.addEventListener('click', cerrar); });
+    document.addEventListener('keydown', esc);
+    setTimeout(function () { var b = m.querySelector('button:last-child'); if (b) b.focus(); }, 50);
+    return true;
   }
 
   // ===== Toast de confirmación =====
@@ -333,6 +360,7 @@
     if (c) aplicarConsentimiento(c); else banner.classList.remove('hidden');
 
     $$('form[data-lead]').forEach(prepararFormulario);
+    var recienEnviado = mostrarEnviado();
     $$('[data-info-basica]').forEach(function (el) { el.innerHTML = INFO_BASICA; });
 
     // Botones que abren la ventana de datos (en páginas sin formulario a la vista)
@@ -344,7 +372,7 @@
       b.addEventListener('click', function (e) { e.preventDefault(); abrirPanel(); });
     });
 
-    if (!document.body.hasAttribute('data-sin-popup')) programarPopup();
+    if (!recienEnviado && !document.body.hasAttribute('data-sin-popup')) programarPopup();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', iniciar); else iniciar();
 })();
