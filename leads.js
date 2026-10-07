@@ -5,7 +5,7 @@
   // ===== Configuración =====
   // URL del Google Apps Script que guarda cada lead en Google Sheets y avisa por email.
   // Si está vacía o falla, el lead se manda por WhatsApp al negocio: nunca se pierde.
-  var LEAD_ENDPOINT = '';
+  var LEAD_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxjQ2i-z7PHDuskNQLqPwAKcBw0sXLXMZP4f94dOLwlGEAzlJoM75doyvA_MIkFiEfk0w/exec';
   var WHATSAPP_NEGOCIO = '34744475239';
   var POPUP_SEGUNDOS = 5;
   var CONSENT_KEY = 'nm_cookies_v1';
