@@ -3,39 +3,83 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Navidad a la Malagueña · Preventa de dulces tradicionales</title>
-  <meta name="description" content="Borrachuelos, pestiños, buñuelos y torta de almendra hechos a mano en Málaga, en colaboración con comercios locales. Apúntate a la lista de espera de la preventa navideña." />
+  <title>Pestiños y borrachuelos malagueños caseros · Dulces de Navidad en Málaga</title>
+  <meta name="description" content="Dulces de Navidad de Málaga hechos a mano: pestiños con miel, borrachuelos malagueños, buñuelos y torta de almendra con la receta de la abuela. Reserva tu cestita en la preventa navideña." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://www.xn--navidadalamalaguea-30b.com/" />
   <meta name="theme-color" content="#F3EEE4" />
+  <meta name="geo.region" content="ES-MA" />
+  <meta name="geo.placename" content="Málaga" />
+
+  <!-- Vista previa al compartir (WhatsApp, Instagram, Facebook, X) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_ES" />
+  <meta property="og:site_name" content="Navidad a la Malagueña" />
+  <meta property="og:title" content="Pestiños y borrachuelos malagueños caseros · Navidad a la Malagueña" />
+  <meta property="og:description" content="Los dulces de Navidad de Málaga de toda la vida, hechos a mano. Apúntate a la preventa y guárdate tu cestita." />
+  <meta property="og:url" content="https://www.xn--navidadalamalaguea-30b.com/" />
+  <meta property="og:image" content="https://www.xn--navidadalamalaguea-30b.com/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Navidad a la Malagueña: pestiños, borrachuelos y dulces de Navidad hechos a mano en Málaga" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://www.xn--navidadalamalaguea-30b.com/og.png" />
+
+  <!-- Iconos -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon-48.png" type="image/png" sizes="48x48" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,800;1,9..144,300;1,9..144,400;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://upload.wikimedia.org" crossorigin />
+  <link rel="preload" as="image" href="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Pesti%C3%B1os-Madrid.jpg/960px-Pesti%C3%B1os-Madrid.jpg" fetchpriority="high" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,800;1,9..144,300;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;600;700&family=Caveat:wght@500&display=swap" rel="stylesheet" />
 
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            fondo: '#F3EEE4',
-            papel: '#FAF7F1',
-            linea: '#DED5C4',
-            cafe: { DEFAULT: '#2C1E16', soft: '#5B4A3E' },
-            teja: { DEFAULT: '#B04A3A', dark: '#953C2F' },
-            pascuero: '#2F4A3C',
-            miel: '#B48A4A',
-            arena: '#D9C59E',
-          },
-          fontFamily: {
-            serif: ['Fraunces', 'Georgia', 'serif'],
-            sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
-            mano: ['Caveat', 'cursive'],
-          },
-          letterSpacing: { label: '.22em' },
-          boxShadow: { suave: '0 18px 40px -24px rgba(44,30,22,.35)' },
-        },
+  <!-- Tailwind compilado (antes iba por CDN) -->
+  <link rel="stylesheet" href="/styles.css" />
+
+  <!-- Datos estructurados -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Bakery",
+        "@id": "https://www.xn--navidadalamalaguea-30b.com/#negocio",
+        "name": "Navidad a la Malagueña",
+        "alternateName": "Navidad a la Malagueña · Dulces de Navidad de Málaga",
+        "description": "Obrador artesano de dulces de Navidad tradicionales de Málaga: pestiños con miel, borrachuelos malagueños, buñuelos y torta de almendra hechos a mano.",
+        "url": "https://www.xn--navidadalamalaguea-30b.com/",
+        "logo": "https://www.xn--navidadalamalaguea-30b.com/apple-touch-icon.png",
+        "image": "https://www.xn--navidadalamalaguea-30b.com/og.png",
+        "telephone": "+34744475239",
+        "email": "navidadalamalguena@gmail.com",
+        "address": { "@type": "PostalAddress", "addressLocality": "Málaga", "addressRegion": "Málaga", "addressCountry": "ES" },
+        "areaServed": [{ "@type": "City", "name": "Málaga" }, { "@type": "AdministrativeArea", "name": "Provincia de Málaga" }],
+        "servesCuisine": "Repostería tradicional andaluza",
+        "priceRange": "€€",
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Dulces de Navidad malagueños",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Pestiños caseros con miel", "description": "Masa con ajonjolí y matalahúva, doblada a mano y bañada en miel." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Borrachuelos malagueños", "description": "Empanadillas al vino moscatel de Málaga rellenas de cabello de ángel y pasadas por azúcar." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Buñuelos de viento", "description": "Buñuelos esponjosos recién fritos con azúcar y canela." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Torta de almendra malagueña", "description": "Almendra marcona, aceite de oliva y canela." } }
+          ]
+        }
       },
-    };
+      {
+        "@type": "WebSite",
+        "@id": "https://www.xn--navidadalamalaguea-30b.com/#web",
+        "url": "https://www.xn--navidadalamalaguea-30b.com/",
+        "name": "Navidad a la Malagueña",
+        "inLanguage": "es-ES",
+        "publisher": { "@id": "https://www.xn--navidadalamalaguea-30b.com/#negocio" }
+      }
+    ]
+  }
   </script>
 
   <style>
@@ -242,11 +286,12 @@
         <p class="text-[11px] tracking-label uppercase text-teja font-semibold">Quillo, que vuelve la Navidad de verdad</p>
 
         <h1 class="mt-5 font-serif font-light text-[2.5rem] sm:text-5xl xl:text-[3.6rem] leading-[1.08] tracking-tight">
+          <span class="block font-sans font-semibold text-[13px] sm:text-sm tracking-[.08em] uppercase text-cafe-soft leading-snug mb-4">Pestiños, borrachuelos y dulces de Navidad caseros de Málaga</span>
           ¡Vuelve a saborear la Navidad de siempre, <em class="font-normal text-teja">la de nuestra tierra!</em>
         </h1>
 
         <p class="mt-6 text-lg text-cafe-soft max-w-lg leading-relaxed">
-          Los pestiños, borrachuelos y dulces de Málaga que te devuelven a los mejores recuerdos de la infancia. Directos del obrador a tu mesa.
+          Los pestiños con miel, los borrachuelos malagueños y los dulces de Navidad de Málaga que te devuelven a los mejores recuerdos de la infancia. Hechos a mano con la receta de la abuela, directos del obrador a tu mesa.
         </p>
 
         <p class="mt-4 inline-flex items-center gap-2.5 text-sm text-cafe">
@@ -274,9 +319,9 @@
               <!-- Doble filete del arco -->
               <div class="absolute -inset-3 rounded-t-full border border-cafe/30" aria-hidden="true"></div>
               <div class="relative h-full rounded-t-full overflow-hidden border border-cafe/60 shadow-[0_40px_60px_-30px_rgba(44,30,22,.55)] zoom">
-                <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/Pesti%C3%B1os-Madrid.jpg/1280px-Pesti%C3%B1os-Madrid.jpg"
-                     alt="Bandeja de pestiños dorados y recién fritos sobre blonda de papel"
-                     class="foto w-full h-full object-cover" style="object-position:50% 55%" loading="eager" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Pesti%C3%B1os-Madrid.jpg/960px-Pesti%C3%B1os-Madrid.jpg"
+                     alt="Bandeja de pestiños caseros recién fritos, dulce típico de Navidad en Málaga"
+                     class="foto w-full h-full object-cover" style="object-position:50% 55%" loading="eager" fetchpriority="high" width="960" height="1248" />
                 <div class="absolute inset-0 bg-gradient-to-t from-cafe/45 via-transparent to-transparent" aria-hidden="true"></div>
                 <div class="cenefa absolute bottom-0 inset-x-0" aria-hidden="true"></div>
                 <p class="absolute bottom-8 inset-x-0 text-center font-serif italic text-papel text-lg drop-shadow">Pestiños recién fritos</p>
@@ -322,17 +367,17 @@
         <div class="lg:col-span-5 relative h-[420px] sm:h-[480px] max-w-md w-full mx-auto" aria-hidden="true">
           <figure class="polaroid absolute left-0 top-6 w-[62%] -rotate-6">
             <span class="cinta -top-3 left-1/2 -translate-x-1/2 -rotate-3"></span>
-            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/2021_Bu%C3%B1uelos_de_viento.jpg/1280px-2021_Bu%C3%B1uelos_de_viento.jpg" alt="" class="foto aspect-square w-full object-cover" loading="lazy" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/2021_Bu%C3%B1uelos_de_viento.jpg/500px-2021_Bu%C3%B1uelos_de_viento.jpg" alt="" class="foto aspect-square w-full object-cover" loading="lazy" decoding="async" />
             <figcaption>La bandeja de la abuela</figcaption>
           </figure>
           <figure class="polaroid absolute right-0 top-0 w-[54%] rotate-[5deg]">
             <span class="cinta -top-3 left-1/2 -translate-x-1/2 rotate-2"></span>
-            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/53/Borrachuelos.jpg/1280px-Borrachuelos.jpg" alt="" class="foto aspect-square w-full object-cover" loading="lazy" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Borrachuelos.jpg/500px-Borrachuelos.jpg" alt="" class="foto aspect-square w-full object-cover" loading="lazy" decoding="async" />
             <figcaption>Nochebuena en casa</figcaption>
           </figure>
           <figure class="polaroid absolute left-[18%] bottom-0 w-[60%] rotate-[2deg]">
             <span class="cinta -top-3 left-1/2 -translate-x-1/2 -rotate-6"></span>
-            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/Pesti%C3%B1os-Madrid.jpg/1280px-Pesti%C3%B1os-Madrid.jpg" alt="" class="foto aspect-square w-full object-cover" loading="lazy" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Pesti%C3%B1os-Madrid.jpg/500px-Pesti%C3%B1os-Madrid.jpg" alt="" class="foto aspect-square w-full object-cover" loading="lazy" decoding="async" />
             <figcaption>Los primeros, pa' probar</figcaption>
           </figure>
         </div>
@@ -384,28 +429,28 @@
     <section aria-label="Galería de dulces" class="relative bg-cafe">
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-px">
         <figure class="zoom relative h-64 sm:h-80 lg:h-[26rem] overflow-hidden">
-          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/53/Borrachuelos.jpg/1280px-Borrachuelos.jpg" alt="Borrachuelos rebozados en azúcar" class="foto w-full h-full object-cover" loading="lazy" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Borrachuelos.jpg/960px-Borrachuelos.jpg" alt="Borrachuelos de Málaga rebozados en azúcar" class="foto w-full h-full object-cover" loading="lazy" decoding="async" />
           <figcaption class="absolute inset-x-0 bottom-0 p-5 sm:p-6 bg-gradient-to-t from-cafe/80 to-transparent text-papel">
             <p class="text-[10px] tracking-label uppercase text-arena">Nº 01</p>
             <p class="font-serif italic text-xl sm:text-2xl">Borrachuelos</p>
           </figcaption>
         </figure>
         <figure class="zoom relative h-64 sm:h-80 lg:h-[26rem] overflow-hidden">
-          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/Pesti%C3%B1os-Madrid.jpg/1280px-Pesti%C3%B1os-Madrid.jpg" alt="Pestiños dorados con miel" class="foto w-full h-full object-cover" loading="lazy" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Pesti%C3%B1os-Madrid.jpg/960px-Pesti%C3%B1os-Madrid.jpg" alt="Pestiños malagueños dorados con miel" class="foto w-full h-full object-cover" loading="lazy" decoding="async" />
           <figcaption class="absolute inset-x-0 bottom-0 p-5 sm:p-6 bg-gradient-to-t from-cafe/80 to-transparent text-papel">
             <p class="text-[10px] tracking-label uppercase text-arena">Nº 02</p>
             <p class="font-serif italic text-xl sm:text-2xl">Pestiños</p>
           </figcaption>
         </figure>
         <figure class="zoom relative h-64 sm:h-80 lg:h-[26rem] overflow-hidden">
-          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/2021_Bu%C3%B1uelos_de_viento.jpg/1280px-2021_Bu%C3%B1uelos_de_viento.jpg" alt="Buñuelos con azúcar" class="foto w-full h-full object-cover" loading="lazy" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/2021_Bu%C3%B1uelos_de_viento.jpg/960px-2021_Bu%C3%B1uelos_de_viento.jpg" alt="Buñuelos con azúcar" class="foto w-full h-full object-cover" loading="lazy" decoding="async" />
           <figcaption class="absolute inset-x-0 bottom-0 p-5 sm:p-6 bg-gradient-to-t from-cafe/80 to-transparent text-papel">
             <p class="text-[10px] tracking-label uppercase text-arena">Nº 03</p>
             <p class="font-serif italic text-xl sm:text-2xl">Buñuelos</p>
           </figcaption>
         </figure>
         <figure class="zoom relative h-64 sm:h-80 lg:h-[26rem] overflow-hidden">
-          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/Torta_de_almendras.jpg/1280px-Torta_de_almendras.jpg" alt="Torta de almendra con azúcar glas" class="foto w-full h-full object-cover" loading="lazy" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Torta_de_almendras.jpg/960px-Torta_de_almendras.jpg" alt="Torta de almendra con azúcar glas" class="foto w-full h-full object-cover" loading="lazy" decoding="async" />
           <figcaption class="absolute inset-x-0 bottom-0 p-5 sm:p-6 bg-gradient-to-t from-cafe/80 to-transparent text-papel">
             <p class="text-[10px] tracking-label uppercase text-arena">Nº 04</p>
             <p class="font-serif italic text-xl sm:text-2xl">Torta de almendra</p>
@@ -448,38 +493,38 @@
     <section id="dulces" class="scroll-mt-10 relative max-w-6xl mx-auto px-4 sm:px-6 py-20 sm:py-24">
       <div class="text-center max-w-xl mx-auto">
         <p class="text-[11px] tracking-label uppercase text-teja font-semibold">Nuestros Dulces</p>
-        <h2 class="mt-3 font-serif font-light text-4xl sm:text-[2.75rem] leading-tight">Cuatro recetas, <em class="font-normal">toda una infancia</em></h2>
-        <p class="mt-4 text-cafe-soft">Pasa el ratón (o toca) cada carta y te contamos su secreto.</p>
+        <h2 class="mt-3 font-serif font-light text-4xl sm:text-[2.75rem] leading-tight">Dulces típicos de Navidad en Málaga: <em class="font-normal">cuatro recetas, toda una infancia</em></h2>
+        <p class="mt-4 text-cafe-soft">Los dulces navideños de toda la vida en Málaga, hechos a mano en pequeñas hornadas. Pasa el ratón (o toca) cada carta y te contamos su secreto.</p>
       </div>
 
       <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <!-- 01 -->
-        <article class="flip h-[360px] cursor-pointer" tabindex="0" aria-label="Borrachuelos">
+        <article class="flip h-[360px] cursor-pointer" tabindex="0" aria-label="Borrachuelos malagueños">
           <div class="flip-inner">
             <div class="flip-face rounded-2xl bg-papel border border-linea p-6 flex flex-col items-center text-center">
               <div class="w-full h-44 rounded-t-full overflow-hidden border border-linea zoom">
-                <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/53/Borrachuelos.jpg/1280px-Borrachuelos.jpg" alt="Plato de borrachuelos cubiertos de azúcar" class="foto w-full h-full object-cover" loading="lazy" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Borrachuelos.jpg/500px-Borrachuelos.jpg" alt="Plato de borrachuelos malagueños caseros cubiertos de azúcar" class="foto w-full h-full object-cover" loading="lazy" decoding="async" />
               </div>
               <p class="mt-5 text-[11px] tracking-label text-miel font-semibold">Nº 01</p>
-              <h3 class="mt-1 font-serif text-2xl">Borrachuelos</h3>
+              <h3 class="mt-1 font-serif text-2xl">Borrachuelos malagueños</h3>
               <p class="mt-auto text-[11px] tracking-label uppercase text-cafe-soft">Gíralo ↻</p>
             </div>
             <div class="flip-face flip-back rounded-2xl bg-teja text-papel p-7 flex flex-col">
               <p class="text-[11px] tracking-label uppercase text-arena">Nº 01 · Borrachuelos</p>
-              <p class="mt-4 font-serif text-[1.35rem] leading-snug">Empanadillas al vino moscatel, rellenas de cabello de ángel y pasadas por azúcar.</p>
+              <p class="mt-4 font-serif text-[1.35rem] leading-snug">Empanadillas al vino moscatel de Málaga, rellenas de cabello de ángel y pasadas por azúcar.</p>
               <p class="mt-auto font-serif italic text-arena">«Se llaman así por algo, chiquillo.»</p>
             </div>
           </div>
         </article>
         <!-- 02 -->
-        <article class="flip h-[360px] cursor-pointer" tabindex="0" aria-label="Pestiños">
+        <article class="flip h-[360px] cursor-pointer" tabindex="0" aria-label="Pestiños caseros con miel">
           <div class="flip-inner">
             <div class="flip-face rounded-2xl bg-papel border border-linea p-6 flex flex-col items-center text-center">
               <div class="w-full h-44 rounded-t-full overflow-hidden border border-linea zoom">
-                <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/Pesti%C3%B1os-Madrid.jpg/1280px-Pesti%C3%B1os-Madrid.jpg" alt="Bandeja de pestiños dorados" class="foto w-full h-full object-cover" loading="lazy" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Pesti%C3%B1os-Madrid.jpg/500px-Pesti%C3%B1os-Madrid.jpg" alt="Bandeja de pestiños caseros con miel" class="foto w-full h-full object-cover" loading="lazy" decoding="async" />
               </div>
               <p class="mt-5 text-[11px] tracking-label text-miel font-semibold">Nº 02</p>
-              <h3 class="mt-1 font-serif text-2xl">Pestiños</h3>
+              <h3 class="mt-1 font-serif text-2xl">Pestiños con miel</h3>
               <p class="mt-auto text-[11px] tracking-label uppercase text-cafe-soft">Gíralo ↻</p>
             </div>
             <div class="flip-face flip-back rounded-2xl bg-pascuero text-papel p-7 flex flex-col">
@@ -490,14 +535,14 @@
           </div>
         </article>
         <!-- 03 -->
-        <article class="flip h-[360px] cursor-pointer" tabindex="0" aria-label="Buñuelos">
+        <article class="flip h-[360px] cursor-pointer" tabindex="0" aria-label="Buñuelos de viento">
           <div class="flip-inner">
             <div class="flip-face rounded-2xl bg-papel border border-linea p-6 flex flex-col items-center text-center">
               <div class="w-full h-44 rounded-t-full overflow-hidden border border-linea zoom">
-                <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/2021_Bu%C3%B1uelos_de_viento.jpg/1280px-2021_Bu%C3%B1uelos_de_viento.jpg" alt="Bandeja de buñuelos espolvoreados con azúcar" class="foto w-full h-full object-cover" loading="lazy" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/2021_Bu%C3%B1uelos_de_viento.jpg/500px-2021_Bu%C3%B1uelos_de_viento.jpg" alt="Bandeja de buñuelos espolvoreados con azúcar" class="foto w-full h-full object-cover" loading="lazy" decoding="async" />
               </div>
               <p class="mt-5 text-[11px] tracking-label text-miel font-semibold">Nº 03</p>
-              <h3 class="mt-1 font-serif text-2xl">Buñuelos</h3>
+              <h3 class="mt-1 font-serif text-2xl">Buñuelos de viento</h3>
               <p class="mt-auto text-[11px] tracking-label uppercase text-cafe-soft">Gíralo ↻</p>
             </div>
             <div class="flip-face flip-back rounded-2xl bg-miel text-cafe p-7 flex flex-col">
@@ -508,14 +553,14 @@
           </div>
         </article>
         <!-- 04 -->
-        <article class="flip h-[360px] cursor-pointer" tabindex="0" aria-label="Torta de almendra">
+        <article class="flip h-[360px] cursor-pointer" tabindex="0" aria-label="Torta de almendra malagueña">
           <div class="flip-inner">
             <div class="flip-face rounded-2xl bg-papel border border-linea p-6 flex flex-col items-center text-center">
               <div class="w-full h-44 rounded-t-full overflow-hidden border border-linea zoom">
-                <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/Torta_de_almendras.jpg/1280px-Torta_de_almendras.jpg" alt="Torta de almendra cortada en porciones con azúcar glas" class="foto w-full h-full object-cover" loading="lazy" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Torta_de_almendras.jpg/500px-Torta_de_almendras.jpg" alt="Torta de almendra cortada en porciones con azúcar glas" class="foto w-full h-full object-cover" loading="lazy" decoding="async" />
               </div>
               <p class="mt-5 text-[11px] tracking-label text-miel font-semibold">Nº 04</p>
-              <h3 class="mt-1 font-serif text-2xl">Torta de almendra</h3>
+              <h3 class="mt-1 font-serif text-2xl">Torta de almendra malagueña</h3>
               <p class="mt-auto text-[11px] tracking-label uppercase text-cafe-soft">Gíralo ↻</p>
             </div>
             <div class="flip-face flip-back rounded-2xl bg-cafe text-papel p-7 flex flex-col">
@@ -525,6 +570,36 @@
             </div>
           </div>
         </article>
+      </div>
+    </section>
+
+    <!-- ============ GUÍA DE DULCES (texto para Google y para la gente) ============ -->
+    <section id="guia" aria-labelledby="guia-titulo" class="scroll-mt-10 border-t border-linea">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-20 sm:py-24">
+        <div class="max-w-2xl">
+          <p class="text-[11px] tracking-label uppercase text-teja font-semibold">De la libreta de la abuela</p>
+          <h2 id="guia-titulo" class="mt-3 font-serif font-light text-4xl sm:text-[2.75rem] leading-tight">Los dulces de Navidad de Málaga, <em class="font-normal text-teja">uno a uno</em></h2>
+          <p class="mt-5 text-lg text-cafe-soft leading-relaxed">En Málaga la Navidad huele a matalahúva, a miel templada y a vino moscatel. Estos son los dulces caseros que no faltaban en ninguna bandeja y que volvemos a hacer a mano, como siempre.</p>
+        </div>
+        <div class="mt-12 grid md:grid-cols-2 gap-x-14 gap-y-12">
+          <article>
+            <h3 class="font-serif text-2xl"><a href="/borrachuelos-malaguenos" class="hover:text-teja underline-offset-4 hover:underline">Borrachuelos malagueños</a></h3>
+            <p class="mt-3 text-cafe-soft leading-relaxed">El dulce más nuestro. Una masa de aceite de oliva y vino moscatel de Málaga, rellena de cabello de ángel, frita y pasada por azúcar (o por miel). Se llaman así por el vino de la masa, y en cada casa malagueña se discute cuál es la receta buena: la de la abuela, claro.</p>
+          </article>
+          <article>
+            <h3 class="font-serif text-2xl"><a href="/pestinos-malaga" class="hover:text-teja underline-offset-4 hover:underline">Pestiños caseros con miel</a></h3>
+            <p class="mt-3 text-cafe-soft leading-relaxed">Masa aromatizada con ajonjolí y matalahúva, doblada a mano uno por uno, frita en aceite de oliva y bañada en miel. Los pestiños andaluces se comen en Navidad y en Semana Santa, y los de Málaga tienen ese punto crujiente que se deshace en la boca.</p>
+          </article>
+          <article>
+            <h3 class="font-serif text-2xl">Buñuelos de viento</h3>
+            <p class="mt-3 text-cafe-soft leading-relaxed">Pequeños, huecos y esponjosos. Se fríen al momento y se espolvorean con azúcar y un toque de canela. Ligeros como una nube… hasta que te das cuenta de que te has comido diez.</p>
+          </article>
+          <article>
+            <h3 class="font-serif text-2xl">Torta de almendra malagueña</h3>
+            <p class="mt-3 text-cafe-soft leading-relaxed">Almendra marcona, aceite de oliva y canela. Una torta de las de partir en la sobremesa de Nochebuena, con el café y la copita, mientras alguien saca el álbum de fotos.</p>
+          </article>
+        </div>
+        <p class="mt-12 text-cafe-soft">¿Buscas un regalo de Navidad malagueño? Nuestras cestitas de <a href="/dulces-navidad-malaga" class="underline underline-offset-4 decoration-miel decoration-2 hover:text-teja">dulces de Navidad de Málaga</a> llevan un poco de todo. <a href="#apuntate" class="font-semibold underline underline-offset-4 decoration-miel decoration-2 hover:text-teja">Apúntate a la preventa</a>.</p>
       </div>
     </section>
 
@@ -688,6 +763,7 @@
                 <p class="mt-1.5 text-sm text-cafe-soft">Déjanos tus datos y serás de los primeros en reservar tu cestita.</p>
     
                 <form id="leadForm" class="mt-6 space-y-5" novalidate>
+                  <div class="hidden" aria-hidden="true"><label for="web">No rellenar</label><input id="web" name="web" type="text" tabindex="-1" autocomplete="off" /></div>
                   <div>
                     <label for="nombre" class="block text-[11px] tracking-label uppercase font-semibold text-cafe-soft">Nombre completo</label>
                     <input id="nombre" name="nombre" type="text" autocomplete="name" required placeholder="Carmen Ruiz Gálvez" class="input-linea" />
@@ -734,9 +810,52 @@
       </div>
     </section>
 
+    <!-- ============ PREGUNTAS FRECUENTES ============ -->
+    <section id="preguntas" aria-labelledby="faq-titulo" class="scroll-mt-10 border-t border-linea bg-papel">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 py-20 sm:py-24">
+        <p class="text-[11px] tracking-label uppercase text-teja font-semibold text-center">Preguntas frecuentes</p>
+        <h2 id="faq-titulo" class="mt-3 font-serif font-light text-4xl sm:text-[2.6rem] leading-tight text-center">Lo que nos preguntáis <em class="font-normal text-teja">por WhatsApp</em></h2>
+        <div class="mt-12 divide-y divide-linea border-y border-linea">
+          <details class="group py-5">
+            <summary class="flex justify-between items-center gap-4 cursor-pointer list-none font-serif text-xl">¿Dónde se hacen vuestros pestiños y borrachuelos?<span class="text-teja text-2xl transition group-open:rotate-45" aria-hidden="true">+</span></summary>
+            <p class="mt-3 text-cafe-soft leading-relaxed">En nuestro obrador de Málaga, a mano y en pequeñas hornadas, con la receta tradicional de la abuela y materia prima de comercios locales malagueños: miel, almendra y aceite de oliva de nuestra tierra.</p>
+          </details>
+          <details class="group py-5">
+            <summary class="flex justify-between items-center gap-4 cursor-pointer list-none font-serif text-xl">¿Cómo reservo mi cestita de dulces de Navidad?<span class="text-teja text-2xl transition group-open:rotate-45" aria-hidden="true">+</span></summary>
+            <p class="mt-3 text-cafe-soft leading-relaxed">Apúntate a la lista de espera de esta página. En cuanto encendamos el horno te escribimos por WhatsApp para que reserves antes de que abramos al público y con precio especial de preventa.</p>
+          </details>
+          <details class="group py-5">
+            <summary class="flex justify-between items-center gap-4 cursor-pointer list-none font-serif text-xl">¿Cuándo hay que reservar?<span class="text-teja text-2xl transition group-open:rotate-45" aria-hidden="true">+</span></summary>
+            <p class="mt-3 text-cafe-soft leading-relaxed">Cuanto antes. Es una edición limitada navideña: hacemos pocas hornadas y cuando se acaban, se acabó. La lista de espera tiene prioridad sobre el resto.</p>
+          </details>
+          <details class="group py-5">
+            <summary class="flex justify-between items-center gap-4 cursor-pointer list-none font-serif text-xl">¿Entregáis fuera de Málaga capital?<span class="text-teja text-2xl transition group-open:rotate-45" aria-hidden="true">+</span></summary>
+            <p class="mt-3 text-cafe-soft leading-relaxed">Escríbenos por WhatsApp al +34 744 47 52 39 y te contamos las opciones de entrega para tu zona.</p>
+          </details>
+          <details class="group py-5">
+            <summary class="flex justify-between items-center gap-4 cursor-pointer list-none font-serif text-xl">¿Qué alérgenos llevan?<span class="text-teja text-2xl transition group-open:rotate-45" aria-hidden="true">+</span></summary>
+            <p class="mt-3 text-cafe-soft leading-relaxed">Todos llevan harina de trigo (gluten). Los pestiños llevan ajonjolí (sésamo) y la torta, almendra. Si tienes alguna alergia, pregúntanos antes de reservar.</p>
+          </details>
+        </div>
+      </div>
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "¿Dónde se hacen vuestros pestiños y borrachuelos?", "acceptedAnswer": { "@type": "Answer", "text": "En nuestro obrador de Málaga, a mano y en pequeñas hornadas, con la receta tradicional de la abuela y materia prima de comercios locales malagueños: miel, almendra y aceite de oliva de nuestra tierra." } },
+          { "@type": "Question", "name": "¿Cómo reservo mi cestita de dulces de Navidad?", "acceptedAnswer": { "@type": "Answer", "text": "Apúntate a la lista de espera de esta página. En cuanto encendamos el horno te escribimos por WhatsApp para que reserves antes de que abramos al público y con precio especial de preventa." } },
+          { "@type": "Question", "name": "¿Cuándo hay que reservar?", "acceptedAnswer": { "@type": "Answer", "text": "Cuanto antes. Es una edición limitada navideña: hacemos pocas hornadas y cuando se acaban, se acabó. La lista de espera tiene prioridad sobre el resto." } },
+          { "@type": "Question", "name": "¿Entregáis fuera de Málaga capital?", "acceptedAnswer": { "@type": "Answer", "text": "Escríbenos por WhatsApp al +34 744 47 52 39 y te contamos las opciones de entrega para tu zona." } },
+          { "@type": "Question", "name": "¿Qué alérgenos llevan?", "acceptedAnswer": { "@type": "Answer", "text": "Todos llevan harina de trigo (gluten). Los pestiños llevan ajonjolí (sésamo) y la torta, almendra. Si tienes alguna alergia, pregúntanos antes de reservar." } }
+        ]
+      }
+      </script>
+    </section>
+
     <!-- ============ LA TRADICIÓN ============ -->
     <section id="tradicion" class="scroll-mt-10 relative overflow-hidden bg-pascuero text-fondo">
-      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/2021_Bu%C3%B1uelos_de_viento.jpg/1280px-2021_Bu%C3%B1uelos_de_viento.jpg" alt="" aria-hidden="true" class="foto absolute inset-0 w-full h-full object-cover" loading="lazy" />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/2021_Bu%C3%B1uelos_de_viento.jpg/960px-2021_Bu%C3%B1uelos_de_viento.jpg" alt="" aria-hidden="true" class="foto absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async" />
       <div class="absolute inset-0 bg-pascuero/85" aria-hidden="true"></div>
       <div class="relative max-w-3xl mx-auto px-4 sm:px-6 py-24 sm:py-32 text-center">
         <p class="text-[11px] tracking-label uppercase text-arena font-semibold">La Tradición</p>
@@ -758,7 +877,12 @@
       <div>
         <p class="font-serif text-2xl leading-none">Navidad</p>
         <p class="font-serif italic font-light text-teja mt-1">a la Malagueña</p>
-        <p class="mt-4 text-cafe-soft leading-relaxed">Dulces tradicionales de Málaga, hechos a mano con comercios locales.</p>
+        <p class="mt-4 text-cafe-soft leading-relaxed">Dulces tradicionales de Navidad de Málaga, hechos a mano con comercios locales.</p>
+        <ul class="mt-4 space-y-1.5 text-cafe-soft">
+          <li><a href="/pestinos-malaga" class="hover:text-cafe hover:underline underline-offset-4">Pestiños caseros en Málaga</a></li>
+          <li><a href="/borrachuelos-malaguenos" class="hover:text-cafe hover:underline underline-offset-4">Borrachuelos malagueños</a></li>
+          <li><a href="/dulces-navidad-malaga" class="hover:text-cafe hover:underline underline-offset-4">Dulces de Navidad en Málaga</a></li>
+        </ul>
       </div>
       <div>
         <p class="text-[11px] tracking-label uppercase font-semibold text-teja">Contacto</p>
@@ -802,9 +926,10 @@
 
   <script>
     (function () {
-      // Pega aquí la URL de tu backend / Formspree / Google Apps Script / webhook.
-      // Si se deja vacía, el envío se simula.
+      // URL del Google Apps Script que guarda cada lead en Google Sheets y avisa por email.
+      // Si algún día falla o está vacía, el lead se manda por WhatsApp al negocio: nunca se pierde.
       const LEAD_ENDPOINT = '';
+      const WHATSAPP_NEGOCIO = '34744475239';
 
       const $ = (sel) => document.querySelector(sel);
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -910,16 +1035,16 @@
       }
 
       async function sendLead(data) {
-        if (!LEAD_ENDPOINT) {
-          await new Promise((r) => setTimeout(r, 900));
-          return;
-        }
-        const res = await fetch(LEAD_ENDPOINT, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          body: JSON.stringify(data),
-        });
-        if (!res.ok) throw new Error('Error al enviar');
+        if (!LEAD_ENDPOINT) throw new Error('sin-endpoint');
+        // Apps Script no admite CORS: se envía como formulario "no-cors" (no hay preflight).
+        await fetch(LEAD_ENDPOINT, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(data) });
+      }
+
+      function leadPorWhatsApp(data) {
+        const txt = `¡Hola! Quiero apuntarme a la lista de espera de Navidad a la Malagueña.\nNombre: ${data.nombre}\nTeléfono: ${data.telefono}\nEmail: ${data.email}`;
+        const url = `https://wa.me/${WHATSAPP_NEGOCIO}?text=${encodeURIComponent(txt)}`;
+        const w = window.open(url, '_blank');
+        if (!w) location.href = url;
       }
 
       form.addEventListener('submit', async (e) => {
@@ -937,8 +1062,12 @@
           email: form.email.value.trim(),
           consentimiento: true,
           origen: 'landing-preventa-navidad',
+          pagina: location.pathname,
+          referencia: document.referrer || '',
+          utm: location.search || '',
           fecha: new Date().toISOString(),
         };
+        if (form.web && form.web.value) return; // trampa anti-spam: solo la rellenan los bots
         setLoading(true);
         try {
           await sendLead(data);
@@ -948,7 +1077,8 @@
           showToast();
           form.reset();
         } catch (err) {
-          alert('Vaya, algo se ha quemado en el horno. Inténtalo de nuevo en unos segundos.');
+          // Plan B: que el lead llegue igualmente por WhatsApp
+          leadPorWhatsApp(data);
         } finally {
           setLoading(false);
         }

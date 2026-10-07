@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.xn--navidadalamalaguea-30b.com/sitemap.xml
