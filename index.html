@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pestiños y borrachuelos malagueños caseros · Dulces de Navidad en Málaga</title>
-  <meta name="description" content="Dulces de Navidad de Málaga hechos a mano: pestiños con miel, borrachuelos malagueños, buñuelos y torta de almendra con la receta de la abuela. Reserva tu cestita en la preventa navideña." />
+  <meta name="description" content="Dulces de Navidad de Málaga hechos a mano: pestiños con miel, borrachuelos malagueños, buñuelos y torta de almendra con la receta de la abuela. Reserva tu pack en la preventa navideña." />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <link rel="canonical" href="https://www.xn--navidadalamalaguea-30b.com/" />
   <meta name="theme-color" content="#F3EEE4" />
@@ -16,7 +16,7 @@
   <meta property="og:locale" content="es_ES" />
   <meta property="og:site_name" content="Navidad a la Malagueña" />
   <meta property="og:title" content="Pestiños y borrachuelos malagueños caseros · Navidad a la Malagueña" />
-  <meta property="og:description" content="Los dulces de Navidad de Málaga de toda la vida, hechos a mano. Apúntate a la preventa y guárdate tu cestita." />
+  <meta property="og:description" content="Los dulces de Navidad de Málaga de toda la vida, hechos a mano. Apúntate a la preventa y guárdate tu pack." />
   <meta property="og:url" content="https://www.xn--navidadalamalaguea-30b.com/" />
   <meta property="og:image" content="https://www.xn--navidadalamalaguea-30b.com/og.png" />
   <meta property="og:image:width" content="1200" />
@@ -30,11 +30,9 @@
   <link rel="icon" href="/favicon-48.png" type="image/png" sizes="48x48" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://upload.wikimedia.org" crossorigin />
   <link rel="preload" as="image" href="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Pesti%C3%B1os-Madrid.jpg/960px-Pesti%C3%B1os-Madrid.jpg" fetchpriority="high" />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,800;1,9..144,300;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;600;700&family=Caveat:wght@500&display=swap" rel="stylesheet" />
+  <link rel="preload" href="/fonts/fraunces-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   <!-- Tailwind compilado (antes iba por CDN) -->
   <link rel="stylesheet" href="/styles.css" />
@@ -49,6 +47,8 @@
         "@id": "https://www.xn--navidadalamalaguea-30b.com/#negocio",
         "name": "Navidad a la Malagueña",
         "alternateName": "Navidad a la Malagueña · Dulces de Navidad de Málaga",
+        "legalName": "Asociación Junior Empresa Vyseon",
+        "taxID": "G75287441",
         "description": "Obrador artesano de dulces de Navidad tradicionales de Málaga: pestiños con miel, borrachuelos malagueños, buñuelos y torta de almendra hechos a mano.",
         "url": "https://www.xn--navidadalamalaguea-30b.com/",
         "logo": "https://www.xn--navidadalamalaguea-30b.com/apple-touch-icon.png",
@@ -127,7 +127,7 @@
     .flip-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
     .flip-back { transform: rotateY(180deg); }
 
-    /* ---------- 3D: cestita malagueña por capas ---------- */
+    /* ---------- 3D: pack navideño por capas ---------- */
     .cesta-scene { width: min(360px, 86vw); aspect-ratio: 1; perspective: 900px; }
     .cesta { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; animation: sway 7s ease-in-out infinite; transition: transform .3s ease-out; }
     .cesta.siguiendo { animation: none; }
@@ -304,10 +304,10 @@
         </p>
 
         <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
-          <a href="#carta" class="inline-flex items-center gap-2 rounded-full bg-cafe text-papel px-7 py-3.5 text-[13px] font-semibold tracking-wide hover:bg-teja transition">
-            Llévame a casa <span aria-hidden="true">↓</span>
+          <a href="#apuntate" class="inline-flex items-center gap-2 rounded-full bg-cafe text-papel px-7 py-3.5 text-[13px] font-semibold tracking-wide hover:bg-teja transition">
+            Quiero mi pack <span aria-hidden="true">↓</span>
           </a>
-          <a href="#apuntate" class="text-[13px] font-semibold underline underline-offset-4 decoration-miel decoration-2 hover:text-teja">Reservar mi cestita</a>
+          <a href="#apuntate" class="text-[13px] font-semibold underline underline-offset-4 decoration-miel decoration-2 hover:text-teja">Reservar mi pack</a>
         </div>
       </div>
 
@@ -599,7 +599,7 @@
             <p class="mt-3 text-cafe-soft leading-relaxed">Almendra marcona, aceite de oliva y canela. Una torta de las de partir en la sobremesa de Nochebuena, con el café y la copita, mientras alguien saca el álbum de fotos.</p>
           </article>
         </div>
-        <p class="mt-12 text-cafe-soft">¿Buscas un regalo de Navidad malagueño? Nuestras cestitas de <a href="/dulces-navidad-malaga" class="underline underline-offset-4 decoration-miel decoration-2 hover:text-teja">dulces de Navidad de Málaga</a> llevan un poco de todo. <a href="#apuntate" class="font-semibold underline underline-offset-4 decoration-miel decoration-2 hover:text-teja">Apúntate a la preventa</a>.</p>
+        <p class="mt-12 text-cafe-soft">¿Buscas un regalo de Navidad malagueño? Nuestros packs de <a href="/dulces-navidad-malaga" class="underline underline-offset-4 decoration-miel decoration-2 hover:text-teja">dulces de Navidad de Málaga</a> llevan un poco de todo. <a href="#apuntate" class="font-semibold underline underline-offset-4 decoration-miel decoration-2 hover:text-teja">Apúntate a la preventa</a>.</p>
       </div>
     </section>
 
@@ -608,105 +608,109 @@
       <p class="texto-contorno pointer-events-none select-none absolute -bottom-6 left-1/2 -translate-x-1/2 font-serif font-extrabold text-[22vw] leading-none whitespace-nowrap" aria-hidden="true">MÁLAGA</p>
       <div class="relative max-w-6xl mx-auto px-4 sm:px-6 py-20 sm:py-24 grid md:grid-cols-2 gap-14 items-center">
         <div class="order-2 md:order-1 flex flex-col items-center">
-          <!-- Cestita malagueña 3D: cuatro capas a distinta profundidad -->
-          <div id="cestaScene" class="cesta-scene" role="img" aria-label="Cestita de mimbre con paño de cuadros, llena de torta de almendra, buñuelos, pestiños y borrachuelos, con lazo rojo y etiqueta de Navidad a la Malagueña">
+          <!-- Pack navideño 3D: caja de regalo abierta en cuatro capas a distinta profundidad -->
+          <div id="cestaScene" class="cesta-scene" role="img" aria-label="Pack navideño: caja de regalo abierta con papel de cuadros, llena de torta de almendra, buñuelos, pestiños y borrachuelos, con lazo rojo y etiqueta de Navidad a la Malagueña">
             <div id="cesta" class="cesta">
 
-              <!-- Capa 0: asa e interior -->
+              <!-- Capa 0: tapa abierta e interior -->
               <div class="capa capa-0">
                 <svg viewBox="0 0 360 360" aria-hidden="true">
                   <defs>
-                    <pattern id="mimbre" width="24" height="14" patternUnits="userSpaceOnUse">
-                      <rect width="24" height="14" fill="#A87436"/>
-                      <rect x="-12" y="1" width="22" height="5" rx="2.5" fill="#D6A867" stroke="#8B5E2E" stroke-width=".6"/>
-                      <rect x="12" y="1" width="22" height="5" rx="2.5" fill="#D6A867" stroke="#8B5E2E" stroke-width=".6"/>
-                      <rect x="0" y="8" width="22" height="5" rx="2.5" fill="#C99555" stroke="#8B5E2E" stroke-width=".6"/>
-                      <path d="M11 0 V14" stroke="#7A5228" stroke-width="1.2" opacity=".5"/>
-                    </pattern>
                     <pattern id="cuadros" width="16" height="16" patternUnits="userSpaceOnUse">
                       <rect width="16" height="16" fill="#FAF7F1"/>
                       <rect width="8" height="16" fill="#B04A3A" opacity=".5"/>
                       <rect width="16" height="8" fill="#B04A3A" opacity=".5"/>
                     </pattern>
+                    <pattern id="carton" width="10" height="10" patternUnits="userSpaceOnUse">
+                      <rect width="10" height="10" fill="#C99A5B"/>
+                      <path d="M0 3 H10 M0 8 H10" stroke="#B88748" stroke-width=".6" opacity=".6"/>
+                    </pattern>
                     <linearGradient id="volumen" x1="0" x2="1">
-                      <stop offset="0" stop-color="#2C1E16" stop-opacity=".45"/>
-                      <stop offset=".28" stop-color="#2C1E16" stop-opacity="0"/>
-                      <stop offset=".62" stop-color="#FFF6E0" stop-opacity=".12"/>
-                      <stop offset="1" stop-color="#2C1E16" stop-opacity=".5"/>
+                      <stop offset="0" stop-color="#2C1E16" stop-opacity=".35"/>
+                      <stop offset=".3" stop-color="#2C1E16" stop-opacity="0"/>
+                      <stop offset=".65" stop-color="#FFF6E0" stop-opacity=".14"/>
+                      <stop offset="1" stop-color="#2C1E16" stop-opacity=".4"/>
                     </linearGradient>
                     <linearGradient id="volumenV" x1="0" y1="0" x2="0" y2="1">
                       <stop offset="0" stop-color="#2C1E16" stop-opacity="0"/>
-                      <stop offset="1" stop-color="#2C1E16" stop-opacity=".35"/>
+                      <stop offset="1" stop-color="#2C1E16" stop-opacity=".3"/>
                     </linearGradient>
                   </defs>
-                  <!-- Asa trenzada -->
-                  <path d="M62 192 C56 40 304 40 298 192" fill="none" stroke="#7A5228" stroke-width="18" stroke-linecap="round"/>
-                  <path d="M62 192 C56 40 304 40 298 192" fill="none" stroke="#C99555" stroke-width="12" stroke-linecap="round"/>
-                  <path d="M62 192 C56 40 304 40 298 192" fill="none" stroke="#7A5228" stroke-width="12" stroke-dasharray="3 8" opacity=".75"/>
-                  <!-- Interior -->
-                  <ellipse cx="180" cy="192" rx="128" ry="36" fill="#6B4423"/>
-                  <ellipse cx="180" cy="196" rx="116" ry="28" fill="#4E3018"/>
-                  <!-- Paño de cuadros (parte trasera) -->
-                  <path d="M66 194 C70 150 110 150 124 172 C146 132 214 132 236 168 C254 144 296 152 294 194 Z" fill="url(#cuadros)" stroke="#953C2F" stroke-width=".8"/>
+                  <!-- Tapa abierta, apoyada detrás -->
+                  <path d="M84 170 L276 170 L292 74 L100 74 Z" fill="url(#carton)" stroke="#6B4423" stroke-width="1.5" stroke-linejoin="round"/>
+                  <path d="M84 170 L276 170 L292 74 L100 74 Z" fill="url(#volumen)"/>
+                  <path d="M100 74 L292 74 L296 62 L104 62 Z" fill="#B88748" stroke="#6B4423" stroke-width="1.5" stroke-linejoin="round"/>
+                  <path d="M174 170 L192 170 L206 74 L188 74 Z" fill="#B04A3A" stroke="#7E2F24" stroke-width="1"/>
+                                    <!-- Interior de la caja -->
+                  <path d="M56 200 L304 200 L280 166 L80 166 Z" fill="#4E3018" stroke="#6B4423" stroke-width="1.5" stroke-linejoin="round"/>
+                  <!-- Papel de cuadros asomando -->
+                  <path d="M66 196 C70 156 104 150 124 170 C142 138 206 136 230 164 C250 146 292 152 292 196 Z" fill="url(#cuadros)" stroke="#953C2F" stroke-width=".8"/>
                 </svg>
               </div>
 
               <!-- Capa 1: los dulces -->
               <div class="capa capa-1">
                 <svg viewBox="0 0 360 360" aria-hidden="true">
-                  <use href="#i-canela" transform="translate(246 150) rotate(-58) scale(.62)"/>
-                  <use href="#i-canela" transform="translate(262 156) rotate(-48) scale(.55)"/>
-                  <use href="#i-torta" transform="translate(148 176) rotate(-10) scale(1.25)"/>
-                  <use href="#i-bunuelo" transform="translate(238 180) scale(1.05)"/>
-                  <use href="#i-pestino" transform="translate(96 192) rotate(-18) scale(.9)"/>
-                  <use href="#i-borrachuelo" transform="translate(190 200) rotate(4) scale(.95)"/>
-                  <use href="#i-pestino" transform="translate(272 198) rotate(22) scale(.8)"/>
-                  <use href="#i-anis" transform="translate(120 166) scale(.7)"/>
+                  <use href="#i-canela" transform="translate(246 156) rotate(-58) scale(.62)"/>
+                  <use href="#i-canela" transform="translate(262 162) rotate(-48) scale(.55)"/>
+                  <use href="#i-torta" transform="translate(148 182) rotate(-10) scale(1.2)"/>
+                  <use href="#i-bunuelo" transform="translate(238 186) scale(1)"/>
+                  <use href="#i-pestino" transform="translate(98 196) rotate(-18) scale(.85)"/>
+                  <use href="#i-borrachuelo" transform="translate(190 204) rotate(4) scale(.9)"/>
+                  <use href="#i-pestino" transform="translate(270 202) rotate(22) scale(.75)"/>
+                  <use href="#i-anis" transform="translate(120 172) scale(.7)"/>
                 </svg>
               </div>
 
-              <!-- Capa 2: cuerpo de mimbre y borde trenzado -->
+              <!-- Capa 2: frente de la caja -->
               <div class="capa capa-2">
                 <svg viewBox="0 0 360 360" aria-hidden="true">
-                  <path d="M52 192 C56 262 82 316 104 326 A76 16 0 0 0 256 326 C278 316 304 262 308 192 A128 36 0 0 1 52 192 Z" fill="url(#mimbre)" stroke="#6B4423" stroke-width="1.5"/>
-                  <path d="M52 192 C56 262 82 316 104 326 A76 16 0 0 0 256 326 C278 316 304 262 308 192 A128 36 0 0 1 52 192 Z" fill="url(#volumen)"/>
-                  <path d="M52 192 C56 262 82 316 104 326 A76 16 0 0 0 256 326 C278 316 304 262 308 192 A128 36 0 0 1 52 192 Z" fill="url(#volumenV)"/>
-                  <!-- Borde trenzado -->
-                  <path d="M52 192 A128 36 0 0 0 308 192" fill="none" stroke="#7A5228" stroke-width="15" stroke-linecap="round"/>
-                  <path d="M52 192 A128 36 0 0 0 308 192" fill="none" stroke="#D6A867" stroke-width="9" stroke-dasharray="7 5" stroke-linecap="round"/>
-                  <!-- Pico del paño colgando por delante -->
-                  <path d="M76 202 C104 222 138 228 166 230 L146 272 C124 262 98 248 82 244 Z" fill="url(#cuadros)" stroke="#953C2F" stroke-width=".8"/>
-                  <path d="M146 272 l-6 6 M134 266 l-5 6 M122 260 l-5 6 M110 254 l-5 6" stroke="#953C2F" stroke-width="1.4" stroke-linecap="round"/>
+                  <path d="M52 200 L308 200 L300 322 Q300 330 292 330 L68 330 Q60 330 60 322 Z" fill="url(#carton)" stroke="#6B4423" stroke-width="1.5" stroke-linejoin="round"/>
+                  <path d="M52 200 L308 200 L300 322 Q300 330 292 330 L68 330 Q60 330 60 322 Z" fill="url(#volumen)"/>
+                  <path d="M52 200 L308 200 L300 322 Q300 330 292 330 L68 330 Q60 330 60 322 Z" fill="url(#volumenV)"/>
+                  <path d="M50 200 H310" stroke="#6B4423" stroke-width="5" stroke-linecap="round"/>
+                  <path d="M50 200 H310" stroke="#D6A867" stroke-width="2" stroke-linecap="round"/>
+                  <!-- Pico del papel cayendo por delante -->
+                  <path d="M74 200 C98 214 128 218 152 220 L136 256 C116 248 94 238 80 234 Z" fill="url(#cuadros)" stroke="#953C2F" stroke-width=".8"/>
+                  <!-- Sello impreso -->
+                  <g transform="translate(104 292)" opacity=".75">
+                    <circle r="24" fill="none" stroke="#6B4423" stroke-width="1.2"/>
+                    <circle r="19" fill="none" stroke="#6B4423" stroke-width=".6" stroke-dasharray="2 2"/>
+                    <text y="-3" text-anchor="middle" font-family="Fraunces, serif" font-size="8" letter-spacing="1" fill="#6B4423">HECHO EN</text>
+                    <text y="9" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="11" fill="#6B4423">Málaga</text>
+                  </g>
                 </svg>
               </div>
 
               <!-- Capa 3: lazo, etiqueta y biznaga -->
               <div class="capa capa-3">
                 <svg viewBox="0 0 360 360" aria-hidden="true">
+                  <!-- Cinta vertical -->
+                  <path d="M170 200 H192 L190 330 H172 Z" fill="#B04A3A" stroke="#7E2F24" stroke-width="1"/>
                   <!-- Lazo -->
-                  <g transform="translate(226 228)">
-                    <path d="M0 0 C-26 -26 -44 -4 -30 8 C-20 15 -8 6 0 0Z" fill="#B04A3A" stroke="#7E2F24" stroke-width="1.2"/>
-                    <path d="M0 0 C26 -26 44 -4 30 8 C20 15 8 6 0 0Z" fill="#B04A3A" stroke="#7E2F24" stroke-width="1.2"/>
+                  <g transform="translate(181 204)">
+                    <path d="M0 0 C-30 -28 -50 -4 -34 9 C-22 17 -9 7 0 0Z" fill="#B04A3A" stroke="#7E2F24" stroke-width="1.2"/>
+                    <path d="M0 0 C30 -28 50 -4 34 9 C22 17 9 7 0 0Z" fill="#B04A3A" stroke="#7E2F24" stroke-width="1.2"/>
                     <path d="M-2 2 C-8 16 -12 26 -18 34 M2 2 C8 14 14 24 22 30" stroke="#B04A3A" stroke-width="6" stroke-linecap="round" fill="none"/>
-                    <circle r="6" fill="#953C2F"/>
+                    <circle r="6.5" fill="#953C2F"/>
                   </g>
                   <!-- Etiqueta colgante -->
-                  <path d="M226 232 C232 250 246 258 250 268" stroke="#2C1E16" stroke-width="1" fill="none"/>
-                  <g transform="translate(252 290) rotate(-8)">
+                  <path d="M186 208 C204 228 220 238 226 252" stroke="#2C1E16" stroke-width="1" fill="none"/>
+                  <g transform="translate(228 272) rotate(-8)">
                     <path d="M-38 -22 H30 L40 0 L30 22 H-38 Z" fill="#FAF7F1" stroke="#2C1E16" stroke-width="1.2"/>
                     <circle cx="30" cy="0" r="3" fill="none" stroke="#2C1E16" stroke-width="1"/>
                     <text x="-4" y="-3" text-anchor="middle" font-family="Fraunces, serif" font-size="13" fill="#2C1E16">Navidad</text>
                     <text x="-4" y="12" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="9.5" fill="#B04A3A">a la Malagueña</text>
                   </g>
                   <!-- Biznaga y olivo -->
-                  <use href="#i-olivo" transform="translate(40 214) rotate(-28) scale(.9)"/>
-                  <use href="#i-biznaga" transform="translate(70 196) rotate(-18) scale(.9)"/>
+                  <use href="#i-olivo" transform="translate(30 226) rotate(-28) scale(.9)"/>
+                  <use href="#i-biznaga" transform="translate(62 206) rotate(-18) scale(.9)"/>
                 </svg>
               </div>
             </div>
           </div>
           <div class="cesta-sombra"></div>
-          <p class="mt-5 text-[11px] tracking-label uppercase text-cafe-soft">Tu cestita, de mano en mano</p>
+          <p class="mt-5 text-[11px] tracking-label uppercase text-cafe-soft">Tu pack, de mano en mano</p>
         </div>
 
         <div class="order-1 md:order-2">
@@ -744,7 +748,7 @@
       <div class="max-w-6xl mx-auto px-4 sm:px-6 py-20 sm:py-28 grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
         <div class="lg:col-span-5">
           <p class="text-[11px] tracking-label uppercase text-teja font-semibold">Lista de espera</p>
-          <h2 class="mt-3 font-serif font-light text-4xl sm:text-[2.75rem] leading-tight">Guárdate tu cestita <em class="font-normal text-teja">antes que nadie</em></h2>
+          <h2 class="mt-3 font-serif font-light text-4xl sm:text-[2.75rem] leading-tight">Guárdate tu pack <em class="font-normal text-teja">antes que nadie</em></h2>
           <p class="mt-5 text-lg text-cafe-soft leading-relaxed">Hacemos pocas hornadas y a mano, así que no llega pa' todo el mundo. Apúntate y te avisamos los primeros.</p>
           <ul class="mt-8 space-y-4">
             <li class="flex gap-4"><span class="font-serif italic text-teja text-xl w-6 shrink-0">i.</span><span>Te escribimos por WhatsApp en cuanto encendamos el horno.</span></li>
@@ -754,15 +758,15 @@
           <p class="mt-8 font-mano text-2xl text-pascuero -rotate-2">Aliquindoi, que vuelan…</p>
         </div>
         <div class="lg:col-span-7">
-            <div id="apuntate" class="scroll-mt-24 bg-papel border border-linea rounded-2xl shadow-suave p-6 sm:p-9 max-w-xl lg:ml-auto">
+            <div id="apuntate" data-lead-card class="scroll-mt-24 bg-papel border border-linea rounded-2xl shadow-suave p-6 sm:p-9 max-w-xl lg:ml-auto">
               <div id="formWrap">
                 <div class="flex items-baseline justify-between gap-4">
                   <h2 class="font-serif text-2xl font-normal">Apúntate aquí</h2>
                   <span class="text-[11px] tracking-label uppercase text-miel font-semibold">Plazas limitadas</span>
                 </div>
-                <p class="mt-1.5 text-sm text-cafe-soft">Déjanos tus datos y serás de los primeros en reservar tu cestita.</p>
+                <p class="mt-1.5 text-sm text-cafe-soft">Déjanos tus datos y serás de los primeros en reservar tu pack.</p>
     
-                <form id="leadForm" class="mt-6 space-y-5" novalidate>
+                <form id="leadForm" class="mt-6 space-y-5" novalidate data-lead="landing" data-wrap="formWrap" data-success="successCard">
                   <div class="hidden" aria-hidden="true"><label for="web">No rellenar</label><input id="web" name="web" type="text" tabindex="-1" autocomplete="off" /></div>
                   <div>
                     <label for="nombre" class="block text-[11px] tracking-label uppercase font-semibold text-cafe-soft">Nombre completo</label>
@@ -785,7 +789,7 @@
                     <label class="flex items-start gap-3 cursor-pointer select-none">
                       <input id="rgpd" name="rgpd" type="checkbox" required class="mt-0.5 w-4 h-4 shrink-0 accent-[#2F4A3C] cursor-pointer" />
                       <span class="text-[13px] text-cafe-soft leading-snug">
-                        Acepto la <a href="#privacidad" class="underline underline-offset-2 decoration-linea hover:text-teja">política de privacidad</a> y recibir novedades por WhatsApp/Email sobre el lanzamiento.
+                        He leído la <a href="/politica-privacidad" class="underline underline-offset-2 decoration-linea hover:text-teja">política de privacidad</a> y quiero recibir por WhatsApp y email el aviso del lanzamiento y la preventa.
                       </span>
                     </label>
                     <p class="field-error hidden mt-1.5 text-xs text-teja" data-for="rgpd">Necesitamos tu consentimiento para poder avisarte.</p>
@@ -793,15 +797,16 @@
                   <button id="submitBtn" type="submit"
                     class="w-full inline-flex items-center justify-center gap-2 rounded-2xl bg-teja hover:bg-teja-dark text-papel px-6 py-4 text-[13px] sm:text-sm font-bold tracking-[.06em] shadow-[0_6px_0_#7E2F24] hover:shadow-[0_4px_0_#7E2F24] hover:translate-y-[2px] active:translate-y-[6px] active:shadow-none transition focus:outline-none focus:ring-4 focus:ring-teja/25 disabled:opacity-70 disabled:cursor-wait">
                     <svg id="spinner" class="hidden w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-opacity=".3" stroke-width="3"/><path d="M22 12a10 10 0 00-10-10" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
-                    <span id="btnText">¡AVÍSAME CUANDO ENCENDAMOS EL HORNO! 🚀</span>
+                    <span id="btnText" data-btn-text>¡AVÍSAME CUANDO ENCENDAMOS EL HORNO! 🚀</span>
                   </button>
                   <p class="text-center text-xs text-cafe-soft/80">Sin spam. Solo te escribiremos cuando haya dulces recién hechos.</p>
+                  <div data-info-basica></div>
                 </form>
               </div>
     
               <div id="successCard" class="hidden text-center py-6" aria-live="polite">
                 <svg viewBox="-50 -30 100 60" class="h-16 mx-auto" aria-hidden="true"><use href="#i-pestino"/></svg>
-                <h2 class="mt-4 font-serif text-2xl font-normal">Ya estás dentro, <em id="successName" class="text-teja"></em>.</h2>
+                <h2 class="mt-4 font-serif text-2xl font-normal">Ya estás dentro, <em id="successName" data-nombre class="text-teja"></em>.</h2>
                 <p class="mt-2 text-cafe-soft">Te escribiremos por WhatsApp en cuanto encendamos el horno. Esto va a ser un bastinazo.</p>
                 <button id="resetBtn" type="button" class="mt-5 text-[11px] tracking-label uppercase font-semibold underline underline-offset-4 decoration-linea hover:text-teja">Apuntar a otra persona</button>
               </div>
@@ -821,7 +826,7 @@
             <p class="mt-3 text-cafe-soft leading-relaxed">En nuestro obrador de Málaga, a mano y en pequeñas hornadas, con la receta tradicional de la abuela y materia prima de comercios locales malagueños: miel, almendra y aceite de oliva de nuestra tierra.</p>
           </details>
           <details class="group py-5">
-            <summary class="flex justify-between items-center gap-4 cursor-pointer list-none font-serif text-xl">¿Cómo reservo mi cestita de dulces de Navidad?<span class="text-teja text-2xl transition group-open:rotate-45" aria-hidden="true">+</span></summary>
+            <summary class="flex justify-between items-center gap-4 cursor-pointer list-none font-serif text-xl">¿Cómo reservo mi pack de dulces de Navidad?<span class="text-teja text-2xl transition group-open:rotate-45" aria-hidden="true">+</span></summary>
             <p class="mt-3 text-cafe-soft leading-relaxed">Apúntate a la lista de espera de esta página. En cuanto encendamos el horno te escribimos por WhatsApp para que reserves antes de que abramos al público y con precio especial de preventa.</p>
           </details>
           <details class="group py-5">
@@ -844,7 +849,7 @@
         "@type": "FAQPage",
         "mainEntity": [
           { "@type": "Question", "name": "¿Dónde se hacen vuestros pestiños y borrachuelos?", "acceptedAnswer": { "@type": "Answer", "text": "En nuestro obrador de Málaga, a mano y en pequeñas hornadas, con la receta tradicional de la abuela y materia prima de comercios locales malagueños: miel, almendra y aceite de oliva de nuestra tierra." } },
-          { "@type": "Question", "name": "¿Cómo reservo mi cestita de dulces de Navidad?", "acceptedAnswer": { "@type": "Answer", "text": "Apúntate a la lista de espera de esta página. En cuanto encendamos el horno te escribimos por WhatsApp para que reserves antes de que abramos al público y con precio especial de preventa." } },
+          { "@type": "Question", "name": "¿Cómo reservo mi pack de dulces de Navidad?", "acceptedAnswer": { "@type": "Answer", "text": "Apúntate a la lista de espera de esta página. En cuanto encendamos el horno te escribimos por WhatsApp para que reserves antes de que abramos al público y con precio especial de preventa." } },
           { "@type": "Question", "name": "¿Cuándo hay que reservar?", "acceptedAnswer": { "@type": "Answer", "text": "Cuanto antes. Es una edición limitada navideña: hacemos pocas hornadas y cuando se acaban, se acabó. La lista de espera tiene prioridad sobre el resto." } },
           { "@type": "Question", "name": "¿Entregáis fuera de Málaga capital?", "acceptedAnswer": { "@type": "Answer", "text": "Escríbenos por WhatsApp al +34 744 47 52 39 y te contamos las opciones de entrega para tu zona." } },
           { "@type": "Question", "name": "¿Qué alérgenos llevan?", "acceptedAnswer": { "@type": "Answer", "text": "Todos llevan harina de trigo (gluten). Los pestiños llevan ajonjolí (sésamo) y la torta, almendra. Si tienes alguna alergia, pregúntanos antes de reservar." } }
@@ -864,7 +869,7 @@
         </p>
         <svg viewBox="-4 -20 70 26" class="h-6 mx-auto mt-8 opacity-80" aria-hidden="true"><use href="#i-olivo"/></svg>
         <a href="#apuntate" class="mt-8 inline-flex items-center gap-2 rounded-full border border-fondo/60 px-6 py-3 text-[13px] font-semibold hover:bg-fondo hover:text-pascuero transition">
-          Quiero mi caja navideña <span aria-hidden="true">→</span>
+          Quiero mi pack navideño <span aria-hidden="true">→</span>
         </a>
       </div>
     </section>
@@ -893,14 +898,17 @@
         </ul>
       </div>
       <div id="privacidad" class="scroll-mt-10">
-        <p class="text-[11px] tracking-label uppercase font-semibold text-teja">Privacidad</p>
-        <p class="mt-4 text-xs text-cafe-soft leading-relaxed">
-          Responsable: Navidad a la Malagueña. Finalidad: informarte del lanzamiento y la preventa navideña por WhatsApp y email. Legitimación: tu consentimiento. Puedes ejercer tus derechos de acceso, rectificación y supresión escribiéndonos al email indicado.
-        </p>
+        <p class="text-[11px] tracking-label uppercase font-semibold text-teja">Legal</p>
+        <ul class="mt-4 space-y-2 text-cafe-soft">
+          <li><a href="/aviso-legal" class="hover:text-cafe hover:underline underline-offset-4">Aviso legal</a></li>
+          <li><a href="/politica-privacidad" class="hover:text-cafe hover:underline underline-offset-4">Política de privacidad</a></li>
+          <li><a href="/politica-cookies" class="hover:text-cafe hover:underline underline-offset-4">Política de cookies</a></li>
+          <li><a href="#" data-config-cookies class="hover:text-cafe hover:underline underline-offset-4">Configurar cookies</a></li>
+        </ul>
       </div>
     </div>
-    <div class="border-t border-linea py-5 text-center text-xs text-cafe-soft">
-      © <span id="year"></span> Navidad a la Malagueña · Hecho a mano en Málaga, con arte
+    <div class="border-t border-linea py-5 px-4 text-center text-xs text-cafe-soft">
+      © <span id="year"></span> Navidad a la Malagueña es un proyecto de la Asociación Junior Empresa Vyseon (CIF G75287441) · Hecho a mano en Málaga, con arte
     </div>
     <p class="pb-6 px-4 text-center text-[10px] text-cafe-soft/70 leading-relaxed">
       Fotos provisionales vía Wikimedia Commons: <a class="underline" href="https://commons.wikimedia.org/wiki/File:Pesti%C3%B1os-Madrid.jpg">Pestiños</a> (Tamorlan, CC BY 3.0) ·
@@ -910,27 +918,8 @@
     </p>
   </footer>
 
-  <!-- ============ TOAST ============ -->
-  <div id="toast" class="hidden fixed z-50 bottom-4 inset-x-4 sm:inset-x-auto sm:right-6 sm:bottom-6 sm:max-w-sm" role="status" aria-live="polite">
-    <div class="toast-enter flex items-start gap-4 rounded-2xl bg-cafe text-fondo shadow-suave p-5 pr-3">
-      <div class="flex-1">
-        <p class="text-[11px] tracking-label uppercase text-arena font-semibold">Confirmado</p>
-        <p class="mt-1 font-serif text-xl leading-tight">¡Oído en cocina!</p>
-        <p class="text-sm text-fondo/80 mt-1">Te avisaremos por WhatsApp muy pronto.</p>
-      </div>
-      <button id="toastClose" type="button" class="grid place-items-center w-8 h-8 rounded-full hover:bg-fondo/10" aria-label="Cerrar aviso">
-        <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg>
-      </button>
-    </div>
-  </div>
-
   <script>
     (function () {
-      // URL del Google Apps Script que guarda cada lead en Google Sheets y avisa por email.
-      // Si algún día falla o está vacía, el lead se manda por WhatsApp al negocio: nunca se pierde.
-      const LEAD_ENDPOINT = '';
-      const WHATSAPP_NEGOCIO = '34744475239';
-
       const $ = (sel) => document.querySelector(sel);
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       $('#year').textContent = new Date().getFullYear();
@@ -971,7 +960,7 @@
         area.addEventListener('mouseleave', () => { tilt.style.transform = ''; });
       }
 
-      // 3D: la cestita sigue al ratón (y se balancea sola cuando no)
+      // 3D: el pack sigue al ratón (y se balancea sola cuando no)
       const cestaScene = $("#cestaScene");
       const cesta = $("#cesta");
       if (cesta && !reduceMotion && window.matchMedia("(hover: hover)").matches) {
@@ -995,113 +984,15 @@
         card.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
       });
 
-      // Formulario
-      const form = $('#leadForm');
-      const btn = $('#submitBtn');
-      const spinner = $('#spinner');
-      const btnText = $('#btnText');
-      const formWrap = $('#formWrap');
-      const successCard = $('#successCard');
-      const originalBtnText = btnText.textContent;
-
-      const clean = (v) => v.replace(/[\s\-().]/g, '');
-      const validators = {
-        nombre: (v) => v.trim().length >= 3,
-        telefono: (v) => /^[6789]\d{8}$/.test(clean(v).replace(/^(\+34|0034)/, '')) || /^\+\d{9,15}$/.test(clean(v)),
-        email: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()),
-        rgpd: (_, el) => el.checked,
-      };
-
-      function validateField(name) {
-        const el = form.elements[name];
-        const ok = validators[name](el.value, el);
-        form.querySelector(`.field-error[data-for="${name}"]`).classList.toggle('hidden', ok);
-        el.setAttribute('aria-invalid', ok ? 'false' : 'true');
-        return ok;
-      }
-
-      Object.keys(validators).forEach((name) => {
-        const el = form.elements[name];
-        el.addEventListener(el.type === 'checkbox' ? 'change' : 'blur', () => validateField(name));
-        el.addEventListener('input', () => {
-          if (el.getAttribute('aria-invalid') === 'true') validateField(name);
-        });
+      // Volver a mostrar el formulario tras apuntarse
+      const resetBtn = $('#resetBtn');
+      if (resetBtn) resetBtn.addEventListener('click', () => {
+        $('#successCard').classList.add('hidden');
+        $('#formWrap').classList.remove('hidden');
+        $('#nombre').focus();
       });
-
-      function setLoading(loading) {
-        btn.disabled = loading;
-        spinner.classList.toggle('hidden', !loading);
-        btnText.textContent = loading ? 'Precalentando el horno…' : originalBtnText;
-      }
-
-      async function sendLead(data) {
-        if (!LEAD_ENDPOINT) throw new Error('sin-endpoint');
-        // Apps Script no admite CORS: se envía como formulario "no-cors" (no hay preflight).
-        await fetch(LEAD_ENDPOINT, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(data) });
-      }
-
-      function leadPorWhatsApp(data) {
-        const txt = `¡Hola! Quiero apuntarme a la lista de espera de Navidad a la Malagueña.\nNombre: ${data.nombre}\nTeléfono: ${data.telefono}\nEmail: ${data.email}`;
-        const url = `https://wa.me/${WHATSAPP_NEGOCIO}?text=${encodeURIComponent(txt)}`;
-        const w = window.open(url, '_blank');
-        if (!w) location.href = url;
-      }
-
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const results = Object.keys(validators).map(validateField);
-        if (results.includes(false)) {
-          const card = $('#apuntate');
-          card.classList.remove('shake'); void card.offsetWidth; card.classList.add('shake');
-          form.querySelector('[aria-invalid="true"]')?.focus();
-          return;
-        }
-        const data = {
-          nombre: form.nombre.value.trim(),
-          telefono: form.telefono.value.trim(),
-          email: form.email.value.trim(),
-          consentimiento: true,
-          origen: 'landing-preventa-navidad',
-          pagina: location.pathname,
-          referencia: document.referrer || '',
-          utm: location.search || '',
-          fecha: new Date().toISOString(),
-        };
-        if (form.web && form.web.value) return; // trampa anti-spam: solo la rellenan los bots
-        setLoading(true);
-        try {
-          await sendLead(data);
-          $('#successName').textContent = data.nombre.split(' ')[0];
-          formWrap.classList.add('hidden');
-          successCard.classList.remove('hidden');
-          showToast();
-          form.reset();
-        } catch (err) {
-          // Plan B: que el lead llegue igualmente por WhatsApp
-          leadPorWhatsApp(data);
-        } finally {
-          setLoading(false);
-        }
-      });
-
-      $('#resetBtn').addEventListener('click', () => {
-        successCard.classList.add('hidden');
-        formWrap.classList.remove('hidden');
-        form.nombre.focus();
-      });
-
-      // Toast
-      const toast = $('#toast');
-      let toastTimer;
-      function showToast() {
-        clearTimeout(toastTimer);
-        toast.classList.remove('hidden');
-        const inner = toast.firstElementChild;
-        inner.classList.remove('toast-enter'); void inner.offsetWidth; inner.classList.add('toast-enter');
-        toastTimer = setTimeout(() => toast.classList.add('hidden'), 6000);
-      }
-      $('#toastClose').addEventListener('click', () => toast.classList.add('hidden'));
     })();
   </script>
+  <script src="/leads.js" defer></script>
 </body>
 </html>

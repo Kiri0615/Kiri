@@ -21,9 +21,7 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="/favicon-48.png" type="image/png" sizes="48x48" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;600;700&family=Caveat:wght@500&display=swap" rel="stylesheet" />
+  <link rel="preload" href="/fonts/fraunces-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/styles.css" />
   <style>body{background:#F3EEE4;-webkit-font-smoothing:antialiased} .foto{filter:saturate(.9) sepia(.14) contrast(1.06) brightness(1.03)}</style>
   <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://www.xn--navidadalamalaguea-30b.com/"}, {"@type": "ListItem", "position": 2, "name": "Pestiños de Málaga", "item": "https://www.xn--navidadalamalaguea-30b.com/pestinos-malaga"}]}, {"@type": "WebPage", "@id": "https://www.xn--navidadalamalaguea-30b.com/pestinos-malaga", "url": "https://www.xn--navidadalamalaguea-30b.com/pestinos-malaga", "name": "Pestiños caseros con miel en Málaga · Navidad a la Malagueña", "description": "Pestiños malagueños hechos a mano con ajonjolí, matalahúva y miel, con la receta de la abuela. Reserva los pestiños caseros de Navidad en Málaga.", "inLanguage": "es-ES", "about": {"@id": "https://www.xn--navidadalamalaguea-30b.com/#negocio"}, "primaryImageOfPage": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Pesti%C3%B1os-Madrid.jpg/960px-Pesti%C3%B1os-Madrid.jpg"}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Los pestiños llevan alérgenos?", "acceptedAnswer": {"@type": "Answer", "text": "Sí: llevan harina de trigo (gluten) y ajonjolí (sésamo)."}}, {"@type": "Question", "name": "¿Cuánto duran los pestiños?", "acceptedAnswer": {"@type": "Answer", "text": "Bien guardados en una lata o caja cerrada, en un sitio fresco y seco, aguantan varios días. Aunque en casa no suelen durar tanto."}}]}]}</script>
@@ -35,7 +33,7 @@
         <span class="block font-serif text-[22px] font-medium tracking-tight">Navidad</span>
         <span class="block font-serif italic font-light text-[13px] text-teja mt-0.5">a la Malagueña</span>
       </a>
-      <a href="/#apuntate" class="inline-flex items-center rounded-full border border-cafe px-4 sm:px-5 py-2 text-[13px] font-semibold hover:bg-cafe hover:text-fondo transition">¡Apúntate!</a>
+      <a href="#apuntate" class="inline-flex items-center rounded-full border border-cafe px-4 sm:px-5 py-2 text-[13px] font-semibold hover:bg-cafe hover:text-fondo transition">¡Apúntate!</a>
     </nav>
   </header>
 
@@ -47,8 +45,8 @@
         <h1 class="mt-4 font-serif font-light text-4xl sm:text-5xl leading-[1.08] tracking-tight">Pestiños caseros con miel, <em class="font-normal text-teja">hechos a mano en Málaga</em></h1>
         <p class="mt-6 text-lg text-cafe-soft leading-relaxed">Crujientes, dorados y con ese brillo de miel templada. Nuestros pestiños se hacen uno a uno en el obrador de Málaga, con la receta de la abuela y sin atajos.</p>
         <div class="mt-8 flex flex-wrap gap-4 items-center">
-          <a href="/#apuntate" class="inline-flex items-center gap-2 rounded-full bg-cafe text-papel px-7 py-3.5 text-[13px] font-semibold tracking-wide hover:bg-teja transition">Reservar mi cestita →</a>
-          <a href="https://wa.me/34744475239" class="text-[13px] font-semibold underline underline-offset-4 decoration-miel decoration-2 hover:text-teja">Escríbenos por WhatsApp</a>
+          <a href="#apuntate" class="inline-flex items-center gap-2 rounded-full bg-cafe text-papel px-7 py-3.5 text-[13px] font-semibold tracking-wide hover:bg-teja transition">Reservar mi pack →</a>
+          <a href="#apuntate" data-abrir-popup class="text-[13px] font-semibold underline underline-offset-4 decoration-miel decoration-2 hover:text-teja">Quiero más información</a>
         </div>
       </div>
       <div class="rounded-t-full overflow-hidden border border-cafe/40 aspect-[4/5] shadow-suave">
@@ -89,9 +87,32 @@
       </div>
     </section>
 
-    <section class="mb-20 rounded-2xl bg-teja text-papel p-8 sm:p-12 text-center">
-      <p class="font-serif text-3xl font-light">Hornadas limitadas. <em>Aliquindoi, que vuelan.</em></p>
-      <a href="/#apuntate" class="mt-6 inline-flex items-center rounded-full bg-papel text-cafe px-7 py-3.5 text-[13px] font-semibold hover:bg-arena transition">Apuntarme a la lista de espera</a>
+    <section id="apuntate" class="scroll-mt-6 mb-20 grid lg:grid-cols-2 gap-10 items-start rounded-2xl bg-teja text-papel p-6 sm:p-12">
+      <div>
+        <p class="text-[11px] tracking-label uppercase text-arena font-semibold">Lista de espera</p>
+        <p class="mt-3 font-serif text-3xl sm:text-4xl font-light leading-tight">Hornadas limitadas. <em>Aliquindoi, que vuelan.</em></p>
+        <p class="mt-4 text-papel/85">Apúntate y te avisamos por WhatsApp los primeros, con precio especial de preventa para tu pack navideño.</p>
+      </div>
+      <div data-lead-card class="bg-papel text-cafe rounded-2xl p-6 sm:p-8">
+        <form class="space-y-5" novalidate data-lead="pagina-pestinos-malaga">
+          <div class="hidden" aria-hidden="true"><label for="web">No rellenar</label><input id="web" name="web" type="text" tabindex="-1" autocomplete="off" /></div>
+          <div><label for="nombre" class="block text-[11px] tracking-label uppercase font-semibold text-cafe-soft">Nombre</label>
+            <input id="nombre" name="nombre" type="text" autocomplete="name" required placeholder="Carmen Ruiz" class="input-linea" />
+            <p class="field-error hidden mt-1.5 text-xs text-teja" data-for="nombre">Dinos cómo te llamas.</p></div>
+          <div><label for="telefono" class="block text-[11px] tracking-label uppercase font-semibold text-cafe-soft">Teléfono WhatsApp</label>
+            <input id="telefono" name="telefono" type="tel" inputmode="tel" autocomplete="tel" required placeholder="+34 600 000 000" class="input-linea" />
+            <p class="field-error hidden mt-1.5 text-xs text-teja" data-for="telefono">Introduce un móvil válido.</p></div>
+          <div><label for="email" class="block text-[11px] tracking-label uppercase font-semibold text-cafe-soft">Correo electrónico</label>
+            <input id="email" name="email" type="email" autocomplete="email" required placeholder="tu@correo.com" class="input-linea" />
+            <p class="field-error hidden mt-1.5 text-xs text-teja" data-for="email">Ese correo no parece válido.</p></div>
+          <div><label class="flex items-start gap-3 cursor-pointer select-none">
+            <input name="rgpd" type="checkbox" required class="mt-0.5 w-4 h-4 shrink-0 accent-[#2F4A3C] cursor-pointer" />
+            <span class="text-[13px] text-cafe-soft leading-snug">He leído la <a href="/politica-privacidad" class="underline underline-offset-2">política de privacidad</a> y quiero recibir por WhatsApp y email el aviso del lanzamiento y la preventa.</span></label>
+            <p class="field-error hidden mt-1.5 text-xs text-teja" data-for="rgpd">Necesitamos tu consentimiento para poder avisarte.</p></div>
+          <button type="submit" class="w-full rounded-2xl bg-teja hover:bg-teja-dark text-papel px-6 py-4 text-[13px] font-bold tracking-[.06em] shadow-[0_6px_0_#7E2F24] active:translate-y-[6px] active:shadow-none transition disabled:opacity-70"><span data-btn-text>¡AVÍSAME CUANDO ENCENDAMOS EL HORNO!</span></button>
+          <div data-info-basica></div>
+        </form>
+      </div>
     </section>
   </main>
 
@@ -103,12 +124,15 @@
         <p class="mt-2"><a href="https://wa.me/34744475239" class="hover:underline">WhatsApp · +34 744 47 52 39</a> · <a href="mailto:navidadalamalguena@gmail.com" class="hover:underline">navidadalamalguena@gmail.com</a></p>
       </div>
       <ul class="space-y-1.5 sm:text-right">
+        <li><a href="/aviso-legal" class="hover:underline">Aviso legal</a> · <a href="/politica-privacidad" class="hover:underline">Privacidad</a> · <a href="/politica-cookies" class="hover:underline">Cookies</a> · <a href="#" data-config-cookies class="hover:underline">Configurar cookies</a></li>
         <li><a href="/pestinos-malaga" class="hover:underline">Pestiños caseros en Málaga</a></li>
         <li><a href="/borrachuelos-malaguenos" class="hover:underline">Borrachuelos malagueños</a></li>
         <li><a href="/dulces-navidad-malaga" class="hover:underline">Dulces de Navidad en Málaga</a></li>
       </ul>
     </div>
+    <p class="px-4 pb-2 text-center text-xs text-cafe-soft">Navidad a la Malagueña es un proyecto de la Asociación Junior Empresa Vyseon (CIF G75287441).</p>
     <p class="pb-6 px-4 text-center text-[10px] text-cafe-soft/70">Fotos provisionales vía Wikimedia Commons (CC BY / CC BY-SA): Pestiños (Tamorlan), Borrachuelos (Toniher), Buñuelos (MiguelAlanCS).</p>
   </footer>
+  <script src="/leads.js" defer></script>
 </body>
 </html>
