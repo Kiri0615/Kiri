@@ -119,6 +119,7 @@
       if (btn) btn.disabled = true;
       if (btnText) btnText.textContent = 'Precalentando el horno…';
 
+      medirLead(data);
       enviarLead(data).then(function () {
         guardar('localStorage', 'nm_apuntado', '1');
         exito(form, data);
@@ -130,6 +131,15 @@
         recargar();
       }); // el botón se queda en «Precalentando el horno…» hasta que la página se refresca
     });
+  }
+
+  // Evento de conversión para GTM / GA4 / píxel de Meta, si están cargados (solo lo están con permiso de cookies)
+  function medirLead(data) {
+    try {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'lead', origen: data.origen, pagina: data.pagina });
+      if (typeof window.fbq === 'function') window.fbq('track', 'Lead', { content_name: data.origen });
+    } catch (e) {}
   }
 
   // Tras enviar: se refresca la página (vuelve arriba, formularios limpios) y sale el mensaje de confirmación
