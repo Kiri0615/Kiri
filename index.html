@@ -728,7 +728,13 @@
       
       // ===== Envíos: precio por zona según el código postal =====
       // Envío por Correos (Málaga capital lo llevamos nosotros). Todo se paga con el enlace de SumUp.
-      var SUMUP = 'https://pay.sumup.com/b2c/QCFD8RKX';
+      // Cada enlace de SumUp cobra un importe fijo: uno por cada total (caja + envío).
+      var SUMUP = {
+        25: 'https://pay.sumup.com/b2c/QCFD8RKX',
+        28: '', // provincia de Málaga: pegar aquí el enlace de 28 €
+        29: '', // península: pegar aquí el enlace de 29 €
+        30: ''  // islas, Ceuta y Melilla: pegar aquí el enlace de 30 €
+      };
       var ENVIOS = {
         capital:   { nombre: 'Málaga capital', precio: 0 },
         provincia: { nombre: 'Provincia de Málaga', precio: 3 },
@@ -955,7 +961,7 @@
         // Guardar el pedido en la hoja y pasar al pago (sin esperar más de 2,5 s)
         var envio = window.nmEnviarLead ? window.nmEnviarLead(data).catch(function () {}) : Promise.resolve();
         var espera = new Promise(function (r) { setTimeout(r, 2500); });
-        Promise.race([envio, espera]).then(function () { location.href = SUMUP; });
+        Promise.race([envio, espera]).then(function () { location.href = SUMUP[est.total] || SUMUP[25]; });
       });
 
       // ===== Barra de compra fija en el móvil =====
