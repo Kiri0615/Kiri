@@ -401,6 +401,23 @@
                     <p class="error-campo" id="e-cp" data-for="cp" hidden>Escribe un código postal de 5 cifras.</p>
                   </div>
                 </div>
+                <div class="campos-2 campos-dir">
+                  <div class="campo">
+                    <label for="p-localidad">Localidad</label>
+                    <input id="p-localidad" name="localidad" class="entrada-texto" type="text" autocomplete="address-level2" required placeholder="Málaga" aria-describedby="e-localidad" />
+                    <p class="error-campo" id="e-localidad" data-for="localidad" hidden>¿En qué pueblo o ciudad?</p>
+                  </div>
+                  <div class="campo">
+                    <label for="p-provincia">Provincia</label>
+                    <input id="p-provincia" name="provincia" class="entrada-texto" type="text" autocomplete="address-level1" required placeholder="Se rellena con el código postal" aria-describedby="e-provincia" />
+                    <p class="error-campo" id="e-provincia" data-for="provincia" hidden>Falta la provincia.</p>
+                  </div>
+                </div>
+                <div class="campo">
+                  <label for="p-pais">País</label>
+                  <input id="p-pais" name="pais" class="entrada-texto" type="text" autocomplete="country-name" value="España" readonly aria-describedby="n-pais" />
+                  <p class="nota-campo" id="n-pais" style="margin:.35rem 0 0;font-size:.85rem;color:var(--cafe-3)">De momento solo enviamos dentro de España.</p>
+                </div>
                 <div class="opcion">
                   <p class="opcion-titulo" id="op-dia">Día de entrega</p>
                   <div class="fichas" role="radiogroup" aria-labelledby="op-dia">
@@ -728,7 +745,7 @@
         28: 'https://pay.sumup.com/b2c/Q6WMUYKQ'
       };
       var ENVIOS = {
-        capital: { nombre: 'Málaga capital', precio: 0 },
+        capital: { nombre: 'Málaga capital y Torremolinos', precio: 0 },
         fuera:   { nombre: 'fuera de Málaga capital', precio: 3 }
       };
       // Embudo: cada paso se mide una vez en dataLayer (GA4/GTM) y en el píxel de Meta si está activo
@@ -821,6 +838,18 @@
       var form = $('#pedidoForm');
       var NOMBRES = { miel: 'con miel', azucar: 'con azúcar' };
       var valor = function (n) { return (form.elements[n].value || '').trim(); };
+      // Provincia a partir de las dos primeras cifras del código postal
+      var PROVINCIAS = ['Álava','Albacete','Alicante','Almería','Ávila','Badajoz','Illes Balears','Barcelona','Burgos','Cáceres','Cádiz','Castellón','Ciudad Real','Córdoba','A Coruña','Cuenca','Girona','Granada','Guadalajara','Gipuzkoa','Huelva','Huesca','Jaén','León','Lleida','La Rioja','Lugo','Madrid','Málaga','Murcia','Navarra','Ourense','Asturias','Palencia','Las Palmas','Pontevedra','Salamanca','Santa Cruz de Tenerife','Cantabria','Segovia','Sevilla','Soria','Tarragona','Teruel','Toledo','Valencia','Valladolid','Bizkaia','Zamora','Zaragoza','Ceuta','Melilla'];
+      form.elements.cp.addEventListener('input', function () {
+        var cp = valor('cp'), prov = form.elements.provincia;
+        if (!/^\d{5}$/.test(cp)) return;
+        var nombre = PROVINCIAS[parseInt(cp.slice(0, 2), 10) - 1];
+        if (nombre && (!prov.value || prov.dataset.auto)) { prov.value = nombre; prov.dataset.auto = '1'; if (prov.getAttribute('aria-invalid') === 'true') validar('provincia'); }
+        var loc = form.elements.localidad;
+        if (!loc.value && (CP_CAPITAL.indexOf(cp) !== -1 && cp !== '29620')) loc.value = 'Málaga';
+        if (!loc.value && cp === '29620') loc.value = 'Torremolinos';
+      });
+      form.elements.provincia.addEventListener('input', function () { delete this.dataset.auto; });
 
       function pintar(cambiado) {
         var p = valor('pestinos'), b = valor('borrachuelos');
@@ -867,7 +896,7 @@
         if (est.env) medir('add_shipping_info', { value: est.total, shipping_tier: est.zona }, 'AddToCart');
       });
       function pasos() {
-        var ok2 = !!zonaDe(valor('cp')) && valor('direccion').length >= 5;
+        var ok2 = !!zonaDe(valor('cp')) && valor('direccion').length >= 5 && valor('localidad').length >= 2 && valor('provincia').length >= 2;
         var ok3 = ok2 && valor('nombre').length >= 2 && valor('telefono').length >= 9 && /@/.test(valor('email'));
         var activo = !ok2 ? 2 : !ok3 ? 3 : 4;
         if (!form.dataset.tocado) activo = 1;
@@ -893,6 +922,8 @@
       var validadores = {
         direccion: function (v) { return v.trim().length >= 5; },
         cp: function (v) { return !!zonaDe(v.trim()); },
+        localidad: function (v) { return v.trim().length >= 2; },
+        provincia: function (v) { return v.trim().length >= 2; },
         nombre: function (v) { return v.trim().length >= 2; },
         telefono: function (v) { var c = v.replace(/[\s\-().]/g, ''); return /^[6789]\d{8}$/.test(c.replace(/^(\+34|0034)/, '')) || /^\+\d{9,15}$/.test(c); },
         email: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()); },
@@ -920,7 +951,7 @@
 
         var est = pintar(), env = est.env;
         var caja = 'Pestiños ' + NOMBRES[valor('pestinos')] + ', borrachuelos ' + NOMBRES[valor('borrachuelos')] + ', roscos fritos y roscos de vino';
-        var destino = valor('direccion') + ', ' + valor('cp');
+        var destino = valor('direccion') + ', ' + valor('cp') + ' ' + valor('localidad') + ' (' + valor('provincia') + '), ' + valor('pais');
         var notas = valor('notas');
         var envioTxt = env.precio === 0 ? 'gratis' : euros(env.precio) + ' (Correos)';
         var totalTxt = euros(est.total);
@@ -933,7 +964,7 @@
           consentimiento: 'true', origen: resumen, pagina: location.pathname, referencia: document.referrer || '',
           utm: location.search || '', fecha: new Date().toISOString(),
           pedido: caja, pestinos: valor('pestinos'), borrachuelos: valor('borrachuelos'),
-          entrega: est.zona, dia: dia, direccion: valor('direccion'), cp: valor('cp'), notas: notas,
+          entrega: est.zona, dia: dia, direccion: valor('direccion'), cp: valor('cp'), localidad: valor('localidad'), provincia: valor('provincia'), pais: valor('pais'), notas: notas,
           envio: String(env.precio), total: String(est.total), referencia_pedido: ref
         };
         // Para la página «¡Al horno!» al volver de SumUp
