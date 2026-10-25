@@ -12,7 +12,7 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="preload" href="/fonts/fraunces-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/styles.css?v=5" />
-  <link rel="stylesheet" href="/site.css?v=3" />
+  <link rel="stylesheet" href="/site.css?v=4" />
 </head>
 <body class="sitio" data-sin-popup>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -74,6 +74,31 @@
                 <rect width="22" height="22" fill="#EFE3CC"/><path d="M0 22 L22 0" stroke="#E2D2B4" stroke-width=".8"/>
               </pattern>
               <filter id="f-sombra" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#2C1E16" flood-opacity=".28"/></filter>
+              <!-- Sello «Navidad a la Malagueña» con un pestiño, como el papel de seda de la caja -->
+              <path id="arco-sup" d="M-24 4 A24 24 0 0 1 24 4"/>
+              <path id="arco-inf" d="M-27 -1 A27 27 0 0 0 27 -1"/>
+              <g id="d-sello" fill="none" stroke="#B5402F">
+                <circle r="33" stroke-width="1.3"/>
+                <text font-family="Fraunces, Georgia, serif" font-size="8.6" font-weight="600" fill="#B5402F" stroke="none" text-anchor="middle"><textPath href="#arco-sup" startOffset="50%">Navidad a la</textPath></text>
+                <text font-family="Fraunces, Georgia, serif" font-size="8.6" font-weight="600" fill="#B5402F" stroke="none" text-anchor="middle"><textPath href="#arco-inf" startOffset="50%">Malagueña</textPath></text>
+                <g transform="translate(0 0) rotate(-14)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M-21 3 C-15 -6 -5 -10 6 -9 C14 -8 20 -5 21 -1 C17 7 6 10 -5 9 C-13 8 -19 6 -21 3Z" fill="#F6F1E9"/>
+                  <path d="M-15 1 C-8 -3 1 -4 10 -3 M-14 5 C-6 3 4 3 13 1"/>
+                  <path d="M-6 -7 C-4 -3 -4 2 -7 8 M4 -8 C7 -3 7 3 4 9"/>
+                </g>
+              </g>
+              <linearGradient id="g-brillo-seda" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#fff" stop-opacity=".35"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#5A3B22" stop-opacity=".10"/>
+              </linearGradient>
+              <pattern id="p-seda" width="150" height="130" patternUnits="userSpaceOnUse">
+                <rect width="150" height="130" fill="#F6F1E9"/>
+                <use href="#d-sello" transform="translate(38 36) rotate(-8)" opacity=".85"/>
+                <use href="#d-sello" transform="translate(113 101) rotate(6)" opacity=".8"/>
+              </pattern>
+              <filter id="f-arruga" x="0" y="0" width="100%" height="100%">
+                <feTurbulence type="fractalNoise" baseFrequency=".012 .03" numOctaves="3" seed="7" result="r"/>
+                <feColorMatrix in="r" type="matrix" values="0 0 0 0 .45  0 0 0 0 .38  0 0 0 0 .32  0 0 0 .55 -.18"/>
+              </filter>
             </defs>
   </svg>
   <a class="salto" href="#contenido">Saltar al contenido</a>
