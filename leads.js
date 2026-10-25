@@ -73,6 +73,8 @@
     return fetch(LEAD_ENDPOINT, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(data) });
   }
 
+  window.nmEnviarLead = enviarLead; // lo usa el formulario de pedido de la portada
+
   function leadPorWhatsApp(data) {
     var txt = '¡Hola! Quiero apuntarme a la lista de espera de Navidad a la Malagueña.\nNombre: ' + data.nombre +
       '\nTeléfono: ' + data.telefono + '\nEmail: ' + data.email;
