@@ -539,3 +539,11 @@ body.sitio {
 .horno-pasos li { display: flex; gap: .75rem; align-items: flex-start; padding: .9rem 1.1rem; border-radius: var(--r-m); background: var(--papel); }
 .horno-pasos b { display: grid; place-items: center; width: 1.8rem; height: 1.8rem; border-radius: 50%; background: var(--miel); flex-shrink: 0; font-size: .85rem; }
 @media (prefers-reduced-motion: reduce) { .horno-calor { animation: none; } }
+
+/* Publicaciones de Instagram (se cargan solo al pulsar) */
+.ig-posts { margin-top: clamp(2rem, 5vw, 3.5rem); }
+.ig-cargar { text-align: center; }
+.ig-cargar p { margin: .6rem 0 0; font-size: .85rem; color: var(--cafe-3); }
+.ig-rejilla { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr)); gap: 1.25rem; align-items: start; }
+.ig-rejilla[hidden] { display: none; }
+.ig-rejilla .instagram-media { margin: 0 !important; min-width: 0 !important; width: 100% !important; max-width: none !important; border-radius: var(--r-m, 1rem) !important; }
