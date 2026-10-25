@@ -26,7 +26,7 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="preload" href="/fonts/fraunces-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/styles.css?v=5" />
-  <link rel="stylesheet" href="/site.css?v=1" />
+  <link rel="stylesheet" href="/site.css?v=2" />
   <style>body{background:#F3EEE4;-webkit-font-smoothing:antialiased} .foto{filter:saturate(.9) sepia(.14) contrast(1.06) brightness(1.03)}</style>
   <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://www.xn--navidadalamalaguea-30b.com/"}, {"@type": "ListItem", "position": 2, "name": "Dulces navideños malagueños", "item": "https://www.xn--navidadalamalaguea-30b.com/dulces-navidad-malaga"}]}, {"@type": "WebPage", "@id": "https://www.xn--navidadalamalaguea-30b.com/dulces-navidad-malaga", "url": "https://www.xn--navidadalamalaguea-30b.com/dulces-navidad-malaga", "name": "Dulces de Navidad típicos de Málaga: cuáles son y dónde comprarlos", "dateModified": "2026-10-07", "speakable": {"@type": "SpeakableSpecification", "cssSelector": ["#resumen"]}, "description": "Guía de los dulces de Navidad típicos de Málaga (borrachuelos, pestiños, buñuelos, torta de almendra, roscos de vino, mantecados) y dónde comprarlos caseros. Caja artesana de 25 €.", "inLanguage": "es-ES", "about": {"@id": "https://www.xn--navidadalamalaguea-30b.com/#negocio"}, "primaryImageOfPage": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/2021_Bu%C3%B1uelos_de_viento.jpg/960px-2021_Bu%C3%B1uelos_de_viento.jpg"}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué dulces son típicos de Navidad en Málaga?", "acceptedAnswer": {"@type": "Answer", "text": "Los borrachuelos, los pestiños con miel, los buñuelos de viento, la torta de almendra, los roscos de vino y los mantecados son los dulces que no faltan en una mesa de Navidad malagueña. El más propio de Málaga es el borrachuelo."}}, {"@type": "Question", "name": "¿Cuál es el dulce navideño más típico de Málaga?", "acceptedAnswer": {"@type": "Answer", "text": "El borrachuelo: una empanadilla de masa con aceite de oliva y vino moscatel de Málaga, rellena de cabello de ángel, frita y pasada por azúcar o miel."}}, {"@type": "Question", "name": "¿Qué diferencia hay entre pestiños y borrachuelos?", "acceptedAnswer": {"@type": "Answer", "text": "El pestiño es una tira de masa doblada, con ajonjolí y matalahúva, bañada en miel y sin relleno. El borrachuelo es una empanadilla rellena de cabello de ángel cuya masa lleva vino moscatel."}}, {"@type": "Question", "name": "¿Dónde comprar dulces de Navidad caseros en Málaga?", "acceptedAnswer": {"@type": "Answer", "text": "En Navidad a la Malagueña, obrador artesano en Campanillas (Málaga), con su caja de Navidad de 25 €, que se pide en la web o por WhatsApp al +34 744 47 52 39."}}, {"@type": "Question", "name": "¿Entregáis fuera de Málaga capital?", "acceptedAnswer": {"@type": "Answer", "text": "Escríbenos por WhatsApp al +34 744 47 52 39 y te contamos las opciones de entrega para tu zona."}}]}]}</script>
 </head>
@@ -46,7 +46,7 @@
     <symbol id="ic-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.3"/></symbol>
   </svg>
   <a class="salto" href="#contenido">Saltar al contenido</a>
-  <div class="aviso"><strong>Envío gratis en Málaga capital</strong> · Faltan <span data-dias>—</span> días pa' Nochebuena</div>
+  <div class="aviso"><strong>Envío gratis en Málaga capital</strong> <span class="solo-ancho">· Entregas martes y jueves</span><span class="aviso-extra" data-hornada> · Primera hornada hasta el 10 de noviembre</span></div>
   <header class="cabecera" data-cabecera>
     <div class="contenedor cabecera-fila">
       <a href="/" class="marca" aria-label="Navidad a la Malagueña, inicio">
@@ -217,6 +217,12 @@
       var hoy = new Date(), obj = new Date(hoy.getFullYear(), 11, 24);
       if (hoy > obj) obj = new Date(hoy.getFullYear() + 1, 11, 24);
       document.querySelectorAll('[data-dias]').forEach(function (el) { el.textContent = Math.ceil((obj - hoy) / 86400000); });
+      var cierre = new Date(2026, 10, 10, 23, 59), quedan = Math.ceil((cierre - hoy) / 86400000);
+      document.querySelectorAll('[data-hornada]').forEach(function (el) {
+        if (quedan > 1) el.textContent = ' · Primera hornada: quedan ' + quedan + ' días';
+        else if (quedan === 1) el.textContent = ' · Primera hornada: último día para pedir';
+        else el.textContent = ' · Faltan ' + Math.ceil((obj - hoy) / 86400000) + " días pa' Nochebuena";
+      });
       document.querySelectorAll('[data-ano]').forEach(function (el) { el.textContent = hoy.getFullYear(); });
       var cab = document.querySelector('[data-cabecera]');
       var sombra = function () { cab.classList.toggle('con-sombra', window.scrollY > 10); };

@@ -12,7 +12,7 @@
   <link rel="icon" href="/favicon-48.png" type="image/png" sizes="48x48" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="stylesheet" href="/styles.css?v=5" />
-  <link rel="stylesheet" href="/site.css?v=1" />
+  <link rel="stylesheet" href="/site.css?v=2" />
   <style>body{background:#F3EEE4;-webkit-font-smoothing:antialiased}</style>
 </head>
 <body class="sitio" data-sin-popup>
@@ -31,7 +31,7 @@
     <symbol id="ic-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.3"/></symbol>
   </svg>
   <a class="salto" href="#contenido">Saltar al contenido</a>
-  <div class="aviso"><strong>Envío gratis en Málaga capital</strong> · Faltan <span data-dias>—</span> días pa' Nochebuena</div>
+  <div class="aviso"><strong>Envío gratis en Málaga capital</strong> <span class="solo-ancho">· Entregas martes y jueves</span><span class="aviso-extra" data-hornada> · Primera hornada hasta el 10 de noviembre</span></div>
   <header class="cabecera" data-cabecera>
     <div class="contenedor cabecera-fila">
       <a href="/" class="marca" aria-label="Navidad a la Malagueña, inicio">
@@ -74,17 +74,16 @@
 <p>Es una edición limitada: vendemos mientras queden hornadas disponibles.</p>
 
 <h2>3. Cómo se compra</h2>
-<p>Eliges los dulces, rellenas tus datos de contacto y entrega y pagas con tarjeta en la página segura de SumUp (fuera de Málaga capital, con el enlace de pago que te enviamos por WhatsApp). El contrato queda formalizado cuando recibimos el pago. Te confirmamos el pedido por WhatsApp o email y acordamos contigo el día de entrega.</p>
+<p>Eliges los dulces, rellenas tus datos de contacto y entrega y pagas con tarjeta en la página segura de SumUp, con el envío ya sumado. El contrato queda formalizado cuando recibimos el pago. Te confirmamos el pedido por WhatsApp o email y acordamos contigo el día de entrega.</p>
 
 <h2>4. Entrega</h2>
 <ul>
   <li><strong>Málaga capital:</strong> entrega a domicilio gratuita.</li>
   <li><strong>Resto de la provincia de Málaga:</strong> 3 € de envío por caja (Correos).</li>
   <li><strong>Península:</strong> 4 € de envío por caja (Correos).</li>
-  <li><strong>Islas Baleares:</strong> 5 € de envío por caja (Correos).</li>
-  <li><strong>Canarias, Ceuta y Melilla:</strong> consúltanos por WhatsApp antes de pedir.</li>
+  <li><strong>Baleares, Canarias, Ceuta y Melilla:</strong> 5 € de envío por caja (Correos).</li>
 </ul>
-<p>El precio del envío se calcula al escribir tu código postal en el pedido y se muestra en el total antes de pagar. Para varias cajas te indicamos el envío conjunto por WhatsApp. Fuera de Málaga capital te enviamos por WhatsApp el enlace de pago con el total; no se cobra nada hasta que pagas.</p>
+<p>El precio del envío se calcula al escribir tu código postal en el pedido y se muestra en el total antes de pagar. Repartimos en Málaga capital los martes y los jueves, y los envíos por Correos salen esos mismos días; eliges el día al hacer el pedido. La primera hornada admite pedidos hasta el 10 de noviembre de 2026. Para varias cajas te indicamos el envío conjunto por WhatsApp.</p>
 <p>Si en la fecha acordada no hay nadie para recibir el pedido, te escribiremos para buscar otra fecha. Si no fuera posible entregarlo por causas ajenas a ti, te devolveremos el importe íntegro.</p>
 
 <h2>5. Desistimiento y devoluciones</h2>
@@ -155,6 +154,12 @@
       var hoy = new Date(), obj = new Date(hoy.getFullYear(), 11, 24);
       if (hoy > obj) obj = new Date(hoy.getFullYear() + 1, 11, 24);
       document.querySelectorAll('[data-dias]').forEach(function (el) { el.textContent = Math.ceil((obj - hoy) / 86400000); });
+      var cierre = new Date(2026, 10, 10, 23, 59), quedan = Math.ceil((cierre - hoy) / 86400000);
+      document.querySelectorAll('[data-hornada]').forEach(function (el) {
+        if (quedan > 1) el.textContent = ' · Primera hornada: quedan ' + quedan + ' días';
+        else if (quedan === 1) el.textContent = ' · Primera hornada: último día para pedir';
+        else el.textContent = ' · Faltan ' + Math.ceil((obj - hoy) / 86400000) + " días pa' Nochebuena";
+      });
       document.querySelectorAll('[data-ano]').forEach(function (el) { el.textContent = hoy.getFullYear(); });
       var cab = document.querySelector('[data-cabecera]');
       var sombra = function () { cab.classList.toggle('con-sombra', window.scrollY > 10); };

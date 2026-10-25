@@ -12,7 +12,7 @@
   <link rel="icon" href="/favicon-48.png" type="image/png" sizes="48x48" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="stylesheet" href="/styles.css?v=5" />
-  <link rel="stylesheet" href="/site.css?v=1" />
+  <link rel="stylesheet" href="/site.css?v=2" />
   <style>body{background:#F3EEE4;-webkit-font-smoothing:antialiased}</style>
 </head>
 <body class="sitio" data-sin-popup>
@@ -31,7 +31,7 @@
     <symbol id="ic-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.3"/></symbol>
   </svg>
   <a class="salto" href="#contenido">Saltar al contenido</a>
-  <div class="aviso"><strong>Envío gratis en Málaga capital</strong> · Faltan <span data-dias>—</span> días pa' Nochebuena</div>
+  <div class="aviso"><strong>Envío gratis en Málaga capital</strong> <span class="solo-ancho">· Entregas martes y jueves</span><span class="aviso-extra" data-hornada> · Primera hornada hasta el 10 de noviembre</span></div>
   <header class="cabecera" data-cabecera>
     <div class="contenedor cabecera-fila">
       <a href="/" class="marca" aria-label="Navidad a la Malagueña, inicio">
@@ -150,6 +150,12 @@
       var hoy = new Date(), obj = new Date(hoy.getFullYear(), 11, 24);
       if (hoy > obj) obj = new Date(hoy.getFullYear() + 1, 11, 24);
       document.querySelectorAll('[data-dias]').forEach(function (el) { el.textContent = Math.ceil((obj - hoy) / 86400000); });
+      var cierre = new Date(2026, 10, 10, 23, 59), quedan = Math.ceil((cierre - hoy) / 86400000);
+      document.querySelectorAll('[data-hornada]').forEach(function (el) {
+        if (quedan > 1) el.textContent = ' · Primera hornada: quedan ' + quedan + ' días';
+        else if (quedan === 1) el.textContent = ' · Primera hornada: último día para pedir';
+        else el.textContent = ' · Faltan ' + Math.ceil((obj - hoy) / 86400000) + " días pa' Nochebuena";
+      });
       document.querySelectorAll('[data-ano]').forEach(function (el) { el.textContent = hoy.getFullYear(); });
       var cab = document.querySelector('[data-cabecera]');
       var sombra = function () { cab.classList.toggle('con-sombra', window.scrollY > 10); };
