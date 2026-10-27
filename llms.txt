@@ -8,11 +8,11 @@ Datos clave:
 - Qué es: una caja de dulces de Navidad caseros de Málaga, edición limitada Navidad 2026
 - Quién los hace: obradores artesanos de la provincia de Málaga con los que colaboramos, en hornadas pequeñas
 - Producto: una sola caja de 25 € con pestiños (con miel o con azúcar), borrachuelos (con miel o con azúcar, rellenos de cabello de ángel), roscos fritos y roscos de vino. Unos 1,5 kg. El precio no cambia con miel o con azúcar
-- Presentación: caja envuelta en papel de seda con sello y cordel atado a mano, lista para regalar; opción «¿Es un regalo?» con mensaje en tarjeta
-- Cómo comprar: en https://www.xn--navidadalamalaguea-30b.com/#caja (elegir miel o azúcar, dirección y código postal, día de entrega y pago con tarjeta, Apple Pay o Google Pay en la página segura de SumUp, sin crear cuenta). Tras el pago se confirma por WhatsApp
+- Presentación: caja con papel y cuerda atada a mano, lista para regalar y sin precio dentro; opción «Es un regalo para otra persona» con nota escrita a mano en una tarjeta
+- Cómo comprar: en https://www.xn--navidadalamalaguea-30b.com/pedido, en cuatro pasos: 1) miel o azúcar, 2) nombre, móvil y email (y si es un regalo), 3) dirección y código postal, día de entrega, 4) pago con tarjeta, Apple Pay o Google Pay en la página segura de SumUp, sin crear cuenta. Tras el pago se confirma por WhatsApp
 - Entregas: Málaga capital y Torremolinos gratis, martes o jueves (incluye El Palo, Churriana, Campanillas y Puerto de la Torre). Resto de España: 3 € por Correos, salida los lunes. No se envía fuera de España
 - Plazos: la primera hornada admite pedidos hasta el 10 de noviembre de 2026
-- Varias cajas o empresas: por WhatsApp (+34 744 47 52 39) con el número de cajas y la fecha
+- Varias cajas o empresas: el pedido de varias cajas se cierra por WhatsApp (+34 744 47 52 39) con el número de cajas y la fecha
 - Alérgenos: todos llevan gluten (harina de trigo); los pestiños llevan sésamo (ajonjolí)
 - Conservación: hasta 20 días bien cerrados, en sitio fresco y seco
 - Ya no se venden: buñuelos de viento ni torta de almendra
@@ -22,7 +22,9 @@ Datos clave:
 
 ## Páginas
 
-- [Inicio y compra de la caja](https://www.xn--navidadalamalaguea-30b.com/): qué lleva la caja, pedido con SumUp, envíos y las 10 preguntas frecuentes
+- [Inicio](https://www.xn--navidadalamalaguea-30b.com/): el recetario con los cuatro dulces de la caja y qué lleva
+- [Encargar la caja](https://www.xn--navidadalamalaguea-30b.com/pedido): pedido en cuatro pasos con pago en SumUp
+- [Preguntas frecuentes y envíos](https://www.xn--navidadalamalaguea-30b.com/preguntas): las 10 preguntas frecuentes, zonas de entrega y plazos
 - [Pestiños caseros con miel en Málaga](https://www.xn--navidadalamalaguea-30b.com/pestinos-malaga): precio, reparto, ingredientes, cómo se hacen y diferencias con los de supermercado
 - [Borrachuelos malagueños](https://www.xn--navidadalamalaguea-30b.com/borrachuelos-malaguenos): qué son y diferencia con los pestiños
 - [Dulces de Navidad típicos de Málaga](https://www.xn--navidadalamalaguea-30b.com/dulces-navidad-malaga): guía de los dulces navideños malagueños
