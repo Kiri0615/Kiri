@@ -148,7 +148,6 @@ button { cursor: pointer; }
 .libro h3 a:hover { text-decoration: underline; text-decoration-thickness: 3px; }
 .capitular { font: 400 19px/1.55 var(--serif); max-width: 440px; }
 .capitular { font-size: 21px; }
-.capitular::first-letter { font-weight: 900; color: var(--rojo); }
 .gramos { font-size: 14px; color: var(--gris-2); }
 .nota-mano { align-self: flex-end; transform: rotate(-3deg); }
 .pie-libro { margin-top: auto; display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 13px; color: var(--gris); }
