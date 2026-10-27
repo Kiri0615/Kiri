@@ -1,0 +1,178 @@
+/* =========================================================
+   Navidad a la Malagueña · capa «Ultimate» (estilo recetario)
+   Se carga después de site.css en las páginas con body.u.
+   Colores y tipos del diseño nuevo: crema #FFF6E6, tinta #2A1B13,
+   rojo #C23A24, Fraunces + Caveat + DM Mono (con respaldo monoespaciado).
+   ========================================================= */
+@font-face { font-family: "DM Mono"; font-style: normal; font-weight: 400; font-display: swap; src: url(/fonts/dm-mono-latin-400.woff2) format("woff2"); }
+@font-face { font-family: "DM Mono"; font-style: normal; font-weight: 500; font-display: swap; src: url(/fonts/dm-mono-latin-500.woff2) format("woff2"); }
+.u {
+  --crema: #FFF6E6;
+  --papel: #F9EBD2;
+  --cafe: #2A1B13;
+  --teja: #C23A24;
+  --teja-osc: #8E2A18;
+  --miel: #E8A33D;
+  --tinta: #2A1B13;
+  --mono: "DM Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --sombra-dura: 5px 5px 0 var(--tinta);
+}
+body.u { background: var(--crema); }
+
+/* Botones con sombra dura, como el diseño */
+.u .boton {
+  border: 2px solid var(--tinta); border-radius: .35rem;
+  box-shadow: 4px 4px 0 var(--tinta);
+  transition: transform .18s ease, box-shadow .18s ease, background-color .2s;
+}
+.u .boton:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 var(--tinta); }
+.u .boton:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--tinta); }
+.u .boton-peque { box-shadow: 3px 3px 0 var(--tinta); }
+.u .boton-peque:hover { box-shadow: 5px 5px 0 var(--tinta); }
+
+/* Cabecera con borde de tinta y sello */
+.u .cabecera { background: rgba(255,246,230,.94); border-bottom: 2px solid var(--tinta); }
+.u .marca { flex-direction: row; align-items: center; gap: .6rem; }
+.u .marca-sello { width: 2.6rem; height: 2.6rem; border-radius: 50%; flex-shrink: 0; }
+.u .marca-txt { display: inline-flex; flex-direction: column; line-height: 1; }
+.u .pie .marca-sello { width: 3.2rem; height: 3.2rem; }
+
+/* Preguntas con borde de tinta */
+.u .pregunta { border: 2px solid var(--tinta); border-radius: .4rem; }
+.u .pregunta[open] { box-shadow: var(--sombra-dura); border-color: var(--tinta); }
+
+/* Marcadores de datos que faltan: se ven en amarillo para no publicarlos sin querer */
+.pendiente { background: #FFE58A; outline: 1px dashed #B58900; padding: 0 .25em; border-radius: .2em; font-style: normal; }
+
+/* Etiqueta tipo máquina de escribir */
+.u-etiqueta { font: 500 .78rem/1.3 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--teja); margin: 0; }
+.u-mano { font-family: var(--mano); font-weight: 700; color: var(--teja); }
+
+/* ---------- HERO con foto histórica ---------- */
+.u-hero.hero { padding: 0 0 clamp(3rem, 7vw, 5rem); overflow: visible; }
+.u-hero.hero::before { content: none; }
+.u-hero-foto { position: relative; height: clamp(320px, 62vh, 620px); overflow: hidden; background: var(--tinta); }
+.u-hero-foto img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; filter: sepia(.35) contrast(1.05); animation: u-kb 22s ease-out both; }
+@keyframes u-kb { from { scale: 1.12; } to { scale: 1; } }
+.u-pie-foto {
+  position: absolute; top: 1rem; right: 1rem; margin: 0; padding: .35rem .8rem; background: var(--crema); color: var(--tinta);
+  border: 2px solid var(--tinta); font: 700 clamp(1rem, 2vw, 1.35rem)/1.1 var(--mano); transform: rotate(3deg);
+}
+.u-hero-fila { position: relative; margin-top: clamp(-180px, -16vw, -90px); display: flex; flex-wrap: wrap; align-items: flex-end; gap: 1.5rem 2rem; }
+.u-portada {
+  flex: 1 1 32rem; max-width: 44rem; background: var(--crema); border: 2px solid var(--tinta);
+  box-shadow: 12px 12px 0 var(--tinta); transform: rotate(-1.2deg); animation: u-sube .9s cubic-bezier(.2,.8,.2,1) both;
+}
+@keyframes u-sube { from { opacity: 0; translate: 0 28px; } to { opacity: 1; translate: 0 0; } }
+.u-mantel { height: 16px; border-bottom: 2px solid var(--tinta); background-color: var(--crema);
+  background-image: linear-gradient(90deg, rgba(194,58,36,.6) 50%, transparent 50%), linear-gradient(rgba(194,58,36,.6) 50%, transparent 50%);
+  background-size: 16px 16px; }
+.u-portada-cuerpo { padding: clamp(1.4rem, 4vw, 2.5rem); display: grid; gap: 1.1rem; justify-items: start; }
+.u-hero .titulo-1 { font-weight: 800; font-size: clamp(2.4rem, 6vw, 4.6rem); line-height: .98; font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1; }
+.u-hero .titulo-1 em { font-weight: 500; }
+.u-hero .entrada { color: var(--cafe); }
+.u-hero .hero-ctas .u-mano { font-size: 1.6rem; transform: rotate(-4deg); }
+.u-hero .garantias { margin-top: .25rem; }
+.u-moneda {
+  width: 9rem; height: 9rem; border-radius: 50%; background: var(--miel); color: var(--tinta); border: 2px solid var(--tinta);
+  box-shadow: var(--sombra-dura); display: grid; place-content: center; text-align: center; transform: rotate(-8deg);
+  animation: u-golpe .5s .5s cubic-bezier(.2,1.6,.4,1) both; margin-bottom: 1.5rem;
+}
+.u-moneda b { font: 800 2.4rem/1 var(--serif); }
+.u-moneda small { font: 500 .7rem/1.2 var(--mono); letter-spacing: .14em; text-transform: uppercase; }
+@keyframes u-golpe { from { opacity: 0; scale: 2.6; rotate: -30deg; } to { opacity: 1; scale: 1; rotate: -8deg; } }
+
+/* ---------- Banda «La receta no ha cambiado» + diccionario ---------- */
+.u-malaga { position: relative; background: var(--tinta); color: var(--crema); isolation: isolate; overflow: hidden; }
+.u-malaga-foto { position: relative; height: clamp(260px, 45vw, 520px); }
+.u-malaga-foto img { width: 100%; height: 100%; object-fit: cover; filter: sepia(.4) contrast(1.05); }
+.u-malaga-foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(42,27,19,0) 40%, rgba(42,27,19,.95) 100%); }
+.u-malaga-foto .u-pie-foto { left: 1rem; right: auto; transform: rotate(-3deg); z-index: 1; }
+.u-malaga-titulo { position: relative; z-index: 1; margin-top: clamp(-9rem, -12vw, -4rem); }
+.u-malaga-titulo h2 { margin: 0; font: 800 clamp(2.2rem, 6vw, 4.6rem)/1 var(--serif); letter-spacing: -.03em; font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1; }
+.u-malaga-titulo h2 em { display: block; font-weight: 500; color: var(--miel); }
+.u-diccionario { padding-block: clamp(2.5rem, 6vw, 4rem) clamp(3.5rem, 8vw, 5.5rem); }
+.u-diccionario .u-etiqueta { color: var(--miel); }
+.u-dic { list-style: none; margin: 1.5rem 0 0; padding: 0; display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); }
+.u-dic li { border-top: 1px solid rgba(255,246,230,.25); padding-top: 1rem; }
+.u-dic dfn { display: block; font: 700 1.6rem/1.1 var(--serif); font-style: normal; color: var(--crema); }
+.u-dic span { display: block; margin-top: .4rem; font: 400 .9rem/1.5 var(--mono); color: rgba(255,246,230,.75); }
+
+/* ---------- La Sobremesa (avance en la portada y página) ---------- */
+.u-sobremesa-cab { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 1rem; margin-bottom: 2rem; }
+.u-sobremesa-cab .titulo-2 { font-weight: 800; }
+.u-sobremesa-cab p { margin: .5rem 0 0; font: italic 400 1.15rem/1.4 var(--serif); color: var(--cafe-2); }
+.u-ver-todo { font: 500 .9rem/1 var(--mono); color: var(--teja); text-decoration: underline; text-underline-offset: 4px; }
+.u-sobremesa { display: grid; gap: 2rem; }
+@media (min-width: 860px) { .u-sobremesa { grid-template-columns: 1.1fr 1fr; align-items: start; } }
+.u-destacado { display: grid; gap: 1rem; text-decoration: none; color: inherit; }
+.u-destacado-foto { border: 2px solid var(--tinta); box-shadow: var(--sombra-dura); overflow: hidden; aspect-ratio: 4 / 3; }
+.u-destacado-foto img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2,.8,.2,1); }
+.u-destacado:hover .u-destacado-foto img { transform: scale(1.03); }
+.u-destacado h3 { margin: 0; font: 700 clamp(1.4rem, 2.6vw, 1.9rem)/1.15 var(--serif); }
+.u-destacado p { margin: 0; color: var(--cafe-2); }
+.u-lista { list-style: none; margin: 0; padding: 0; counter-reset: art; }
+.u-lista li { counter-increment: art; display: grid; grid-template-columns: 2.6rem 1fr; gap: .25rem 1rem; padding: 1.1rem 0; border-bottom: 1px solid rgba(42,27,19,.18); }
+.u-lista li::before { content: counter(art, decimal-leading-zero); grid-row: span 2; font: italic 600 1.6rem/1 var(--serif); color: var(--teja); }
+.u-lista h3 { margin: 0; font: 700 1.2rem/1.25 var(--serif); }
+.u-lista h3 a { text-decoration: none; }
+.u-lista h3 a:hover { color: var(--teja); text-decoration: underline; }
+.u-pronto { font: 500 .72rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--cafe-3); }
+.u-chips { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0 0 2rem; padding: 0; list-style: none; }
+.u-chips li { padding: .45rem .9rem; border: 2px solid var(--tinta); font: 500 .85rem/1 var(--mono); background: var(--crema); }
+.u-chips li:first-child { background: var(--teja); color: var(--crema); }
+
+/* Palabra de la semana / recetario / carta */
+.u-tarjetas { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); margin-top: clamp(3rem, 6vw, 4.5rem); }
+.u-tarjeta { border: 2px solid var(--tinta); background: var(--crema); box-shadow: var(--sombra-dura); padding: 1.5rem; display: grid; gap: .8rem; align-content: start; }
+.u-tarjeta-oscura { background: var(--tinta); color: var(--crema); }
+.u-tarjeta-oscura .u-etiqueta { color: var(--miel); }
+.u-tarjeta h3 { margin: 0; font: 800 1.9rem/1.05 var(--serif); }
+.u-tarjeta p { margin: 0; }
+.u-tarjeta blockquote { margin: 0; font: 700 1.5rem/1.2 var(--mano); color: var(--teja); }
+.u-tarjeta-oscura blockquote { color: var(--miel); }
+
+/* ---------- Franja de datos rápidos ---------- */
+.u-datos { background: var(--miel); color: var(--tinta); border-block: 2px solid var(--tinta); }
+.u-datos ul { list-style: none; margin: 0 auto; padding-block: clamp(1.75rem, 4vw, 2.5rem); display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); }
+.u-datos strong { display: block; font: 500 .75rem/1.2 var(--mono); letter-spacing: .14em; text-transform: uppercase; margin-bottom: .45rem; }
+.u-datos span { font: 500 1.05rem/1.45 var(--serif); }
+.u-datos a { text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---------- Marquesina final ---------- */
+.u-marquesina { background: var(--teja); color: var(--crema); border-block: 2px solid var(--tinta); overflow: hidden; padding: .9rem 0; }
+.u-marquesina-pista { display: flex; width: max-content; animation: u-marq 32s linear infinite; }
+.u-marquesina-pista span { font: 800 clamp(1.8rem, 4.5vw, 3.2rem)/1 var(--serif); white-space: nowrap; padding-right: 2rem; }
+.u-marquesina-pista em { font-weight: 500; color: #FFD27A; }
+@keyframes u-marq { to { transform: translateX(-50%); } }
+
+/* ---------- Página de pestiños ---------- */
+.u-datos-compra { list-style: none; margin: 1.5rem 0; padding: 1.25rem 1.4rem; border: 2px solid var(--tinta); background: var(--crema); box-shadow: var(--sombra-dura); display: grid; gap: .7rem; }
+.u-datos-compra li { color: var(--cafe-2); }
+.u-datos-compra b { color: var(--cafe); }
+.u-linea-hero { font: 500 .9rem/1.5 var(--mono); color: var(--cafe); margin: 1rem 0 0; }
+.u-tabla { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: .98rem; background: var(--crema); border: 2px solid var(--tinta); }
+.u-tabla th, .u-tabla td { border: 1px solid rgba(42,27,19,.25); padding: .7rem .8rem; text-align: left; vertical-align: top; }
+.u-tabla thead th { background: var(--tinta); color: var(--crema); font: 500 .8rem/1.2 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.u-tabla tbody th { font-weight: 700; color: var(--cafe); }
+.prosa ol { padding-left: 1.3rem; }
+.prosa ol li, .prosa ul li { margin-bottom: .4rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  .u-hero-foto img, .u-portada, .u-moneda, .u-marquesina-pista { animation: none; }
+  .u .boton, .u-destacado-foto img { transition: none; }
+}
+@media (max-width: 640px) {
+  .u-portada { transform: none; box-shadow: 6px 6px 0 var(--tinta); }
+  .u-moneda { width: 7rem; height: 7rem; margin: 0 0 0 auto; }
+  .u-moneda b { font-size: 1.9rem; }
+}
+
+/* En el hero nuevo las garantías se apilan en vez de deslizarse */
+.u-hero .garantias { flex-wrap: wrap; overflow: visible; margin-inline: 0; padding-inline: 0; max-width: none; }
+.u-hero .garantias li { flex-shrink: 1; }
+
+/* Viñetas en el texto largo (el reset de Tailwind las quita) */
+.u .prosa ul:not(.u-datos-compra) { list-style: disc; padding-left: 1.3rem; }
+.u .prosa ol { list-style: decimal; }
+.u .prosa li::marker { color: var(--teja); }
