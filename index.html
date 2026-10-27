@@ -128,7 +128,7 @@
       <article class="libro" id="cap-rfri" role="tabpanel" aria-labelledby="tab-rfri" hidden>
         <div class="pagina-izq">
           <p class="capitulo">Capítulo III</p>
-          <h3 class="wonk"><a href="/dulces-navidad-malaga">Roscos fritos</a></h3>
+          <h3 class="wonk"><a href="/#receta">Roscos fritos</a></h3>
           <p class="capitular">Rosco frito tradicional, rebozado en azúcar.</p>
           <p class="gramos">400 g · siempre en la caja</p>
           <p class="mano nota-mano">pa mojar en el café, aro</p>
@@ -151,7 +151,7 @@
       <article class="libro" id="cap-rvin" role="tabpanel" aria-labelledby="tab-rvin" hidden>
         <div class="pagina-izq">
           <p class="capitulo">Capítulo IV</p>
-          <h3 class="wonk"><a href="/dulces-navidad-malaga">Roscos de vino</a></h3>
+          <h3 class="wonk"><a href="/#receta">Roscos de vino</a></h3>
           <p class="capitular">Hechos con vino dulce de Málaga.</p>
           <p class="gramos">≈ 300 g · siempre en la caja</p>
           <p class="mano nota-mano">con vino dulce de Málaga, claro</p>
@@ -221,6 +221,14 @@
                 <li><b>3.</b> Llega con papel y cuerda. Ya está.</li>
               </ol>
             </div>
+            <div>
+              <p class="etiqueta">¿Dónde la quieres?</p>
+              <div class="segmento" role="radiogroup" aria-label="Dónde la quieres" style="margin-top:10px">
+                <label><input type="radio" name="z" value="capital" checked /><span>Málaga y alrededores · 25 €</span></label>
+                <label><input type="radio" name="z" value="fuera" /><span>Resto de España · 28 €</span></label>
+              </div>
+              <p class="letra-chica" style="margin-top:8px" data-zona-texto>Málaga capital y Torremolinos: te la llevamos gratis el martes o el jueves.</p>
+            </div>
             <div class="ficha-total">
               <div class="contador" role="group" aria-label="Número de cajas">
                 <button type="button" data-n="-1" aria-label="Una caja menos">−</button>
@@ -233,7 +241,7 @@
             <button type="submit" class="btn btn-ancho" data-meter>Meter en la caja · <span data-total>25</span> €</button>
             <a href="/pedido" class="btn btn-tinta btn-ancho" data-ir hidden>Ir a pagar <span data-total>25</span> € →</a>
             <button type="button" class="deshacer" data-deshacer hidden>Cambiar algo</button>
-            <p class="letra-chica" style="text-align:center">Mismo precio con miel o con azúcar. Entrega gratis en Málaga capital y Torremolinos; resto de España, 3 €.</p>
+            <p class="letra-chica" style="text-align:center">Mismo precio con miel o con azúcar.</p>
             <p class="sr" role="status" data-estado></p>
           </form>
         </div>
@@ -327,9 +335,8 @@
           <ul>
             <li><a href="/pestinos-malaga">Pestiños de Málaga</a></li>
             <li><a href="/borrachuelos-malaguenos">Borrachuelos malagueños</a></li>
-            <li><a href="/dulces-navidad-malaga">Dulces de Navidad de Málaga</a></li>
-            <li><a href="/regalos-navidad-malaga">Regalos de Navidad</a></li>
-            <li><a href="/en/christmas-sweets-malaga" hreflang="en">In English</a></li>
+            <li><a href="/la-sobremesa">La Sobremesa</a></li>
+            <li><a href="/preguntas">Preguntas frecuentes</a></li>
           </ul>
         </div>
         <div>
@@ -376,7 +383,8 @@
       var n = 1, metida = false;
       var OPC = { miel: ['400 g', 'con miel (o azúcar, tú eliges)'], azucar: ['300 g', 'con azúcar (o miel, tú eliges)'] };
       var CLAVE = { p: 'pest', b: 'borr' };
-      function url() { return '/pedido?p=' + f.elements.p.value + '&b=' + f.elements.b.value + '&n=' + n; }
+      function precio() { return f.elements.z.value === 'fuera' ? 28 : 25; }
+      function url() { return '/pedido?p=' + f.elements.p.value + '&b=' + f.elements.b.value + '&z=' + f.elements.z.value + '&n=' + n; }
       function pintar() {
         ['p', 'b'].forEach(function (k) {
           var o = OPC[f.elements[k].value];
@@ -385,7 +393,10 @@
         });
         f.querySelector('[data-cajas]').textContent = n + (n === 1 ? ' caja' : ' cajas');
         f.elements.n.value = n;
-        f.querySelectorAll('[data-total]').forEach(function (el) { el.textContent = el.tagName === 'OUTPUT' ? (n * 25) + ' €' : n * 25; });
+        f.querySelectorAll('[data-total]').forEach(function (el) { el.textContent = el.tagName === 'OUTPUT' ? (n * precio()) + ' €' : n * precio(); });
+        f.querySelector('[data-zona-texto]').textContent = f.elements.z.value === 'fuera'
+          ? 'Resto de España: va por Correos y sale los lunes. 25 € de caja + 3 € de envío.'
+          : 'Málaga capital y Torremolinos: te la llevamos gratis el martes o el jueves.';
         f.querySelector('[data-n="-1"]').disabled = n <= 1;
         f.querySelector('[data-ir]').href = url();
         var enc = document.querySelector('.menu .btn');
@@ -405,7 +416,7 @@
         pintar();
         f.querySelector('[data-estado]').textContent = 'Caja añadida. Ya puedes ir a pagar.';
         f.querySelector('[data-ir]').focus();
-        try { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'add_to_cart', currency: 'EUR', value: n * 25 }); } catch (err) {}
+        try { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'add_to_cart', currency: 'EUR', value: n * precio() }); } catch (err) {}
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
         var capa = document.createElement('div');
         capa.className = 'estallido';

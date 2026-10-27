@@ -53,7 +53,7 @@
           <div class="comanda-cab"><span>Tu comanda</span><span data-r="cajas">1 caja</span></div>
           <p data-r="contenido">Pestiños con miel · Borrachuelos con miel · Roscos fritos · Roscos de vino</p>
           <p class="gris" data-r="entrega">Entrega según tu código postal</p>
-          <div class="comanda-total"><span>Total</span><output data-r="total">25 € + envío</output></div>
+          <div class="comanda-total"><span>Total</span><output data-r="total">25 €</output></div>
         </div>
       </aside>
 
@@ -83,6 +83,13 @@
             </div>
           </div>
           <p class="letra-chica">Además, siempre van: roscos fritos (400 g) y roscos de vino (≈ 300 g).</p>
+          <div>
+            <p class="etiqueta" style="margin:8px 0 10px">¿Dónde la quieres?</p>
+            <div class="zonas" role="radiogroup" aria-label="Dónde la quieres">
+              <label class="zona-elige"><input type="radio" name="zona" value="capital" checked /><span class="zona"><b>Málaga y alrededores</b><span>Málaga capital y Torremolinos. Te la llevamos nosotros.</span><strong>25 € · entrega gratis</strong></span></label>
+              <label class="zona-elige"><input type="radio" name="zona" value="fuera" /><span class="zona"><b>Resto de España</b><span>Por Correos, sale los lunes.</span><strong>28 € · 25 € + 3 € de envío</strong></span></label>
+            </div>
+          </div>
           <div class="eleccion" style="border:0">
             <span><b>¿Cuántas cajas?</b><small>25 € cada una</small></span>
             <div class="contador" role="group" aria-label="Número de cajas">
@@ -202,9 +209,8 @@
           <ul>
             <li><a href="/pestinos-malaga">Pestiños de Málaga</a></li>
             <li><a href="/borrachuelos-malaguenos">Borrachuelos malagueños</a></li>
-            <li><a href="/dulces-navidad-malaga">Dulces de Navidad de Málaga</a></li>
-            <li><a href="/regalos-navidad-malaga">Regalos de Navidad</a></li>
-            <li><a href="/en/christmas-sweets-malaga" hreflang="en">In English</a></li>
+            <li><a href="/la-sobremesa">La Sobremesa</a></li>
+            <li><a href="/preguntas">Preguntas frecuentes</a></li>
           </ul>
         </div>
         <div>
@@ -255,7 +261,7 @@
       function radio(nombre) { var r = form.querySelector('input[name="' + nombre + '"]:checked'); return r ? r.value : ''; }
       function cajas(k) { return k + (k === 1 ? ' caja' : ' cajas'); }
       function calculo() {
-        var zona = zonaDe(v('cp'));
+        var zona = zonaDe(v('cp')) || radio('zona');
         var envio = zona === 'fuera' ? CORREOS * n : 0;
         return { zona: zona, envio: envio, total: PRECIO * n + envio };
       }
@@ -288,24 +294,26 @@
         $$('[data-r="cajas"]').forEach(function (o) { o.textContent = cajas(n); });
         $('[data-n="-1"]').disabled = n <= 1;
         $('[data-r="contenido"]').textContent = 'Pestiños ' + NOMBRES[radio('p')] + ' · Borrachuelos ' + NOMBRES[radio('b')] + ' · Roscos fritos · Roscos de vino';
-        var ent = 'Entrega según tu código postal';
+        var ent = '';
         if (c.zona === 'capital') ent = 'Te la llevamos gratis el ' + radio('dia');
         if (c.zona === 'fuera') ent = 'Por Correos, sale el lunes';
         if (regalo && v('para')) ent = 'Regalo para ' + v('para') + ' · ' + ent.charAt(0).toLowerCase() + ent.slice(1);
         if (paso >= 3) ent += ' · ' + radio('cuando').toLowerCase();
         $('[data-r="entrega"]').textContent = ent;
-        $('[data-r="total"]').textContent = c.zona ? c.total + ' €' : (PRECIO * n) + ' € + envío';
+        $('[data-r="total"]').textContent = c.total + ' €';
         $('[data-r="importe"]').textContent = c.total + ' €';
         $('[data-varias]').hidden = n === 1;
         // Zonas de entrega según el código postal
         $$('[data-zona-tarjeta]').forEach(function (t) { t.setAttribute('data-activa', c.zona ? String(t.dataset.zonaTarjeta === c.zona) : ''); });
         $('[data-dias]').hidden = c.zona !== 'capital';
+        $$('[data-precio-zona]').forEach(function (e) { e.textContent = c.total + ' €'; });
         var aviso = $('[data-aviso-envio]');
         aviso.setAttribute('data-zona', c.zona || '');
-        if (c.zona === 'capital') aviso.textContent = v('cp') === '29620' ? '¡Entrega gratis en Torremolinos! Elige martes o jueves.' : '¡Entrega gratis! Estás en Málaga capital. Elige martes o jueves.';
+        var cpz = zonaDe(v('cp'));
+        if (!cpz && v('cp').length === 5) aviso.textContent = 'Ese código postal no lo encontramos. De momento solo enviamos dentro de España.';
+        else if (!cpz) aviso.textContent = c.zona === 'capital' ? 'Escribe tu código postal para confirmar que estás en Málaga capital o Torremolinos (entrega gratis).' : 'Escribe tu código postal: al resto de España va por Correos por 3 € más.';
+        else if (c.zona === 'capital') aviso.textContent = v('cp') === '29620' ? '¡Entrega gratis en Torremolinos! Elige martes o jueves.' : '¡Entrega gratis! Estás en Málaga capital. Elige martes o jueves.';
         else if (c.zona === 'fuera') aviso.textContent = 'Va por Correos: ' + (CORREOS * n) + ' € de envío, que ya se suma al total. Sale el lunes.';
-        else if (v('cp').length === 5) aviso.textContent = 'Ese código postal no lo encontramos. De momento solo enviamos dentro de España.';
-        else aviso.textContent = 'Escribe tu código postal y te decimos cómo llega. En Málaga capital y Torremolinos es gratis.';
         // Varias cajas: se cierra por WhatsApp (los enlaces de SumUp cobran importes fijos)
         $('[data-metodos]').hidden = n > 1;
         $('[data-texto-pago]').textContent = n > 1
@@ -393,6 +401,8 @@
             var loc = cp === '29620' ? 'Torremolinos' : CP_CAPITAL.indexOf(cp) !== -1 ? 'Málaga' : '';
             if (loc) { el.localidad.value = loc; el.localidad.dataset.auto = '1'; }
           }
+          var zcp = zonaDe(cp);
+          if (zcp) form.querySelector('input[name="zona"][value="' + zcp + '"]').checked = true;
           var c = calculo();
           if (c.zona) medir('add_shipping_info', c.total, 'AddToCart');
         }
@@ -466,6 +476,7 @@
       // Lo que viene elegido desde la portada: /pedido?p=miel&b=azucar&n=2
       var q = new URLSearchParams(location.search);
       ['p', 'b'].forEach(function (k) { var x = q.get(k); if (x === 'miel' || x === 'azucar') form.querySelector('input[name="' + k + '"][value="' + x + '"]').checked = true; });
+      if (q.get('z') === 'fuera') form.querySelector('input[name="zona"][value="fuera"]').checked = true;
       var qn = parseInt(q.get('n'), 10); if (qn >= 1 && qn <= 20) n = qn;
       irA(1);
       medir('view_item', PRECIO, 'ViewContent');

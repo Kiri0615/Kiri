@@ -147,7 +147,8 @@ button { cursor: pointer; }
 .libro h3 a { color: inherit; text-decoration: none; }
 .libro h3 a:hover { text-decoration: underline; text-decoration-thickness: 3px; }
 .capitular { font: 400 19px/1.55 var(--serif); max-width: 440px; }
-.capitular::first-letter { float: left; font-weight: 900; font-size: 68px; line-height: .8; padding: 6px 10px 0 0; color: var(--rojo); }
+.capitular { font-size: 21px; }
+.capitular::first-letter { font-weight: 900; color: var(--rojo); }
 .gramos { font-size: 14px; color: var(--gris-2); }
 .nota-mano { align-self: flex-end; transform: rotate(-3deg); }
 .pie-libro { margin-top: auto; display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 13px; color: var(--gris); }
@@ -510,3 +511,9 @@ button { cursor: pointer; }
   .tabla-envios td:last-child { font-size: 18px; }
   .encargada-sello { padding: 10px 18px; border-width: 4px; }
 }
+.zona-elige { position: relative; display: flex; }
+.zona-elige input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.zona-elige .zona { width: 100%; cursor: pointer; }
+.zona-elige input:checked + .zona { background: var(--tinta); color: var(--crema); box-shadow: 5px 5px 0 var(--rojo); }
+.zona-elige input:focus-visible + .zona { outline: 3px solid var(--miel); outline-offset: 2px; }
+.segmento { flex-wrap: wrap; max-width: 100%; }
