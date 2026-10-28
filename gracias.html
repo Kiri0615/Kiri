@@ -83,9 +83,9 @@
       } catch (e) {}
       window.addEventListener('load', function () {
         if (!window.nmEnviarLead) return;
-        window.nmEnviarLead({ nombre: p.nombre, telefono: p.telefono, email: p.email, consentimiento: 'true',
+        window.nmEnviarLead(Object.assign({}, p.datos || {}, { nombre: p.nombre, telefono: p.telefono, email: p.email, consentimiento: 'true',
           origen: 'PAGO CONFIRMADO (vuelta de SumUp) ' + p.ref + ' | ' + p.caja + ' | ' + p.destino + ' | ' + p.dia + ' | Total ' + p.total + ' €',
-          pagina: location.pathname, referencia: document.referrer || '', utm: location.search || '', fecha: new Date().toISOString() }).catch(function () {});
+          pagina: location.pathname, referencia: document.referrer || '', utm: location.search || '', fecha: new Date().toISOString(), pagado: 'true' })).catch(function () {});
       });
     })();
   </script>

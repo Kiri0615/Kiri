@@ -453,7 +453,7 @@
           envio: String(c.envio), total: String(c.total), referencia_pedido: ref
         };
         // Para la página «¡Encargada!» al volver de SumUp
-        try { localStorage.setItem('nm_pedido', JSON.stringify({ ref: ref, nombre: data.nombre, telefono: data.telefono, email: data.email, cajas: n, caja: caja, destino: destino, zona: zonaTxt, dia: dia, cuando: radio('cuando'), regalo: regalo, para: v('para'), envio: envioTxt, total: c.total, fecha: data.fecha })); } catch (err) {}
+        try { localStorage.setItem('nm_pedido', JSON.stringify({ ref: ref, nombre: data.nombre, telefono: data.telefono, email: data.email, cajas: n, caja: caja, destino: destino, zona: zonaTxt, dia: dia, cuando: radio('cuando'), regalo: regalo, para: v('para'), envio: envioTxt, total: c.total, fecha: data.fecha, datos: data })); } catch (err) {}
 
         $('[data-pagar]').hidden = true;
         $('[data-atando]').hidden = false;
