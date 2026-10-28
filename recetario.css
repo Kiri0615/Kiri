@@ -262,8 +262,8 @@ button { cursor: pointer; }
 .letra-pequena-franja a { color: var(--tinta); }
 
 /* ---------- Cinta + pie ---------- */
-.cinta { background: var(--rojo); border-block: 2px solid var(--tinta); overflow: hidden; padding: 20px 0; }
-.cinta-pista { display: flex; width: max-content; gap: 48px; white-space: nowrap; font: 900 clamp(44px, 6vw, 92px)/1 var(--serif); color: var(--crema); animation: marquesina 32s linear infinite; }
+.cinta { background: var(--rojo); border-block: 2px solid var(--tinta); overflow: hidden; padding: 8px 0; }
+.cinta-pista { display: flex; width: max-content; gap: 32px; white-space: nowrap; font: 900 clamp(20px, 2.4vw, 32px)/1 var(--serif); color: var(--crema); animation: marquesina 32s linear infinite; }
 .cinta-pista em { font-style: italic; font-weight: 500; color: var(--miel); }
 @keyframes marquesina { to { transform: translateX(-50%); } }
 .pie { background: var(--tinta); color: var(--crema); padding: 48px 0 40px; }
