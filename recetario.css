@@ -662,3 +662,8 @@ main.envoltura:has(> .prosa .titulo-pagina) > .cta-caja { max-width: 860px; marg
 .pag-sobremesa .tarjeta-oscura { background-image: none; }
 @media (max-width: 600px) { .pag-sobremesa .articulos .miniatura { padding: 5px; } .pag-sobremesa .articulos li::before { width: 54px !important; margin-left: -27px !important; } }
 .pag-sobremesa .articulos .recorte img { scale: 1.7; object-fit: cover; transform-origin: var(--ox, 50%) var(--oy, 50%); }
+
+/* ---------- Recetas: dibujo 2D en cada paso ---------- */
+.prosa ol.pasos-lista li::after { content: ""; display: block; clear: both; }
+.prosa ol.pasos-lista .paso-dibujo { float: right; width: 120px; height: auto; margin: 0 0 8px 16px; border: 2px solid var(--tinta); background: var(--crema); }
+@media (max-width: 520px) { .prosa ol.pasos-lista li { padding-left: 66px; } .prosa ol.pasos-lista .paso-dibujo { width: 84px; margin-left: 12px; } }
