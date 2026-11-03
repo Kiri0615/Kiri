@@ -545,3 +545,23 @@ button { cursor: pointer; }
 .prosa table th[scope], .prosa tbody tr:nth-child(even) td, .prosa tbody tr:nth-child(even) th { background: var(--lamina); }
 .prosa .entradilla { font-size: clamp(20px, 2.1vw, 23px); border-left: 6px solid var(--rojo); padding-left: 18px; margin-bottom: 8px; }
 .prosa details.pregunta { margin: 0; }
+
+/* ---------- Fotos reales (del obrador, hechas con el móvil) ---------- */
+.reales-intro { max-width: 660px; margin: 0 0 32px; font: 400 19px/1.5 var(--serif); color: var(--gris-2); }
+.reales-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 22px 18px; margin: 0; padding: 0; }
+.reales-grid figure { position: relative; margin: 0; border: 2px solid var(--tinta); background: var(--crema); padding: 8px 8px 4px; box-shadow: 6px 6px 0 var(--tinta); rotate: -1deg; transition: rotate .5s cubic-bezier(.2,.8,.2,1); }
+.reales-grid figure:nth-child(even) { rotate: 1.2deg; }
+.reales-grid figure:hover { rotate: 0deg; }
+.reales-grid img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; object-position: 50% 50%; }
+.reales-grid figcaption { font: 700 22px/1.15 var(--mano); padding-top: 4px; }
+.sello-real { position: absolute; top: 16px; left: 16px; margin: 0; padding: 5px 8px; background: var(--rojo); color: var(--crema); border: 2px solid var(--tinta); font: 500 11px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+.prosa .reales-grid { margin-top: 20px; }
+@media (max-width: 600px) { .reales-grid { gap: 16px 12px; } .reales-grid figure { box-shadow: 4px 4px 0 var(--tinta); } .reales-grid figcaption { font-size: 19px; } .sello-real { top: 12px; left: 12px; font-size: 10px; } }
+
+/* ---------- Encuadres ---------- */
+.destacado-foto img { object-position: 50% 30%; }
+@media (max-width: 720px) {
+  .malaga-foto { height: clamp(340px, 52vh, 460px); }
+  .malaga-foto img { object-position: 50% 78%; transform: scale(1.35); transform-origin: 50% 72%; }
+  .malaga-frase { padding: 90px 0 32px; }
+}
