@@ -565,3 +565,30 @@ button { cursor: pointer; }
   .malaga-foto img { object-position: 50% 78%; transform: scale(1.35); transform-origin: 50% 72%; }
   .malaga-frase { padding: 90px 0 32px; }
 }
+
+/* ---------- La Sobremesa: listado en tarjetas con foto ---------- */
+.articulos { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 28px 24px; border-top: 0; padding-top: 8px; }
+.articulos li { border-bottom: 0; }
+.articulos .item { flex-direction: column; gap: 12px; padding: 0; height: 100%; }
+.articulos .item .num { display: none; }
+.articulos .miniatura { display: block; overflow: hidden; border: 2px solid var(--tinta); box-shadow: 6px 6px 0 var(--miel); background: var(--papel); }
+.articulos .miniatura img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; transition: transform .6s cubic-bezier(.2,.8,.2,1); }
+.articulos .item:hover .miniatura img { transform: scale(1.04); }
+.articulos .item:hover h3 { color: var(--rojo); }
+.articulos h3 { font-size: 21px; margin-top: 4px; }
+.articulos li[hidden] { display: none; }
+@media (max-width: 600px) { .articulos { grid-template-columns: 1fr 1fr; gap: 22px 14px; } .articulos h3 { font-size: 17px; } .articulos .miniatura { box-shadow: 4px 4px 0 var(--miel); } }
+@media (max-width: 380px) { .articulos { grid-template-columns: 1fr; } }
+.sobremesa .destacado-foto img { aspect-ratio: 4 / 3; }
+
+/* ---------- Artículos: columna centrada y cabecera con aire ---------- */
+main.envoltura:has(> .prosa .titulo-pagina) > .miga,
+main.envoltura:has(> .prosa .titulo-pagina) > .prosa,
+main.envoltura:has(> .prosa .titulo-pagina) > .sigue,
+main.envoltura:has(> .prosa .titulo-pagina) > .cta-caja { max-width: 860px; margin-inline: auto; }
+.prosa > .etiqueta:first-child { margin: 22px 0 14px; }
+.prosa .titulo-pagina { font-size: clamp(34px, 4.8vw, 58px); line-height: 1; margin-bottom: 26px; text-wrap: balance; }
+.prosa .entradilla { margin-bottom: 28px; }
+.prosa .hero-art { margin-block: 8px 36px; }
+.miga { padding-bottom: 4px; line-height: 1.5; }
+
