@@ -634,3 +634,30 @@ main.envoltura:has(> .prosa .titulo-pagina) > .cta-caja { max-width: 860px; marg
 .pag-sobremesa .articulos .foto-pendiente, .pag-sobremesa .hero-art > .foto-pendiente { display: flex; align-items: center; justify-content: center; }
 .pag-sobremesa .tarjeta.tarjeta-oscura { background: var(--tinta); }
 .pag-sobremesa .tarjeta-oscura .btn:hover { background: var(--miel); }
+
+/* ---------- La Sobremesa: toque de álbum antiguo ---------- */
+.pag-sobremesa { background-color: var(--crema); background-image: radial-gradient(rgba(42,27,19,.07) 1px, transparent 1.2px); background-size: 7px 7px; }
+.pag-sobremesa .orla { display: flex; align-items: center; gap: 16px; margin: 0 0 28px; color: var(--rojo); }
+.pag-sobremesa .orla::before, .pag-sobremesa .orla::after { content: ""; flex: 1; height: 6px; border-block: 1px solid var(--tinta); }
+.pag-sobremesa .orla span { font-size: 20px; line-height: 1; }
+.pag-sobremesa .cabeza h1 { text-transform: none; }
+.pag-sobremesa .articulos li { position: relative; }
+/* foto pegada en el álbum: marco crema, esquinas y cinta, sin sombra */
+.pag-sobremesa .articulos .miniatura { padding: 8px; background: var(--crema); border: 2px solid var(--tinta); rotate: -.8deg; transition: rotate .25s ease; }
+.pag-sobremesa .articulos li:nth-child(even) .miniatura { rotate: .7deg; }
+.pag-sobremesa .articulos li:nth-child(3n) .miniatura { rotate: -.3deg; }
+.pag-sobremesa .articulos .item:hover .miniatura { rotate: 0deg; }
+.pag-sobremesa .articulos li:nth-child(3n+1)::before { content: ""; position: absolute; z-index: 2; top: -9px; left: 50%; width: 74px; height: 20px; margin-left: -37px; background: rgba(242,179,61,.75); border: 1px solid rgba(42,27,19,.25); rotate: -3deg; pointer-events: none; }
+.pag-sobremesa .articulos .miniatura img { border: 1px solid rgba(42,27,19,.35); }
+.pag-sobremesa .articulos li:last-of-type::before { display: none; }
+/* huecos de foto: etiqueta de archivo */
+.pag-sobremesa .foto-pendiente { flex-direction: column; gap: 10px; text-align: center; position: relative; background: var(--papel); }
+.pag-sobremesa .foto-pendiente::before { content: ""; position: absolute; inset: 6px; border: 1px dashed var(--tinta); opacity: .55; pointer-events: none; }
+.pag-sobremesa .foto-pendiente > span { font: inherit; }
+.pag-sobremesa .fp-nro { font: 500 12px/1 var(--mono) !important; letter-spacing: .16em; text-transform: uppercase; color: var(--rojo); }
+.pag-sobremesa .fp-nombre { font: 800 clamp(22px, 2.4vw, 30px)/1.05 var(--serif) !important; color: var(--tinta); max-width: 14ch; }
+.pag-sobremesa .fp-nombre::after { content: "✦"; display: block; margin-top: 10px; font-size: 14px; color: var(--miel); }
+.pag-sobremesa .fp-nota { font: 700 20px/1 var(--mano) !important; color: var(--rojo); rotate: -2deg; }
+.pag-sobremesa .tarjeta { background-image: linear-gradient(transparent 31px, rgba(42,27,19,.09) 32px); background-size: 100% 32px; }
+.pag-sobremesa .tarjeta-oscura { background-image: none; }
+@media (max-width: 600px) { .pag-sobremesa .articulos .miniatura { padding: 5px; } .pag-sobremesa .articulos li::before { width: 54px !important; margin-left: -27px !important; } }
