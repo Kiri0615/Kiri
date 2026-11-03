@@ -516,3 +516,32 @@ button { cursor: pointer; }
 .zona-elige input:checked + .zona { background: var(--tinta); color: var(--crema); box-shadow: 5px 5px 0 var(--rojo); }
 .zona-elige input:focus-visible + .zona { outline: 3px solid var(--miel); outline-offset: 2px; }
 .segmento { flex-wrap: wrap; max-width: 100%; }
+
+/* ---------- Contenido editorial ---------- */
+.hero-art { margin: 28px 0 8px; border: 2px solid var(--tinta); background: var(--papel); box-shadow: 10px 10px 0 var(--miel); }
+.hero-art img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.hero-art figcaption { padding: 10px 14px; font: 700 22px/1.2 var(--mano); border-top: 2px solid var(--tinta); }
+.datos-receta { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 28px 0 8px; }
+.datos-receta div { background: var(--papel); border: 2px solid var(--tinta); padding: 14px 16px; }
+.datos-receta small { display: block; font: 500 11px/1.4 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--rojo); }
+.datos-receta b { display: block; margin-top: 4px; font: 900 22px/1.15 var(--serif); color: var(--tinta); }
+.ingredientes { background: var(--papel); border: 2px solid var(--tinta); box-shadow: 8px 8px 0 var(--tinta); padding: 22px 26px; margin: 16px 0 8px; }
+.prosa .ingredientes ul { list-style: none; padding: 0; margin: 0; columns: 2 280px; column-gap: 32px; }
+.prosa .ingredientes li { break-inside: avoid; padding: 7px 0 7px 26px; position: relative; border-bottom: 1px dashed var(--linea); font-size: 17px; }
+.prosa .ingredientes li::before { content: "✦"; position: absolute; left: 0; color: var(--rojo); }
+.prosa ol.pasos-lista { list-style: none; padding: 0; margin: 20px 0; counter-reset: paso; display: grid; gap: 14px; }
+.prosa ol.pasos-lista li { counter-increment: paso; position: relative; padding: 16px 18px 16px 74px; background: var(--papel); border: 2px solid var(--tinta); margin: 0; }
+.prosa ol.pasos-lista li::before { content: counter(paso); position: absolute; left: 14px; top: 10px; width: 46px; height: 46px; display: grid; place-items: center; background: var(--rojo); color: var(--crema); border: 2px solid var(--tinta); border-radius: 50%; font: 700 30px/1 var(--mano); }
+.curiosidad { margin: 32px 0; padding: 20px 24px 20px 28px; background: var(--miel); border: 2px solid var(--tinta); box-shadow: 6px 6px 0 var(--tinta); transform: rotate(-.4deg); }
+.curiosidad .etiqueta { color: var(--tinta); }
+.prosa .curiosidad p { font: 500 19px/1.5 var(--serif); color: var(--tinta); margin-top: 6px; }
+.sigue { margin: 64px 0 0; padding-top: 28px; border-top: 2px solid var(--tinta); }
+.sigue h2 { font: 900 clamp(26px, 3vw, 36px)/1 var(--serif); letter-spacing: -.02em; margin: 0 0 18px; }
+.sigue ul { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.sigue a { display: block; height: 100%; text-decoration: none; background: var(--papel); border: 2px solid var(--tinta); padding: 16px 18px; color: var(--tinta); transition: transform .15s, box-shadow .15s; }
+.sigue a:hover { transform: translate(-3px, -3px); box-shadow: 6px 6px 0 var(--rojo); color: var(--tinta); }
+.sigue a small { display: block; font: 500 11px/1.4 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--rojo); margin-bottom: 6px; }
+.sigue a b { font: 700 20px/1.2 var(--serif); }
+.prosa table th[scope], .prosa tbody tr:nth-child(even) td, .prosa tbody tr:nth-child(even) th { background: var(--lamina); }
+.prosa .entradilla { font-size: clamp(20px, 2.1vw, 23px); border-left: 6px solid var(--rojo); padding-left: 18px; margin-bottom: 8px; }
+.prosa details.pregunta { margin: 0; }
