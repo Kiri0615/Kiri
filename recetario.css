@@ -30,8 +30,8 @@
 
 /* ---------- Base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 1rem; -webkit-text-size-adjust: 100%; }
-body { margin: 0; background: var(--crema); color: var(--tinta); font: 400 15px/1.6 var(--mono); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+html { scroll-behavior: smooth; scroll-padding-top: 1rem; -webkit-text-size-adjust: 100%; overflow-x: clip; }
+body { margin: 0; background: var(--crema); color: var(--tinta); font: 400 15px/1.6 var(--mono); overflow-x: hidden; overflow-x: clip; -webkit-font-smoothing: antialiased; }
 img { display: block; max-width: 100%; height: auto; }
 a { color: var(--rojo); }
 a:hover { color: var(--rojo-osc); }
@@ -490,6 +490,53 @@ button { cursor: pointer; }
 .capa-aviso p { font-size: 13px; color: var(--claro); margin-top: 4px; }
 .capa-aviso button { margin-left: auto; width: 32px; height: 32px; border: 1px solid var(--claro); background: transparent; color: var(--crema); display: grid; place-items: center; }
 .agita { animation: agita .4s; }
+
+/* Ventana a los 2 s: más información o encargar y pagar */
+html.con-ventana { overflow: hidden; }
+.ventana-info { display: flex; flex-direction: column; gap: 12px; }
+.ventana-info form { margin-top: 6px; }
+.ventana-info .campo input { min-height: 46px; }
+.ventana-etiqueta { padding-right: 44px; line-height: 1.3; font: 500 12px/1.3 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--rojo); }
+.ventana-entradilla { color: var(--gris); line-height: 1.5; margin-top: 8px; }
+.ventana-rgpd { display: flex; gap: 10px; align-items: flex-start; font-size: 12px; line-height: 1.45; color: var(--gris); }
+.ventana-rgpd input { width: 18px; height: 18px; margin-top: 1px; flex: none; accent-color: var(--rojo); }
+.ventana-o { display: flex; align-items: center; gap: 10px; margin-top: 4px; font: 500 12px/1 var(--mono); color: var(--gris); text-transform: uppercase; letter-spacing: .06em; }
+.ventana-o::before, .ventana-o::after { content: ""; flex: 1; border-top: 1px dashed var(--linea); }
+.ventana-pago { font-size: 12px; color: var(--gris); text-align: center; }
+.ventana-wa { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font: 500 14px/1 var(--mono); color: #128C4A; text-decoration: underline; text-underline-offset: 3px; padding: 6px 0; }
+.ventana-wa svg { width: 20px; height: 20px; }
+.ventana-ok h2 { margin-top: 4px; }
+
+/* Botón flotante de WhatsApp */
+.wa-flotante { position: fixed; z-index: 50; right: 16px; bottom: 16px; display: inline-flex; align-items: center; gap: 8px; min-height: 56px; padding: 0 18px 0 14px; background: #25D366; color: #fff; border: 2px solid var(--tinta); box-shadow: 4px 4px 0 var(--tinta); font: 500 14px/1 var(--mono); text-decoration: none; transition: transform .15s, box-shadow .15s; }
+.wa-flotante:hover { color: #fff; transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--tinta); }
+.wa-flotante:focus-visible { outline: 3px solid var(--miel); outline-offset: 2px; }
+@media (max-width: 560px) {
+  .wa-flotante { width: 56px; padding: 0; justify-content: center; right: 12px; bottom: 12px; }
+  .wa-flotante span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .capa-cookies:not([hidden]) ~ .wa-flotante { display: none; }
+  .capa-dialogo.ventana-info { padding: 22px 18px; }
+  .ventana-info { gap: 10px; }
+  .ventana-info h2 { font-size: 26px; }
+  .ventana-info form { gap: 10px; }
+  .ventana-info .campo input { min-height: 44px; }
+  .ventana-entradilla { margin-top: 4px; }
+  .ventana-info .btn { font-size: 17px; padding: 0 14px; min-height: 52px; }
+  .ventana-wa { font-size: 13px; }
+}
+/* Móviles bajitos (iPhone SE y similares): el botón de pagar se queda siempre a la vista */
+@media (max-width: 560px) and (max-height: 760px) {
+  .capa-dialogo.ventana-info { padding-bottom: 0; }
+  .ventana-info [data-v-legal] { padding-bottom: 20px; }
+  .ventana-info [data-v-pagar] { position: sticky; bottom: 14px; z-index: 1; box-shadow: 4px 4px 0 var(--tinta), 0 0 0 14px var(--crema); }
+  .ventana-info form { gap: 8px; }
+  .ventana-info .campo { gap: 4px; }
+}
+@media (max-width: 360px) {
+  .ventana-info .btn { font-size: 16px; }
+  .ventana-info h2 { font-size: 24px; }
+  .ventana-etiqueta { font-size: 11px; letter-spacing: .04em; }
+}
 @keyframes agita { 25% { translate: -5px 0; } 75% { translate: 5px 0; } }
 
 @media (prefers-reduced-motion: reduce) {
