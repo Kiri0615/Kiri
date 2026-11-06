@@ -6,6 +6,8 @@
   var LEAD_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxjQ2i-z7PHDuskNQLqPwAKcBw0sXLXMZP4f94dOLwlGEAzlJoM75doyvA_MIkFiEfk0w/exec';
   var CONSENT_KEY = 'nm_cookies_v1';
   var CONSENT_DIAS = 365;
+  // Google Analytics 4 (solo se carga si la persona acepta las cookies analíticas)
+  var GA_ID = 'G-8YW2FHYV0J';
   var WHATSAPP = '34744475239';
   var VENTANA_SEGUNDOS = 2;
   // Páginas donde la ventana estorbaría (pedido en curso, vuelta del pago y textos legales)
@@ -42,9 +44,39 @@
     panel.hidden = true;
   }
   // Activa scripts opcionales solo con permiso: <script type="text/plain" data-cookies="analiticas" src="..."></script>
+  var gaCargado = false;
+  function cargarAnalitica() {
+    if (!GA_ID || gaCargado) return;
+    gaCargado = true;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('consent', 'default', { analytics_storage: 'granted', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
+    window.gtag('js', new Date());
+    window.gtag('config', GA_ID);
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+  }
+  function borrarCookiesGA() {
+    var dom = location.hostname.replace(/^www\./, '');
+    document.cookie.split(';').forEach(function (k) {
+      var n = k.split('=')[0].trim();
+      if (!/^_ga/.test(n)) return;
+      ['', '; domain=.' + dom, '; domain=' + location.hostname].forEach(function (d) {
+        document.cookie = n + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/' + d;
+      });
+    });
+  }
   function aplicarConsentimiento(c) {
     window.nmConsent = c;
-    if (!c || !c.analiticas) return;
+    if (!c || !c.analiticas) {
+      // Si rechaza o retira el permiso: deja de medir y borra las cookies de Google Analytics
+      if (gaCargado && window.gtag) window.gtag('consent', 'update', { analytics_storage: 'denied' });
+      borrarCookiesGA();
+      return;
+    }
+    cargarAnalitica();
     $$('script[type="text/plain"][data-cookies="analiticas"]').forEach(function (old) {
       var s = document.createElement('script');
       if (old.src) s.src = old.src; else s.text = old.text;
@@ -59,7 +91,7 @@
     banner.setAttribute('aria-label', 'Aviso de cookies');
     banner.innerHTML =
       '<h2>Cookies, las justas</h2>' +
-      '<p>Usamos almacenamiento técnico para que la web funcione y recordar tus preferencias. Solo usaríamos cookies de analítica si nos das permiso. ' +
+      '<p>Usamos almacenamiento técnico para que la web funcione y recordar tus preferencias. Solo usamos cookies de analítica (Google Analytics) si nos das permiso. ' +
       'Más en la <a href="/politica-cookies">política de cookies</a>.</p>' +
       '<div class="capa-botones">' +
       '<button type="button" data-c="rechazar">Rechazar</button>' +
@@ -80,7 +112,7 @@
       '<label><input type="checkbox" checked disabled />' +
       '<span><b>Técnicas (siempre activas).</b><small>Necesarias para que la web funcione: recordar tu elección de cookies y tu pedido hasta que vuelvas del pago.</small></span></label>' +
       '<label><input type="checkbox" data-c-analiticas />' +
-      '<span><b>Analíticas.</b><small>Nos ayudarían a saber cuántas personas visitan la web y qué páginas funcionan mejor. Solo se cargan con tu permiso.</small></span></label>' +
+      '<span><b>Analíticas.</b><small>Google Analytics: nos ayuda a saber cuántas personas visitan la web, desde dónde llegan y qué páginas funcionan mejor. Solo se carga con tu permiso.</small></span></label>' +
       '</div>' +
       '<div class="botones">' +
       '<button type="button" data-c="rechazar">Rechazar todas</button>' +
