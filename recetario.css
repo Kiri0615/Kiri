@@ -740,3 +740,26 @@ main.envoltura:has(> .prosa .titulo-pagina) > .cta-caja { max-width: 860px; marg
   .prosa ol.pasos-lista .dibujo-marco:has(.nota-mano) { margin-bottom: 22px; }
 }
 @media (prefers-reduced-motion: reduce) { .prosa ol.pasos-lista li, .prosa ol.pasos-lista .dibujo-marco { transition: none; } }
+
+/* Pedido, paso 1: que quepa en una pantalla */
+.paso[data-paso="1"] { gap: 12px; }
+.paso[data-paso="1"] h1 { font-size: clamp(30px, 3.6vw, 44px); }
+.paso[data-paso="1"] .entradilla { font-size: 15px; }
+.paso[data-paso="1"] .eleccion { padding: 8px 0; gap: 8px; }
+.paso[data-paso="1"] .eleccion b { font-size: 19px; }
+.paso[data-paso="1"] .segmento-grande span { min-height: 38px; padding: 0 12px; font-size: 13px; }
+.paso[data-paso="1"] .zona-elige .zona { padding: 10px 14px; gap: 2px; }
+.paso[data-paso="1"] .letra-chica { margin: 0; }
+.pedido { padding-block: 20px 64px; gap: 20px; }
+.pedido-paso { gap: 14px; }
+.pedido-cuerpo { gap: 32px; }
+.paso[data-paso="1"] .zonas { gap: 10px; }
+.paso[data-paso="1"] .eleccion small { font-size: 12px; }
+@media (max-width: 720px) {
+  .pedido-lado { order: 2; }
+  .pedido-paso { order: 1; }
+  .pedido-cuerpo { gap: 20px; }
+  .paso[data-paso="1"] h1 { font-size: 30px; }
+  .paso[data-paso="1"] .entradilla { display: none; }
+  .paso[data-paso="1"] .zona-elige .zona span { display: none; }
+}

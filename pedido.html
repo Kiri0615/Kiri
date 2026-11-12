@@ -23,7 +23,7 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3" />
   <link rel="preload" href="/fonts/fraunces-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/dm-mono-latin-400.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="/recetario.css?v=14" />
+  <link rel="stylesheet" href="/recetario.css?v=15" />
 </head>
 <body>
   <a class="salto" href="#contenido">Saltar al contenido</a>
@@ -51,7 +51,7 @@
         <p class="caja-frase" aria-hidden="true" data-frase>la base, lista</p>
         <div class="comanda">
           <div class="comanda-cab"><span>Tu comanda</span><span data-r="cajas">1 caja</span></div>
-          <p data-r="contenido">Pestiños con miel · Borrachuelos con miel · Roscos fritos · Roscos de vino</p>
+          <p data-r="contenido">Pestiños con miel · Borrachuelos de cabello de ángel · Roscos fritos · Roscos de vino</p>
           <p class="gris" data-r="entrega">Entrega según tu código postal</p>
           <div class="comanda-total"><span>Total <small>IVA incl.</small></span><output data-r="total">25 €</output></div>
         </div>
@@ -64,8 +64,8 @@
         <!-- Paso 1 · Tu caja -->
         <fieldset class="paso" data-paso="1" style="border:0;padding:0;margin:0">
           <legend class="sr">Tu caja</legend>
-          <h1 class="wonk">¿Miel o azúcar?</h1>
-          <p class="entradilla">Elige cómo quieres los pestiños y los borrachuelos. El precio no cambia.</p>
+          <h1 class="wonk">Tu caja</h1>
+          <p class="entradilla">Elige los pestiños y el relleno de los borrachuelos. El precio no cambia.</p>
           <div>
             <div class="eleccion">
               <span><b>Pestiños</b><small data-gramos="p">400 g con miel</small></span>
@@ -75,10 +75,10 @@
               </div>
             </div>
             <div class="eleccion">
-              <span><b>Borrachuelos</b><small data-gramos="b">400 g con miel</small></span>
-              <div class="segmento segmento-grande" role="radiogroup" aria-label="Borrachuelos: miel o azúcar">
-                <label><input type="radio" name="b" value="miel" checked /><span>con miel</span></label>
-                <label><input type="radio" name="b" value="azucar" /><span>con azúcar</span></label>
+              <span><b>Borrachuelos</b><small data-gramos="b">400 g de cabello de ángel</small></span>
+              <div class="segmento segmento-grande" role="radiogroup" aria-label="Borrachuelos: relleno de cabello de ángel o de batata">
+                <label><input type="radio" name="b" value="cabello" checked /><span>cabello de ángel</span></label>
+                <label><input type="radio" name="b" value="batata" /><span>batata</span></label>
               </div>
             </div>
           </div>
@@ -247,7 +247,7 @@
       var CP_CAPITAL = ['29001','29002','29003','29004','29005','29006','29007','29008','29009','29010','29011','29012','29013',
         '29014','29015','29016','29017','29018','29070','29071','29080','29140','29190','29196','29590','29591','29620'];
       var PROVINCIAS = ['Álava','Albacete','Alicante','Almería','Ávila','Badajoz','Illes Balears','Barcelona','Burgos','Cáceres','Cádiz','Castellón','Ciudad Real','Córdoba','A Coruña','Cuenca','Girona','Granada','Guadalajara','Gipuzkoa','Huelva','Huesca','Jaén','León','Lleida','La Rioja','Lugo','Madrid','Málaga','Murcia','Navarra','Ourense','Asturias','Palencia','Las Palmas','Pontevedra','Salamanca','Santa Cruz de Tenerife','Cantabria','Segovia','Sevilla','Soria','Tarragona','Teruel','Toledo','Valencia','Valladolid','Bizkaia','Zamora','Zaragoza','Ceuta','Melilla'];
-      var NOMBRES = { miel: 'con miel', azucar: 'con azúcar' };
+      var NOMBRES = { miel: 'con miel', azucar: 'con azúcar', cabello: 'de cabello de ángel', batata: 'de batata' };
       var FRASES = ['', 'la base, lista', 'tapa puesta', 'cuerda atada', 'solo falta el lazo… ¡paga!'];
       var SIGUIENTE = ['', 'Siguiente: tus datos', 'Siguiente: entrega', 'Siguiente: pago'];
 
@@ -291,7 +291,8 @@
       function pintar() {
         var c = calculo();
         ['p', 'b'].forEach(function (k) {
-          $('[data-gramos="' + k + '"]').textContent = radio(k) === 'miel' ? '400 g con miel' : '300 g con azúcar';
+          var x = radio(k);
+          $('[data-gramos="' + k + '"]').textContent = x === 'azucar' ? '300 g con azúcar' : '400 g ' + NOMBRES[x];
         });
         $$('[data-r="cajas"]').forEach(function (o) { o.textContent = cajas(n); });
         $('[data-n="-1"]').disabled = n <= 1;
@@ -477,7 +478,7 @@
 
       // Lo que viene elegido desde la portada: /pedido?p=miel&b=azucar&n=2
       var q = new URLSearchParams(location.search);
-      ['p', 'b'].forEach(function (k) { var x = q.get(k); if (x === 'miel' || x === 'azucar') form.querySelector('input[name="' + k + '"][value="' + x + '"]').checked = true; });
+      ['p', 'b'].forEach(function (k) { var x = q.get(k); var r = x && form.querySelector('input[name="' + k + '"][value="' + x + '"]'); if (r) r.checked = true; });
       if (q.get('z') === 'fuera') form.querySelector('input[name="zona"][value="fuera"]').checked = true;
       var qn = parseInt(q.get('n'), 10); if (qn >= 1 && qn <= 20) n = qn;
       irA(1);
