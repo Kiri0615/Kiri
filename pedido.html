@@ -23,7 +23,7 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3" />
   <link rel="preload" href="/fonts/fraunces-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/dm-mono-latin-400.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="/recetario.css?v=17" />
+  <link rel="stylesheet" href="/recetario.css?v=18" />
 </head>
 <body>
   <a class="salto" href="#contenido">Saltar al contenido</a>
@@ -41,6 +41,7 @@
           <div class="comanda-cab"><span>Tu comanda</span><span data-r="cajas">1 caja</span></div>
           <p data-r="contenido">Pestiños con miel · Borrachuelos de cabello de ángel · Roscos fritos · Roscos de vino</p>
           <p class="gris" data-r="entrega">Málaga capital y Torremolinos: entrega gratis</p>
+          <p class="promo-linea" data-r="descuento" hidden></p>
           <div class="comanda-total"><span>Total <small>IVA incl.</small></span><output data-r="total">25 €</output></div>
         </div>
       </aside>
@@ -77,6 +78,14 @@
               <output data-r="cajas">1 caja</output>
               <button type="button" data-n="1" aria-label="Una caja más">+</button>
             </div>
+          </div>
+          <div class="promo">
+            <label for="codigo">¿Tienes un código de descuento?</label>
+            <div class="promo-fila">
+              <input id="codigo" name="codigo" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Código" />
+              <button type="button" class="btn-linea" data-aplicar>Aplicar</button>
+            </div>
+            <p class="promo-msg" data-promo-msg role="status" hidden></p>
           </div>
           <button type="submit" class="btn btn-ancho pago-btn btn-wa" data-pedir>Pedir por WhatsApp</button>
           <p class="letra-chica">Se abre WhatsApp con tu pedido ya escrito. Allí te pedimos el nombre y la dirección y te mandamos el enlace de pago (tarjeta, Apple Pay o Google Pay). Todos llevan gluten; los pestiños, sésamo.</p>
@@ -137,11 +146,13 @@
       var $ = function (s, c) { return (c || document).querySelector(s); };
       var $$ = function (s, c) { return [].slice.call((c || document).querySelectorAll(s)); };
       var fm = $('[data-pedido]');
-      var WA = '34744475239', PRECIO = 25, CORREOS = 3, n = 1;
+      var WA = '34744475239', PRECIO = 25, CORREOS = 3, n = 1, DESCUENTO = 0.10, CODIGO = 'QUILLO10', conCodigo = false;
       var NOMBRES = { miel: 'con miel', azucar: 'con azúcar', cabello: 'de cabello de ángel', batata: 'de batata' };
       function radio(k) { var r = fm.querySelector('input[name="' + k + '"]:checked'); return r ? r.value : ''; }
       function cajas(k) { return k + (k === 1 ? ' caja' : ' cajas'); }
-      function total() { return PRECIO * n + (radio('zona') === 'fuera' ? CORREOS * n : 0); }
+      function rebaja() { return conCodigo ? Math.round(PRECIO * n * DESCUENTO * 100) / 100 : 0; }
+      function eur(x) { return (Math.round(x * 100) / 100).toString().replace('.', ',') + ' €'; }
+      function total() { return PRECIO * n + (radio('zona') === 'fuera' ? CORREOS * n : 0) - rebaja(); }
       function medir(ev, v) {
         try { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: ev, currency: 'EUR', value: v, items: [{ item_id: 'caja-navidad', item_name: 'Caja de dulces de Navidad', price: PRECIO, quantity: n }] }); if (typeof window.fbq === 'function') window.fbq('track', ev === 'view_item' ? 'ViewContent' : 'Contact', { value: v, currency: 'EUR' }); } catch (e) {}
       }
@@ -151,14 +162,28 @@
         $('[data-n="-1"]').disabled = n <= 1;
         $('[data-r="contenido"]').textContent = 'Pestiños ' + NOMBRES[radio('p')] + ' · Borrachuelos ' + NOMBRES[radio('b')] + ' · Roscos fritos · Roscos de vino';
         $('[data-r="entrega"]').textContent = radio('zona') === 'fuera' ? 'Resto de España por Correos (3 € por caja, sale el lunes)' : 'Málaga capital y Torremolinos: entrega gratis';
-        $('[data-r="total"]').textContent = total() + ' €';
+        $('[data-r="total"]').textContent = eur(total());
+        var d = $('[data-r="descuento"]');
+        d.hidden = !conCodigo;
+        d.textContent = conCodigo ? 'Código ' + CODIGO + ': −' + eur(rebaja()) + ' (10 % de descuento)' : '';
       }
+      function aplicarCodigo() {
+        var c = $('#codigo').value.replace(/[\s-]/g, '').toUpperCase();
+        var msg = $('[data-promo-msg]');
+        msg.hidden = false;
+        if (!c) { conCodigo = false; msg.hidden = true; }
+        else if (c === CODIGO) { conCodigo = true; msg.setAttribute('data-ok', 'true'); msg.textContent = 'Código promocional ' + CODIGO + ': 10 % de descuento en tu pedido. ¡Aplicado!'; }
+        else { conCodigo = false; msg.setAttribute('data-ok', 'false'); msg.textContent = 'Ese código no lo conocemos. Revisa que esté bien escrito.'; }
+        pintar();
+      }
+      $('[data-aplicar]').addEventListener('click', aplicarCodigo);
+      $('#codigo').addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); aplicarCodigo(); } });
       fm.addEventListener('change', pintar);
       $$('[data-n]').forEach(function (b) { b.addEventListener('click', function () { n = Math.max(1, Math.min(20, n + Number(b.dataset.n))); pintar(); }); });
       fm.addEventListener('submit', function (e) {
         e.preventDefault();
         var zona = radio('zona') === 'fuera' ? 'resto de España, por Correos (3 € por caja)' : 'Málaga capital o Torremolinos (entrega gratis)';
-        var txt = 'Hola, buenas, quería un pack de Navidad a la Malagueña: ' + cajas(n) + ' con pestiños ' + NOMBRES[radio('p')] + ', borrachuelos ' + NOMBRES[radio('b')] + ', roscos fritos y roscos de vino.\nEntrega: ' + zona + '.\nTotal: ' + total() + ' €.\n¿Me confirmáis y cómo hago el pago?';
+        var txt = 'Hola, buenas, quería un pack de Navidad a la Malagueña: ' + cajas(n) + ' con pestiños ' + NOMBRES[radio('p')] + ', borrachuelos ' + NOMBRES[radio('b')] + ', roscos fritos y roscos de vino.\nEntrega: ' + zona + '.\n' + (conCodigo ? 'Código promocional ' + CODIGO + ' (10 % de descuento).\n' : '') + 'Total: ' + eur(total()) + '.\n¿Me confirmáis y cómo hago el pago?';
         medir('generate_lead', total());
         location.href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(txt);
       });
@@ -166,7 +191,7 @@
       ['p', 'b'].forEach(function (k) { var x = q.get(k); var r = x && fm.querySelector('input[name="' + k + '"][value="' + x + '"]'); if (r) r.checked = true; });
       if (q.get('z') === 'fuera') fm.querySelector('input[name="zona"][value="fuera"]').checked = true;
       var qn = parseInt(q.get('n'), 10); if (qn >= 1 && qn <= 20) n = qn;
-      pintar();
+      if (q.get('codigo')) { $('#codigo').value = q.get('codigo'); aplicarCodigo(); } else { pintar(); }
       medir('view_item', PRECIO);
     })();
   </script>

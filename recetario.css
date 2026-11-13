@@ -795,3 +795,13 @@ main.envoltura:has(> .prosa .titulo-pagina) > .cta-caja { max-width: 860px; marg
 .ficha .ingredientes { padding: 4px 18px; margin: 6px 0 0; box-shadow: 5px 5px 0 var(--tinta); }
 .ficha .ingredientes li > p { font-size: 12px; }
 .ficha [data-zona-texto] { display: none; }
+
+.promo { display: flex; flex-direction: column; gap: 6px; }
+.promo label { font: 500 13px/1.2 var(--mono); color: var(--gris); }
+.promo-fila { display: flex; gap: 8px; }
+.promo-fila input { flex: 1; min-width: 0; min-height: 42px; padding: 0 12px; border: 2px solid var(--tinta); background: var(--papel); font: 500 15px/1 var(--mono); text-transform: uppercase; letter-spacing: .06em; }
+.promo-fila .btn-linea { min-height: 42px; padding: 0 16px; }
+.promo-msg { font: 500 13px/1.4 var(--mono); }
+.promo-msg[data-ok="true"] { color: #1f6b2f; }
+.promo-msg[data-ok="false"] { color: var(--rojo); }
+.promo-linea { font: 500 13px/1.4 var(--mono); color: #1f6b2f; }
