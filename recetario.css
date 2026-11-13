@@ -740,3 +740,68 @@ main.envoltura:has(> .prosa .titulo-pagina) > .cta-caja { max-width: 860px; marg
   .prosa ol.pasos-lista .dibujo-marco:has(.nota-mano) { margin-bottom: 22px; }
 }
 @media (prefers-reduced-motion: reduce) { .prosa ol.pasos-lista li, .prosa ol.pasos-lista .dibujo-marco { transition: none; } }
+
+/* Pedido, paso 1: que quepa en una pantalla */
+.paso[data-paso="1"] { gap: 12px; }
+.paso[data-paso="1"] h1 { font-size: clamp(30px, 3.6vw, 44px); }
+.paso[data-paso="1"] .entradilla { font-size: 15px; }
+.paso[data-paso="1"] .eleccion { padding: 8px 0; gap: 8px; }
+.paso[data-paso="1"] .eleccion b { font-size: 19px; }
+.paso[data-paso="1"] .segmento-grande span { min-height: 38px; padding: 0 12px; font-size: 13px; }
+.paso[data-paso="1"] .zona-elige .zona { padding: 10px 14px; gap: 2px; }
+.paso[data-paso="1"] .letra-chica { margin: 0; }
+.pedido { padding-block: 20px 64px; gap: 20px; }
+.pedido-paso { gap: 14px; }
+.pedido-cuerpo { gap: 32px; }
+.paso[data-paso="1"] .zonas { gap: 10px; }
+.paso[data-paso="1"] .eleccion small { font-size: 12px; }
+@media (max-width: 720px) {
+  .pedido-lado { order: 2; }
+  .pedido-paso { order: 1; }
+  .pedido-cuerpo { gap: 20px; }
+  .paso[data-paso="1"] h1 { font-size: 30px; }
+  .paso[data-paso="1"] .entradilla { display: none; }
+  .paso[data-paso="1"] .zona-elige .zona span { display: none; }
+}
+
+.pedido-wa .btn-wa { background: #25D366; color: #0b2b16; }
+.pedido-wa .paso { gap: 12px; }
+.pedido-wa .paso h1 { font-size: clamp(30px, 3.6vw, 44px); }
+.pedido-wa .paso .entradilla { font-size: 15px; }
+.pedido-wa .eleccion { padding: 8px 0; }
+.pedido-wa .eleccion b { font-size: 19px; }
+.pedido-wa .segmento-grande span { min-height: 38px; padding: 0 12px; font-size: 13px; }
+.pedido-wa .zona-elige .zona { padding: 10px 14px; gap: 2px; }
+
+/* Receta para regalar: que quepa en una pantalla */
+.receta-cab { margin-bottom: 20px; }
+.receta { gap: 32px; }
+.collage { gap: 10px; }
+.collage .f1 img { aspect-ratio: 16 / 9; }
+.collage .f1 figcaption, .collage figcaption { font-size: 18px; }
+.collage .f2 img, .collage .f3 img { aspect-ratio: 4 / 3; }
+.collage .f3 { margin-top: 12px; }
+.ficha { padding: 20px 22px 18px; gap: 12px; }
+.ficha .ingredientes li { padding: 8px 0; gap: 4px; display: grid; grid-template-columns: 1fr auto; align-items: center; }
+.ficha .ingredientes li .fila { grid-column: 1; }
+.ficha .ingredientes li > p { grid-column: 1; margin: 0; }
+.ficha .ingredientes li .segmento { grid-column: 2; grid-row: 1 / 3; }
+.ficha .ingredientes b { font-size: 19px; }
+.ficha .ficha-total { padding-top: 10px; gap: 10px; }
+.ficha .ficha-total output, .ficha .total-grande { font-size: 34px; }
+.ficha .btn { min-height: 50px; font-size: 18px; }
+.ficha .letra-chica { margin: 0; }
+@media (max-width: 720px) { .ficha .ingredientes li { grid-template-columns: 1fr; } .ficha .ingredientes li .segmento { grid-column: 1; grid-row: auto; } }
+.ficha .ingredientes { padding: 4px 18px; margin: 6px 0 0; box-shadow: 5px 5px 0 var(--tinta); }
+.ficha .ingredientes li > p { font-size: 12px; }
+.ficha [data-zona-texto] { display: none; }
+
+.promo { display: flex; flex-direction: column; gap: 6px; }
+.promo label { font: 500 13px/1.2 var(--mono); color: var(--gris); }
+.promo-fila { display: flex; gap: 8px; }
+.promo-fila input { flex: 1; min-width: 0; min-height: 42px; padding: 0 12px; border: 2px solid var(--tinta); background: var(--papel); font: 500 15px/1 var(--mono); text-transform: uppercase; letter-spacing: .06em; }
+.promo-fila .btn-linea { min-height: 42px; padding: 0 16px; }
+.promo-msg { font: 500 13px/1.4 var(--mono); }
+.promo-msg[data-ok="true"] { color: #1f6b2f; }
+.promo-msg[data-ok="false"] { color: var(--rojo); }
+.promo-linea { font: 500 13px/1.4 var(--mono); color: #1f6b2f; }
