@@ -8,7 +8,7 @@
   var CONSENT_DIAS = 365;
   // Google Analytics 4 (solo se carga si la persona acepta las cookies analíticas)
   var GA_ID = 'G-8YW2FHYV0J';
-  var WHATSAPP = '34744475239';
+  var WHATSAPP = '34711223655';
   var VENTANA_SEGUNDOS = 2;
   // Páginas donde la ventana estorbaría (pedido en curso, vuelta del pago y textos legales)
   var SIN_VENTANA = /^\/(pedido|gracias|aviso-legal|condiciones-venta|politica-cookies|politica-privacidad)(\.html)?\/?$/;
