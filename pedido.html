@@ -42,7 +42,7 @@
           <p data-r="contenido">Pestiños con miel · Borrachuelos de cabello de ángel · Roscos fritos · Roscos de vino</p>
           <p class="gris" data-r="entrega">Málaga capital y Torremolinos: entrega gratis</p>
           <p class="promo-linea" data-r="descuento" hidden></p>
-          <div class="comanda-total"><span>Total <small>IVA incl.</small></span><output data-r="total">25 €</output></div>
+          <div class="comanda-total"><span>Total <small>IVA incl.</small></span><output data-r="total">28 €</output></div>
         </div>
       </aside>
 
@@ -68,11 +68,11 @@
           </div>
           <p class="letra-chica">Además, siempre van: roscos fritos (400 g) y roscos de vino (≈ 300 g).</p>
           <div class="zonas" role="radiogroup" aria-label="Dónde la quieres">
-            <label class="zona-elige"><input type="radio" name="zona" value="capital" checked /><span class="zona"><b>Málaga y alrededores</b><span>Málaga capital y Torremolinos. Te la llevamos nosotros.</span><strong>25 € · entrega gratis</strong></span></label>
-            <label class="zona-elige"><input type="radio" name="zona" value="fuera" /><span class="zona"><b>Resto de España</b><span>Por Correos, sale los lunes.</span><strong>28 € · 25 € + 3 € de envío</strong></span></label>
+            <label class="zona-elige"><input type="radio" name="zona" value="capital" checked /><span class="zona"><b>Málaga y alrededores</b><span>Málaga capital y Torremolinos. Te la llevamos nosotros.</span><strong>28 € · entrega gratis</strong></span></label>
+            <label class="zona-elige"><input type="radio" name="zona" value="fuera" /><span class="zona"><b>Resto de España</b><span>Por Correos, sale los lunes.</span><strong>30 € · 28 € + 2 € de envío</strong></span></label>
           </div>
           <div class="eleccion" style="border:0">
-            <span><b>¿Cuántas cajas?</b><small>25 € cada una</small></span>
+            <span><b>¿Cuántas cajas?</b><small>28 € cada una</small></span>
             <div class="contador" role="group" aria-label="Número de cajas">
               <button type="button" data-n="-1" aria-label="Una caja menos">−</button>
               <output data-r="cajas">1 caja</output>
@@ -109,7 +109,7 @@
         <div>
           <p>La caja</p>
           <ul>
-            <li><a href="/pedido">Encargar · 25 €</a></li>
+            <li><a href="/pedido">Encargar · 28 €</a></li>
             <li><a href="/preguntas#envios">Envíos y plazos</a></li>
             <li><a href="mailto:navidadalamalguena@gmail.com">navidadalamalguena@gmail.com</a></li>
           </ul>
@@ -146,7 +146,7 @@
       var $ = function (s, c) { return (c || document).querySelector(s); };
       var $$ = function (s, c) { return [].slice.call((c || document).querySelectorAll(s)); };
       var fm = $('[data-pedido]');
-      var WA = '34711223655', PRECIO = 25, CORREOS = 3, n = 1, DESCUENTO = 0.10, CODIGO = 'QUILLO10', conCodigo = false;
+      var WA = '34711223655', PRECIO = 28, CORREOS = 2, n = 1, DESCUENTO = 0.10, CODIGO = 'QUILLO10', conCodigo = false;
       var NOMBRES = { miel: 'con miel', azucar: 'con azúcar', cabello: 'de cabello de ángel', batata: 'de batata' };
       function radio(k) { var r = fm.querySelector('input[name="' + k + '"]:checked'); return r ? r.value : ''; }
       function cajas(k) { return k + (k === 1 ? ' caja' : ' cajas'); }
@@ -161,7 +161,7 @@
         $$('[data-r="cajas"]').forEach(function (o) { o.textContent = cajas(n); });
         $('[data-n="-1"]').disabled = n <= 1;
         $('[data-r="contenido"]').textContent = 'Pestiños ' + NOMBRES[radio('p')] + ' · Borrachuelos ' + NOMBRES[radio('b')] + ' · Roscos fritos · Roscos de vino';
-        $('[data-r="entrega"]').textContent = radio('zona') === 'fuera' ? 'Resto de España por Correos (3 € por caja, sale el lunes)' : 'Málaga capital y Torremolinos: entrega gratis';
+        $('[data-r="entrega"]').textContent = radio('zona') === 'fuera' ? 'Resto de España por Correos (2 € por caja, sale el lunes)' : 'Málaga capital y Torremolinos: entrega gratis';
         $('[data-r="total"]').textContent = eur(total());
         var d = $('[data-r="descuento"]');
         d.hidden = !conCodigo;
@@ -182,7 +182,7 @@
       $$('[data-n]').forEach(function (b) { b.addEventListener('click', function () { n = Math.max(1, Math.min(20, n + Number(b.dataset.n))); pintar(); }); });
       fm.addEventListener('submit', function (e) {
         e.preventDefault();
-        var zona = radio('zona') === 'fuera' ? 'resto de España, por Correos (3 € por caja)' : 'Málaga capital o Torremolinos (entrega gratis)';
+        var zona = radio('zona') === 'fuera' ? 'resto de España, por Correos (2 € por caja)' : 'Málaga capital o Torremolinos (entrega gratis)';
         var txt = 'Hola, buenas, quería un pack de Navidad a la Malagueña: ' + cajas(n) + ' con pestiños ' + NOMBRES[radio('p')] + ', borrachuelos ' + NOMBRES[radio('b')] + ', roscos fritos y roscos de vino.\nEntrega: ' + zona + '.\n' + (conCodigo ? 'Código promocional ' + CODIGO + ' (10 % de descuento).\n' : '') + 'Total: ' + eur(total()) + '.\n¿Me confirmáis y cómo hago el pago?';
         medir('generate_lead', total());
         location.href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(txt);
@@ -195,6 +195,6 @@
       medir('view_item', PRECIO);
     })();
   </script>
-  <script src="/leads.js?v=3" defer></script>
+  <script src="/leads.js?v=4" defer></script>
 </body>
 </html>
