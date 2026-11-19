@@ -168,7 +168,7 @@
       '<div class="capa-dialogo ventana-info" role="dialog" aria-modal="true" aria-labelledby="ventanaTitulo">' +
       '<button type="button" class="cerrar" data-v="cerrar" aria-label="Cerrar">✕</button>' +
       '<div data-v-form-caja>' +
-      '<p class="ventana-etiqueta">Caja de dulces de Navidad · 25 €</p>' +
+      '<p class="ventana-etiqueta">Caja de dulces de Navidad · 28 €</p>' +
       '<h2 id="ventanaTitulo">¿Quieres más <em>información?</em></h2>' +
       '<p class="ventana-entradilla">Déjanos tus datos y te escribimos por WhatsApp con todo.</p>' +
       '<form novalidate data-v-form>' +
@@ -190,7 +190,7 @@
       '<p class="ventana-entradilla">Te escribimos muy pronto por WhatsApp. Si no quieres esperar, puedes encargar tu caja ya.</p>' +
       '</div>' +
       '<div class="ventana-o"><span>o si ya lo tienes claro</span></div>' +
-      '<a class="btn btn-miel btn-ancho" href="/pedido" data-v-pagar>Encargar y pagar · 25 €</a>' +
+      '<a class="btn btn-miel btn-ancho" href="/pedido" data-v-pagar>Encargar y pagar · 28 €</a>' +
       '<p class="ventana-pago">Pago seguro con tarjeta, Apple Pay o Google Pay. Entrega gratis en Málaga capital y Torremolinos.</p>' +
       '<a class="ventana-wa" href="' + enlaceWhatsApp('¡Hola! Quiero más información sobre la caja de dulces de Navidad a la Malagueña.') + '" target="_blank" rel="noopener">' + ICONO_WA + 'Prefiero preguntar por WhatsApp</a>' +
       '<p class="info-legal" data-v-legal>Responsable: Asociación Junior Empresa Vyseon. Finalidad: responderte y, si te animas, gestionar tu pedido. Legitimación: tu consentimiento. No cedemos tus datos. Derechos de acceso, rectificación y supresión en la <a href="/politica-privacidad">política de privacidad</a>.</p>' +
