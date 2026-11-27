@@ -129,7 +129,23 @@
             <div>
               <p class="etiqueta">Qué lleva</p>
               <ul class="ingredientes">
-                <li><div class="fila"><b>La caja de dulces</b><small>≈ 1,5 kg</small></div><p>Pestiños, borrachuelos, roscos fritos y roscos de vino. Tú eliges miel o azúcar y el relleno.</p></li>
+                <li>
+                  <div class="fila"><b>Pestiños</b><small data-ps-gramos>400 g</small></div>
+                  <p>Masa frita con ajonjolí y matalahúva.</p>
+                  <div class="segmento" role="radiogroup" aria-label="Pestiños: miel o azúcar">
+                    <label><input type="radio" name="ps" value="miel" checked /><span>con miel</span></label>
+                    <label><input type="radio" name="ps" value="azucar" /><span>con azúcar</span></label>
+                  </div>
+                </li>
+                <li>
+                  <div class="fila"><b>Borrachuelos</b><small>400 g</small></div>
+                  <p>Con vino moscatel. Elige el relleno.</p>
+                  <div class="segmento" role="radiogroup" aria-label="Borrachuelos: relleno de cabello de ángel o de batata">
+                    <label><input type="radio" name="bs" value="cabello" checked /><span>cabello de ángel</span></label>
+                    <label><input type="radio" name="bs" value="batata" /><span>batata</span></label>
+                  </div>
+                </li>
+                <li><div class="fila"><b>Roscos fritos y roscos de vino</b><small>≈ 700 g</small></div><p>Los de siempre, rebozados en azúcar, y con vino dulce de Málaga.</p></li>
                 <li><div class="fila"><b>Mantecados</b><small>450 g</small></div><p>Mantecados de canela de Sancho Melero.</p></li>
                 <li>
                   <div class="fila"><b>Y para brindar</b><small data-bebida-tam>1 L</small></div>
@@ -145,7 +161,7 @@
               <p class="etiqueta">¿Dónde la quieres?</p>
               <div class="segmento" role="radiogroup" aria-label="Dónde la quieres" style="margin-top:10px">
                 <label><input type="radio" name="zs" value="capital" checked /><span>Málaga y alrededores · 55 €</span></label>
-                <label><input type="radio" name="zs" value="fuera" /><span>Resto de España · 60 €</span></label>
+                <label><input type="radio" name="zs" value="fuera" /><span>Resto de España · 58 €</span></label>
               </div>
               <p class="letra-chica" style="margin-top:8px" data-zs-texto>Málaga capital y Torremolinos: te la llevamos gratis el martes o el jueves.</p>
             </div>
@@ -587,20 +603,21 @@
       // ===== Caja Sobremesa: anís o vino, zona, cuántas cajas → WhatsApp =====
       var fs = document.querySelector('[data-sobremesa]');
       if (fs) {
-        var ns = 1, PS = 55, ENVIO_S = 5;
+        var ns = 1, PS = 55, ENVIO_S = 3;
         var BEB = { anis: ['1 L', 'Anís dulce El Tajo, de la destilería de Ronda.', 'anís El Tajo'], vino: ['50 cl', 'Vino dulce Pampanito del Sur, moscatel de la bodega Manilvarea (D.O. Málaga).', 'vino dulce Pampanito'] };
         function precioS() { return PS + (fs.elements.zs.value === 'fuera' ? ENVIO_S : 0); }
         function pintarS() {
           var b = BEB[fs.elements.bebida.value], fuera = fs.elements.zs.value === 'fuera';
           fs.querySelector('[data-bebida-tam]').textContent = b[0];
+          fs.querySelector('[data-ps-gramos]').textContent = fs.elements.ps.value === 'miel' ? '400 g' : '300 g';
           fs.querySelector('[data-bebida-texto]').textContent = b[1];
           fs.querySelector('[data-ns-cajas]').textContent = ns + (ns === 1 ? ' caja' : ' cajas');
           fs.querySelectorAll('[data-ns-total]').forEach(function (el) { el.textContent = el.tagName === 'OUTPUT' ? (ns * precioS()) + ' €' : ns * precioS(); });
           fs.querySelector('[data-zs-texto]').textContent = fuera
-            ? 'Resto de España: va por Correos y sale los lunes. 55 € de caja + 5 € de envío.'
+            ? 'Resto de España: va por Correos y sale los lunes. 55 € de caja + 3 € de envío.'
             : 'Málaga capital y Torremolinos: te la llevamos gratis el martes o el jueves.';
           fs.querySelector('[data-ns="-1"]').disabled = ns <= 1;
-          var txt = '¡Buenas! Quiero ' + (ns === 1 ? 'una Caja Sobremesa' : ns + ' Cajas Sobremesa') + ' con ' + b[2] + ' (' + (fuera ? 'envío al resto de España' : 'Málaga') + '). Total: ' + (ns * precioS()) + ' €. 🎄';
+          var txt = '¡Buenas! Quiero ' + (ns === 1 ? 'una Caja Sobremesa' : ns + ' Cajas Sobremesa') + ' con ' + b[2] + ', pestiños con ' + (fs.elements.ps.value === 'miel' ? 'miel' : 'azúcar') + ' y borrachuelos de ' + (fs.elements.bs.value === 'cabello' ? 'cabello de ángel' : 'batata') + ' (' + (fuera ? 'envío al resto de España' : 'Málaga') + '). Total: ' + (ns * precioS()) + ' €. 🎄';
           fs.querySelector('[data-ns-wa]').href = 'https://wa.me/34711223655?text=' + encodeURIComponent(txt);
         }
         fs.addEventListener('change', pintarS);
